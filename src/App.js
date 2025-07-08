@@ -1,10 +1,12 @@
 import FirstComponent from './components/FirstComponent';
+// import LifeCycleDemo from './components/LifeCycleDemo';
 
 function App() {
   return (
-    <div>
-      <FirstComponent />
-    </div>
+    <>
+        <FirstComponent name='Hanna'/>
+        {/*<LifeCycleDemo/>*/}
+    </>
   );
 }
 

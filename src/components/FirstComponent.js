@@ -7,10 +7,15 @@ class FirstComponent extends React.Component {
         this.state = {
             count: 0,
         }
+
+        console.log(this.props)
     }
 
     increment = () => {
-        this.setState({ count: this.state.count + 1 })
+        // this.setState({ count: this.state.count + 1 })    // об'єкт
+
+        this.setState((prevState) => ({ count: prevState.count + 1 }))  // функція
+        this.setState((prevState) => ({ count: prevState.count + 1 }))
     }
 
     render() {
@@ -29,3 +34,7 @@ class FirstComponent extends React.Component {
 }
 
 export default FirstComponent;
+
+
+// props — це об'єкт, який наш компонент отримує (успадковує) від React.Component. Його властивостями є атрибути, які
+// ми передаємо компоненту

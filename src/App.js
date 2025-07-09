@@ -1,10 +1,10 @@
-import FirstComponent from './components/FirstComponent';
+import Page from './pages/page';
 
 function App() {
   return (
-    <div>
-      <FirstComponent />
-    </div>
+    <>
+        <Page />
+    </>
   );
 }
 

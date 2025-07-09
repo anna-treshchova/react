@@ -1,11 +1,9 @@
-import FirstComponent from './components/FirstComponent';
-// import LifeCycleDemo from './components/LifeCycleDemo';
+import Todo from './pages/todo';
 
 function App() {
   return (
     <>
-        <FirstComponent name='Hanna'/>
-        {/*<LifeCycleDemo/>*/}
+        <Todo/>
     </>
   );
 }

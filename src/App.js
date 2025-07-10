@@ -1,9 +1,9 @@
-import Page from './pages/page';
+import SmileVoting from './pages/smiles';
 
 function App() {
   return (
     <>
-        <Page />
+        <SmileVoting />
     </>
   );
 }

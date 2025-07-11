@@ -8,16 +8,19 @@ class SmileVoting extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            smiles: [
-                { id: uuidv4(), emoji: '😁', votes: 0 },
-                { id: uuidv4(), emoji: '😉', votes: 0 },
-                { id: uuidv4(), emoji: '😐', votes: 0 },
-                { id: uuidv4(), emoji: '😪', votes: 0 },
-                { id: uuidv4(), emoji: '😠', votes: 0 },
-            ],
+            smiles: [],
             showResult: false,
             winners: null,
         }
+    }
+
+    saveSmilesToStorage = (smiles) => {
+        try {
+            localStorage.setItem('smiles',  JSON.stringify(smiles));
+        } catch (err) {
+           console.log(`Failed to save to localStorage: ${err}`);
+        }
+
     }
 
     toggleResult = () => {
@@ -30,10 +33,10 @@ class SmileVoting extends React.Component {
 
         if (highestVotes > 0) {
             const winners = this.state.smiles.filter(smile => smile.votes === highestVotes)
-            this.setState({
+            this.setState((prevState) => ({
                 winners,
-                showResult: !this.state.showResult,
-            });
+                showResult: !prevState.showResult,
+            }));
         }
     }
 
@@ -45,6 +48,8 @@ class SmileVoting extends React.Component {
                 }
                 return smile;
             })
+            this.saveSmilesToStorage(updatedSmiles);
+
             return {smiles: updatedSmiles};
         })
     }
@@ -60,6 +65,7 @@ class SmileVoting extends React.Component {
             showResult: false,
             winners: null,
         })
+        this.saveSmilesToStorage(resetSmiles);
     }
 
     render() {
@@ -88,6 +94,24 @@ class SmileVoting extends React.Component {
                 }
             </div>
         )
+    }
+
+    componentDidMount = () => {
+        const smiles = localStorage.getItem('smiles');
+
+        if (smiles) {
+            this.setState(() => ({ smiles: JSON.parse(smiles) }));
+        } else {
+            const newSmiles = [
+                { id: uuidv4(), emoji: '😁', votes: 0 },
+                { id: uuidv4(), emoji: '😉', votes: 0 },
+                { id: uuidv4(), emoji: '😐', votes: 0 },
+                { id: uuidv4(), emoji: '😪', votes: 0 },
+                { id: uuidv4(), emoji: '😠', votes: 0 },
+            ]
+            this.saveSmilesToStorage(newSmiles);
+            this.setState({ smiles: newSmiles });
+        }
     }
 }
 

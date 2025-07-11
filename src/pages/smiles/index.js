@@ -85,16 +85,63 @@ class SmileVoting extends React.Component {
                     <button className='reset-btn' onClick={this.resetVotes}>Reset</button>
                 </div>
 
-                {this.state.showResult &&
+                { this.state.showResult &&
                     <>
                         <h2>Voting results:</h2>
                         <h3>Winners:</h3>
-                        <SmileList smiles={this.state.winners}/>
+                        <SmileList smiles={
+                            this.state.winners}/>
                     </>
                 }
             </div>
         )
     }
+
+/*──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+    SmileItem очікує отримати функцію addVote, але результуючому SmileItem нам не потрібна ця функція
+
+       1. Ми вирішили цю проблему за допомогою chaining оператора в SmileItem:
+
+            handleAddVote = () => {
+              this.props.addVote?.(this.props.smile.id) // optional chaining
+            }
+
+
+       2. Також можна було просто передати в результуючий SmileList як пропсу пусту функцію - заглушку:
+
+            { this.state.showResult &&
+                <>
+                    <h2>Voting results:</h2>
+                    <h3>Winners:</h3>
+                    <SmileList
+                        smiles={ this.state.winners }
+                        addVote={ () => {} }
+                    />
+                </>
+            }
+
+
+       3. Або в самому SmileItem при деструктуризації пропсів задати addVote дефолтне значення   —→   best option
+
+            class SmileItem extends React.Component {
+                handleAddVote = () => {
+                    const { smile, addVote = () => {} } = this.props;   // default value
+                    addVote(smile.id)
+                }
+
+                render() {
+                    return (
+                       <li onClick={handleAddVote} className='smiles__item'>
+                           <span className='smiles__emoji'>{smile.emoji}</span>
+                           <span className='smiles__votes'>{smile.votes}</span>
+                       </li>
+                    )
+                }
+            }
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────*/
+
 
     componentDidMount = () => {
         const smiles = localStorage.getItem('smiles');

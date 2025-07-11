@@ -7,7 +7,7 @@ class SmileItem extends React.Component {
 
    render() {
        const { smile } = this.props;
-        return (
+       return (
            <li onClick={this.handleAddVote} className='smiles__item'>
                <span className='smiles__emoji'>{smile.emoji}</span>
                <span className='smiles__votes'>{smile.votes}</span>

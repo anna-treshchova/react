@@ -1,9 +1,11 @@
-import Page from './pages/page';
+// import FunctionalCounter from './components/FunctionalCounter';
+import Todo from './pages/todo';
 
 function App() {
   return (
     <>
-        <Page />
+        {/*<FunctionalCounter />*/}
+        <Todo />
     </>
   );
 }

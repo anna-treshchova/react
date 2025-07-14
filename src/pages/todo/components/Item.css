@@ -1,0 +1,38 @@
+body {
+  display: flex;
+}
+
+body div {
+  margin: 0 auto;
+}
+
+body h1, h3 {
+  text-align: center;
+}
+
+.todo__item {
+  display: flex;
+  list-style: none;
+  border: 1px solid #e3e3e3;
+  padding: 12px 16px;
+}
+
+.todo__item input {
+  width: 100%;
+  padding: 4px;
+  font-size: 16px;
+}
+
+.todo__item button {
+  padding: 2px 8px;
+}
+
+.todo__item-text {
+  padding-right: 15px;
+  text-align: start;
+  margin-right: auto;
+}
+
+.completed span {
+  text-decoration: line-through;
+}

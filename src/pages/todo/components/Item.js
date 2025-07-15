@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './Item.css';
 
@@ -12,6 +12,14 @@ export default function TodoItem({
     const [newText, setNewText] = useState(todo.text); // Ми заводимо newText для того щоб одразу не змінювати основні дані (todo.text)
                                                        // newText — це тимчасове місце, куди потрапляє текст, який користувач вводить у <input>
                                                        // Але ми не записуємо його в глобальний стан todos, поки користувач не натисне Enter або onBlur
+    const inputRef = useRef();
+
+    useEffect(() => {
+        if (isEditing) {
+            inputRef.current.focus();
+        }
+    }, [isEditing]);
+
     const enterEditMode = () => setIsEditing(true)
     const handleToggle = () => toggleTodo(todo.id)
     const handleDelete = () => deleteTodo(todo.id)
@@ -39,7 +47,7 @@ export default function TodoItem({
                     onChange={handleTextChange}
                     onKeyDown={handleKeyEnter}
                     onBlur={confirmEdit}
-                    autoFocus
+                    ref={inputRef}
                 />
                 : <>
                     <span className='todo__item-text'>{newText}</span>

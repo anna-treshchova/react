@@ -1,11 +1,6 @@
 import TodoItem from './Item';
 
-export default function TodoList({
-    todos = [],
-    toggleTodo = () => {},
-    deleteTodo = () => {},
-    editTodo = () => {},
-}) {
+export default function TodoList({ todos = [], toggleTodo, deleteTodo, editTodo }) {
     return (
         <ul>
             {todos.map((todo) => (

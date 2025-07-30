@@ -1,17 +1,23 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo, useContext } from 'react';
+
+import { ThemeContext } from '../../../contexts/ThemeContext';
+import { TodoContext } from '../../../contexts/TodoContext';
 
 import './Item.css';
 
-export default function TodoItem({
-    todo,
-    toggleTodo = () => {},
-    deleteTodo = () => {},
-    editTodo = () => {},
-}) {
+export function TodoItem({ todo }) {
     const [isEditing, setIsEditing] = useState(false);
     const [newText, setNewText] = useState(todo.text); // Ми заводимо newText для того щоб одразу не змінювати основні дані (todo.text)
                                                        // newText — це тимчасове місце, куди потрапляє текст, який користувач вводить у <input>
                                                        // Але ми не записуємо його в глобальний стан todos, поки користувач не натисне Enter або onBlur
+    const { theme } = useContext(ThemeContext);
+
+    const {
+        toggleTodo = () => {},
+        deleteTodo = () => {},
+        editTodo = () => {},
+    } = useContext(TodoContext);
+
     const inputRef = useRef();
 
     useEffect(() => {
@@ -37,6 +43,10 @@ export default function TodoItem({
     return (
         <li
             className={`todo__item ${todo.completed ? 'completed' : ''}`}
+            style={{
+                color: theme === 'light' ? '#000000' : '#ffffff',
+                backgroundColor: theme === 'light' ? '#f8f8f8' : '#2e2e2e',
+            }}
             onClick={handleToggle}
         >
             {isEditing
@@ -58,3 +68,22 @@ export default function TodoItem({
         </li>
     )
 }
+
+export default memo(TodoItem);
+
+
+/*
+
+ Контексти в React зазвичай використовуються для глобальних, але нечасто змінюваних даних, до яких потрібно мати доступ
+ з багатьох компонентів:
+
+   1. Тема додатку (light/dark)  —>  ThemeContext
+
+   2. Мова інтерфейсу (en/ua) —>  LanguageContext
+
+   3. Дані поточного користувача (профіль, статус авторизації)  —>  AuthContext
+
+   4. Глобальні сповіщення   —>  NotificationContext
+
+   Якщо дані часто змінюються або мають більш складну логіку ВИКОРИСТОВУЮТЬ Redux
+ */

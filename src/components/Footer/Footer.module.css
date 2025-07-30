@@ -1,0 +1,19 @@
+.footer {
+    padding: 40px;
+    background-color: #f8f8f8;
+    border: 1px solid #000000;
+}
+
+.footer button {
+    margin-left: 20px;
+}
+
+.mode-light {
+    background-color: #f8f8f8;
+    color: #000000;
+}
+
+.mode-dark {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}

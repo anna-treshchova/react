@@ -1,0 +1,17 @@
+.counter-controls,
+.expensive-component,
+.regular-component {
+    padding: 10px;
+    background-color: #d6d6d6;
+    border: 1px solid #6e6e6e;
+    margin-bottom: 20px;
+}
+
+.expensive-component {
+    margin-top: 20px;
+}
+
+.counter-controls span {
+    margin: 0 20px;
+}
+

@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+
+    <script>
+      try {
+        document.documentElement.className = JSON.parse(localStorage.getItem('theme')) || 'light';
+      } catch (err) {
+        document.documentElement.className = 'light';
+      }
+    </script>
+
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />

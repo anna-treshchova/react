@@ -1,0 +1,19 @@
+.footer {
+  padding: 10px 0 40px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1)
+}
+
+.footer button {
+  margin-top: 5px;
+  margin-left: 20px;
+  padding: 14px 20px;
+  border: 1px solid #777777;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.footer h2 {
+  font-size: 28px;
+}

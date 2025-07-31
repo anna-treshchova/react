@@ -1,12 +1,14 @@
 import SmileItem from './Item';
 
-export default function SmileList({ smiles = [], addVote }) {
-    return <ul className='smiles__list'>
+import styles from '../SmileVoting.module.css'
+
+export default function SmileList({ smiles = [] }) {
+
+    return <ul className={styles.smilesList}>
         { smiles.map(smile => (
             <SmileItem
                 key={smile.id}
                 smile={smile}
-                addVote={addVote}
             />
         ))}
     </ul>

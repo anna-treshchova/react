@@ -1,10 +1,18 @@
-export default function SmileItem({ smile, addVote = () => {} }) {
+import { useContext } from 'react';
+
+import { SmileContext } from '../../../contexts/SmileContext';
+
+import styles from '../SmileVoting.module.css'
+
+export default function SmileItem({ smile }) {
+    const { addVote = () => {} } = useContext(SmileContext);
+
     const handleAddVote = () => addVote(smile.id);
 
     return (
-        <li onClick={handleAddVote} className='smiles__item'>
-            <span className='smiles__emoji'>{smile.emoji}</span>
-            <span className='smiles__votes'>{smile.votes}</span>
+        <li onClick={handleAddVote} className={styles.smilesItem}>
+            <span className={styles.smilesEmoji}>{smile.emoji}</span>
+            <span className={styles.smilesVotes}>{smile.votes}</span>
         </li>
     )
 }

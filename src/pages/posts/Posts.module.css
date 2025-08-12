@@ -1,0 +1,38 @@
+.posts__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.posts__item {
+    width: 60%;
+
+    padding: 15px;
+    border: 1px solid #000000;
+    margin-bottom: 15px;
+}
+
+.posts__item h4 {
+    text-align: center;
+}
+
+.posts__item button {
+    padding: 4px 12px;
+}
+
+.posts__item div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mode-light {
+    background-color: #f8f8f8;
+    color: #000000;
+}
+
+.mode-dark {
+    background-color: #2e2e2e;
+    color: #ffffff;
+}

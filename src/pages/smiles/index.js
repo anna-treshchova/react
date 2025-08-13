@@ -1,18 +1,50 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+
+import { smilesData } from '../../data/smiles'
+
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 import SmileList from './components/List';
 
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { SmileContext } from '../../contexts/SmileContext';
+import styles from './Smiles.module.css'
 
-import styles from './SmileVoting.module.css'
 
-export default function SmileVoting() {
+export default function Smiles() {
     const [showResult, setShowResult] = useState(false)
     const [winners, setWinners] = useState(null);
 
+    const [smiles, setSmiles] = useState(() => {
+        try {
+            const saved = localStorage.getItem('smiles');
+            return saved ? JSON.parse(saved) : smilesData;
+        } catch (err) {
+            return smilesData;
+        }
+    });
+
     const { theme } = useContext(ThemeContext);
-    const { smiles, setSmiles } = useContext(SmileContext);
+
+    const isFirstRender = useRef(true);
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        try {
+            localStorage.setItem('smiles', JSON.stringify(smiles));
+        } catch (err) {
+            console.log(`Failed to save smiles to localStorage: ${err}`);
+        }
+    }, [smiles])
+
+    const addVote = (id) => {
+        setSmiles(prevState => prevState.map(smile =>
+                smile.id === id ? {...smile, votes: smile.votes + 1} : smile
+            )
+        )
+    }
 
     const toggleResult = () => {
         const highestVotes = smiles.reduce((acc, smile) => {
@@ -45,7 +77,7 @@ export default function SmileVoting() {
         >
             <h1>Which Emoji Reflects Your Feeling?</h1>
 
-            <SmileList smiles={smiles} />
+            <SmileList smiles={smiles} addVote={addVote} />
 
             <div className={styles.btnBox}>
                 <button className={styles.resultBtn} onClick={toggleResult}>

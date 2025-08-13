@@ -1,61 +1,28 @@
+import { Routes, Route, Navigate } from 'react-router'
 
-import SmileProvider from './contexts/SmileContext';
+import Layout from './components/Layout';
 
-import SmileVoting from './pages/smiles';
+import Smiles from './pages/smiles';
+import About from './pages/about';
+import Contacts from './pages/contacts';
+import ContactOption from './pages/contact-option';
+import Todo from './pages/todo';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
 
-
-function App() {
+export default function App() {
   return (
-    <>
-        <Header />
-        <SmileProvider>
-            <SmileVoting />
-        </SmileProvider>
-
-        <Footer />
-    </>
+    <Routes>
+        <Route path='/' element={<Layout />}>
+            <Route index element={<Smiles />}/>
+            <Route path='/about' element={<About />}/>
+            <Route path='/contacts'>
+                <Route index element={<Contacts />}/>
+                <Route path=':lang' element={<ContactOption />}/>
+            </Route>
+            <Route path='/todo' element={<Todo />}/>
+            <Route path='*' element={<Navigate to='/' />}/>
+        </Route>
+    </Routes>
   );
 }
-
-export default App;
-
-
-/*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-
-                              ІМПОРТИ:
-
- 1. Імпорти бібліотек (React, ReactDOM, uuid, тощо)
-
-      import React from 'react';
-      import { v4 as uuidv4 } from 'uuid';
-
- 2. Імпорти наших утиліт або функцій
-
-      import { calculateVotes } from '../utils/voteUtils';
-
- 3. Імпорти контекстів (створених нами)
-
-      import { ThemeContext } from '../contexts/ThemeContext';
-
- 4. Імпорти компонентів (створених нами)
-
-      import Header from '../components/Header';
-      import SmileList from '../components/SmileList';
-
- 5. Імпорти сторонніх компонентів із бібліотек (наприклад, з `@mui/material`)
-
-      import { Button } from '@mui/material';
-
- 6. Імпорти зображень
-      import smileImage from '../assets/smile.png';
-
- 7. Імпорти стилів (CSS, SCSS, тощо)
-      import './App.css';
-
-
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾*/
-
 

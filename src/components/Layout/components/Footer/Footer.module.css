@@ -2,7 +2,8 @@
   padding: 10px 0 40px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 80px;
 }
 
 .footer button {
@@ -12,8 +13,4 @@
   border: 1px solid #777777;
   border-radius: 30px;
   cursor: pointer;
-}
-
-.footer h2 {
-  font-size: 28px;
 }

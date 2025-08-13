@@ -1,0 +1,38 @@
+.contact-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-option h1 {
+    margin-bottom: 40px;
+}
+
+.contact-option div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-option span {
+    margin-bottom: 15px;
+}
+
+.contact-option span strong{
+    margin-right: 10px;
+}
+
+.contact-option button {
+    margin-top: 40px;
+    padding: 14px 20px;
+    border: 1px solid #777777;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.mode-light {
+    color: #000000;
+}
+
+.mode-dark {
+    color: #ffffff;
+}

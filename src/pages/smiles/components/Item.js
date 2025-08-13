@@ -1,12 +1,9 @@
-import { useContext } from 'react';
+import styles from '../Smiles.module.css'
 
-import { SmileContext } from '../../../contexts/SmileContext';
-
-import styles from '../SmileVoting.module.css'
-
-export default function SmileItem({ smile }) {
-    const { addVote = () => {} } = useContext(SmileContext);
-
+export default function SmileItem({
+    smile,
+    addVote = () => {}
+}) {
     const handleAddVote = () => addVote(smile.id);
 
     return (

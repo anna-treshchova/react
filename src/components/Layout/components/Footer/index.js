@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
 
 import styles from './Footer.module.css'
 
@@ -8,16 +8,16 @@ export default function Footer() {
     const { theme, toggleTheme } = useContext(ThemeContext);
 
     return (
-        <div
+        <footer
             className={styles.footer}
             style={{
                 backgroundColor: theme === 'light' ?'#ffffff' : '#2b2d30',
                 color: theme === 'light' ? '#000000' : '#ffffff',
             }}
         >
-            <h2>Footer</h2>
+            <h1>Footer</h1>
             <span>Current theme: <strong>{theme}</strong></span>
             <button onClick={toggleTheme}>Change theme</button>
-        </div>
+        </footer>
     )
 }

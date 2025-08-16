@@ -2,7 +2,6 @@ import {useContext} from 'react';
 
 import TodoProvider from '../../contexts/TodoContext'
 
-import TodoForm from './components/Form';
 import TodoList from './components/List';
 import TodoHeader from './components/Header';
 
@@ -19,7 +18,6 @@ export default function Todo() {
                 className={`${styles.todo} ${styles[`mode-${theme}`]}`}
             >
                 <TodoHeader/>
-                <TodoForm/>
                 <TodoList/>
             </div>
         </TodoProvider>

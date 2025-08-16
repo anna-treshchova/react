@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0;
-  margin: 20px 0;
+}
+
+.todo__list {
+  border-radius: 5px;
 }
 
 .todo__item {
@@ -12,12 +14,17 @@
   list-style: none;
   padding: 0 16px;
   min-height: 52px;
-  border: 1px solid #616161;
+  border: 1px solid #cacaca;
   border-bottom: none;
+}
+
+.todo__item:first-child {
+  border-radius: 10px 10px 0 0;
 }
 
 .todo__item:last-child {
   border-bottom: 1px solid #616161;
+  border-radius: 0 0 10px 10px;
 }
 
 .todo__item input {
@@ -27,7 +34,12 @@
 }
 
 .todo__item button {
-  padding: 2px 8px;
+  background-color: #65865c;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  padding: 4px 12px;
+  margin-left: 4px;
 }
 
 .todo__item-text {
@@ -49,8 +61,8 @@
 }
 
 .mode-light .todo__item  {
-  background-color: #f8f8f8;
-  border-color: #616161;
+  background-color: #ffffff;
+  border-color: #cacaca;
 }
 
 .mode-dark .todo__item {

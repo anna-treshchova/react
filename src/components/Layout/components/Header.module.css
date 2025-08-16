@@ -1,0 +1,41 @@
+.header {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+}
+
+.link {
+    text-decoration: none;
+    display: flex;
+    padding: 6px 16px;
+    border-radius: 3px;
+    margin: 0 8px;
+    transition: background-color 0.3s;
+}
+
+.link:hover {
+    background-color: rgba(238, 238, 238, 0.11);
+}
+
+.active {
+    font-weight: 600;
+}
+
+.mode-light {
+    background-color: #65865c;
+}
+
+.mode-dark {
+    background-color: #2e2e2e;
+}
+
+.mode-light .link {
+    color: #d5ecd4;
+}
+
+.mode-dark .link {
+    color: #d7edc4;
+}

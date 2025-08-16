@@ -1,40 +1,25 @@
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
+import { useSelector } from 'react-redux'
 
-import { ThemeContext } from '../../../../contexts/ThemeContext';
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 import styles from './Header.module.css';
 
 export default function Header() {
     const { theme } = useContext(ThemeContext);
 
-    const getLinkClass = ({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link;
-    const linkColor = { color: theme === 'light' ? '#0000ff' : '#98adff' };
+    const counter  = useSelector( state => state.counter)
 
+    const getLinkClass = ({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link;
 
     return (
         <div className={`${styles.header} ${styles[`mode-${theme}`]}`}>
-            <h1>Header: {theme}</h1>
-            <NavLink
-                to='/'
-                className={getLinkClass}
-                style={linkColor}
-            >Home</NavLink>
-            <NavLink
-                to='/about'
-                className={getLinkClass}
-                style={linkColor}
-            >About</NavLink>
-            <NavLink
-                to='/contacts'
-                className={getLinkClass}
-                style={linkColor}
-            >Contacts</NavLink>
-            <NavLink
-                to='/posts'
-                className={getLinkClass}
-                style={linkColor}
-            >Posts</NavLink>
+            <NavLink to='/' className={getLinkClass}>Home</NavLink>
+            <NavLink to='/about' className={getLinkClass}>About</NavLink>
+            <NavLink to='/contacts' className={getLinkClass}>Contacts</NavLink>
+            <NavLink to='/posts' className={getLinkClass}>Posts</NavLink>
+            <NavLink to='/counter-redux' className={getLinkClass}>Counter: {counter}</NavLink>
         </div>
     )
 }

@@ -6,6 +6,8 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 
 import PostList from './components/PostList';
 
+import styles from './Posts.module.css';
+
 export default function Posts() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -38,13 +40,7 @@ export default function Posts() {
     }
 
     return (
-        <div
-            className='posts'
-            style={{
-                color: theme === 'light' ? '#000000' : '#ffffff',
-                backgroundColor: theme === 'light' ? '#ffffff' : '#1e1f22',
-            }}
-        >
+        <div className={`${styles.posts} ${styles[`mode-${theme}`]}`}>
             <h1>Posts</h1>
             <PostList posts={posts} />
         </div>

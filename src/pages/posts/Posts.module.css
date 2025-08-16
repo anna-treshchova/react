@@ -1,3 +1,8 @@
+.posts {
+    max-width: 50%;
+    margin-bottom: 50px;
+}
+
 .posts__list {
     list-style: none;
     padding: 0;
@@ -7,10 +12,10 @@
 }
 
 .posts__item {
-    width: 60%;
-
+    width: 100%;
     padding: 15px;
     border: 1px solid #000000;
+    border-radius: 5px;
     margin-bottom: 15px;
 }
 
@@ -28,11 +33,16 @@
 }
 
 .mode-light {
-    background-color: #f8f8f8;
+    background-color: transparent;
     color: #000000;
 }
 
 .mode-dark {
-    background-color: #2e2e2e;
+    background-color: #1e1f22;
     color: #ffffff;
+}
+
+.mode-dark .posts__item {
+    background-color: #2e2e2e;
+    border: 1px solid #959595;
 }

@@ -9,7 +9,6 @@ export function TodoItem({ todo }) {
     const [newText, setNewText] = useState(todo.text); // Ми заводимо newText для того щоб одразу не змінювати основні дані (todo.text)
                                                        // newText — це тимчасове місце, куди потрапляє текст, який користувач вводить у <input>
                                                        // Але ми не записуємо його в глобальний стан todos, поки користувач не натисне Enter або onBlur
-
     const {
         toggleTodo = () => {},
         deleteTodo = () => {},

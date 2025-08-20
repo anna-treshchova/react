@@ -20,6 +20,7 @@ export default function Header() {
             <NavLink to='/contacts' className={getLinkClass}>Contacts</NavLink>
             <NavLink to='/posts' className={getLinkClass}>Posts</NavLink>
             <NavLink to='/counter-redux' className={getLinkClass}>Counter: {counter}</NavLink>
+            <NavLink to='/learning' className={getLinkClass}>Learning</NavLink>
         </div>
     )
 }

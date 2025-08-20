@@ -1,0 +1,12 @@
+.topics__item {
+    max-width: 700px;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    margin: 0 auto 6px;
+}
+
+.topics__item h4 {
+    margin: 0;
+}

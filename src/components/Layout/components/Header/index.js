@@ -14,7 +14,6 @@ export default function Header() {
         <header
             className={`${styles.header} ${styles[`mode-${theme}`]}`}
         >
-            <h1>Header</h1>
             <NavLink to='/' className={getLinkClass}>Home</NavLink>
             <NavLink to='/about' className={getLinkClass}>About us</NavLink>
             <NavLink to='/contacts' className={getLinkClass}>Contacts</NavLink>

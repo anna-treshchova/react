@@ -1,13 +1,12 @@
 .footer {
-  padding: 10px 0 40px;
+  padding-bottom: 30px;
   width: 100%;
   text-align: center;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .footer button {
-  margin-top: 5px;
   margin-left: 20px;
   padding: 14px 20px;
   border: 1px solid #777777;

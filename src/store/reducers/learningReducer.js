@@ -1,7 +1,7 @@
 import { ADD_TOPIC, DELETE_TOPIC, SET_FILTER, UPDATE_TOPIC_STATUS } from '../actions/actionTypes';
 
 const initialState = {
-    topics: [],
+    topics: JSON.parse(localStorage.getItem('topics')) || [],
     filter: 'all'
 };
 
@@ -10,7 +10,7 @@ const learningReducer = (state = initialState, action) => {
         case ADD_TOPIC :
             return {
                 ...state,
-                topics: [...state.topics, action.payload]
+                topics: [action.payload, ...state.topics]
             }
         case DELETE_TOPIC:
             return {

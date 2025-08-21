@@ -7,7 +7,6 @@ export default function CounterRedux() {
     const [amount, setAmount] = useState('');
 
     const dispatch = useDispatch();
-
     const counter = useSelector((state) => state.counter);
 
     const handleAddAmount = () => {

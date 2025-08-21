@@ -26,3 +26,4 @@ export const updateTopicStatus = (id, newStatus) => {
 }
 
 export const setFilter = filter => ({type: SET_FILTER, payload: filter});
+

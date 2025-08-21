@@ -1,0 +1,25 @@
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 30px;
+    gap: 4px;
+}
+
+.filter h4 {
+    font-size: 18px;
+    margin-right: 6px;
+}
+
+.filter button {
+    min-width: 88px;
+    padding: 4px 0;
+    border-radius: 5px;
+    border: 1px solid #7a7a7a;
+}
+
+.active {
+    background-color: #68885f;
+    color: #ffffff;
+    font-weight: 600;
+}

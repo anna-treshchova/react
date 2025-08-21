@@ -11,7 +11,6 @@ export default function TopicForm() {
 
     const dispatch = useDispatch();
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
 

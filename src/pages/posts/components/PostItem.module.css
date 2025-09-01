@@ -1,0 +1,32 @@
+.posts__item {
+    max-width: 700px;
+    width: 100%;
+    padding: 24px 14px 14px;
+    border: 1px solid #676767;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.posts__item h4 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.posts__item h4::first-letter,
+.posts__item span::first-letter {
+    text-transform: capitalize;
+}
+
+.posts__item button {
+    padding: 4px 12px;
+}
+
+.posts__item div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mode-dark {
+    background-color: #2e2e2e;
+    border: 1px solid #959595;
+}

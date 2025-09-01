@@ -1,6 +1,6 @@
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { updateTopicStatus, deleteTopic } from '../../../store/actions/learningActions';
+import { updateTopicStatus, deleteTopic } from '../../../store/slices/learningSlice';
 
 import styles from './Item.module.css';
 
@@ -8,7 +8,10 @@ export default function TopicItem({ topic = {} })  {
     const dispatch = useDispatch();
 
     const handleStatusChange = (e) => {
-        dispatch(updateTopicStatus(topic.id, e.target.value))
+        dispatch(updateTopicStatus({
+            id: topic.id,
+            newStatus: e.target.value
+        }))
     }
 
     const handleDelete = () => {

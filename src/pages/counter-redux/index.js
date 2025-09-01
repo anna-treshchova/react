@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { increment, decrement, incrementByAmount, reset } from '../../store/actions/counterActions';
+import {
+    increment,
+    decrement,
+    incrementByAmount,
+    reset
+} from '../../store/slices/counterSlice';
 
 export default function CounterRedux() {
     const [amount, setAmount] = useState('');

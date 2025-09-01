@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFilter } from '../../../store/actions/learningActions';
+import { setFilter } from '../../../store/slices/learningSlice';
 
 import styles from './Filter.module.css';
 

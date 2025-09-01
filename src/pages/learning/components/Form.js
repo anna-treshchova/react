@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addTopic } from '../../../store/actions/learningActions';
+import { v4 as uuidv4 } from 'uuid';
+
+import { addTopic } from '../../../store/slices/learningSlice';
 
 import styles from './Form.module.css';
 
@@ -14,13 +16,22 @@ export default function TopicForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (title.trim()){
-            dispatch(addTopic(title.trim(), description.trim()));
+        if (title.trim()) {
+            dispatch(addTopic({
+                id:  uuidv4(),
+                title: title.trim(),
+                description: description.trim(),
+                status: 'not-started'
+            }))
         }
 
         setTitle('');
         setDescription('');
     }
+
+
+
+
 
     return (
         <form

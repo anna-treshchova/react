@@ -1,50 +1,58 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getPostById } from '../../api/posts';
+import { getPostById, getComments } from '../../store/thunks/postsThunk'
+
+import CommentList from './components/CommentList';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 
 import styles from './PostsDetails.module.css'
 
-export default function PostDetails() {
-    const [post, setPost] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    const { id } = useParams();
+export default function PostDetails() {
+    const [showComments, setShowComments] = useState(false);
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const {
+        post,
+        loadingPost,
+        postError,
+        comments
+    } = useSelector((state) => state.posts);
+
+    const { id } = useParams();
     const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
+        dispatch(getPostById(id));
+    }, [dispatch, id]);
 
-        async function fetchPost()  {
-            try {
-                const data = await getPostById(id);
-                setPost(data);
-            } catch (err) {
-                console.error(`Error: ${err.message}`);
-            } finally {
-                setLoading(false);
-            }
+    const handleLoadComments = () => {
+        if (!showComments && comments.length === 0) {
+            dispatch(getComments(id))
         }
 
-        fetchPost();
-    }, [])
+        setShowComments(state => !state);
+    }
 
-    if (loading) {
+    if (loadingPost) {
         return (
-            <h3 style={{ color: theme === 'light' ? '#000000' : '#ffffff' }}>
-                Loading...
+            <h3 style={{
+                color: theme === 'light' ? '#000000' : '#ffffff',
+                marginTop: '30px'
+            }}>
+                Loading post data...
             </h3>
         )
     }
 
-    if (!post) {
+    if (postError) {
         return (
-            <h3 style={{ color: theme === 'light' ? '#000000' : '#ffffff' }}>
-                No post data found for post ID: {id}
-            </h3>
+            <span className={styles.error}>Error: {postError}</span>
         )
     }
 
@@ -56,15 +64,18 @@ export default function PostDetails() {
             className={`${styles['post-details']} ${styles[`mode-${theme}`]}`}
         >
             <h1>Post Details</h1>
-            <div className={styles['post-details__container']}>
+            <div className={styles['post-details__content']}>
                 <h2>{post.title}</h2>
                 <p>{post.body}</p>
+                <button onClick={handleLoadComments}>{showComments ? 'Hide comments' : 'Show comments'}</button>
             </div>
-            <div>
+
+            { showComments && <CommentList /> }
+
+            <div className={styles['post-details__btn-box']}>
                 <button onClick={goToPosts}>See all posts</button>
                 <button onClick={goHome}>Home</button>
             </div>
-
         </div>
     )
 }

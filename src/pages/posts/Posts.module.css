@@ -1,6 +1,9 @@
 .posts {
-    max-width: 50%;
     margin-bottom: 50px;
+}
+
+.posts h1 {
+    margin-bottom: 40px;
 }
 
 .posts__list {
@@ -11,25 +14,10 @@
     align-items: center;
 }
 
-.posts__item {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.posts__item h4 {
-    text-align: center;
-}
-
-.posts__item button {
-    padding: 4px 12px;
-}
-
-.posts__item div {
-    display: flex;
-    justify-content: space-between;
+.error {
+    color: #e60000;
+    font-size: 16px;
+    margin-top: 30px;
 }
 
 .mode-light {
@@ -40,9 +28,4 @@
 .mode-dark {
     background-color: #1e1f22;
     color: #ffffff;
-}
-
-.mode-dark .posts__item {
-    background-color: #2e2e2e;
-    border: 1px solid #959595;
 }

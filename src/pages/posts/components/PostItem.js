@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 
 import { ThemeContext } from '../../../contexts/ThemeContext';
 
-import styles from '../Posts.module.css'
+import styles from './PostItem.module.css'
 
 
 export default function PostItem( { post } ) {

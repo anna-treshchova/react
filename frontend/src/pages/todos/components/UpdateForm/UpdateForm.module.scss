@@ -1,0 +1,37 @@
+.update-form {
+  display: flex;
+  width: 100%;
+  column-gap: 15px;
+  .input-box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+    margin: -5px 0;
+  }
+  input[type='checkbox'] {
+    margin-top: 2.5px;
+    align-self: flex-start;
+  }
+
+  input[type='text'] {
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    color: #494949;
+    padding: 3px 10px;
+    min-width: 360px;
+    border: none;
+    background-color: rgba(251, 250, 250, 0.77);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(73, 73, 73, 0.24);
+    &:first-child {
+      font-weight: 600;
+    }
+  }
+  .btn-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,16 @@
+.header {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    background-color: var(--color-primary-900);
+}
+
+.header a {
+    color: var(--color-text);
+    text-decoration: none;
+    font: var(--font-sm);
+    text-transform: uppercase;
+}

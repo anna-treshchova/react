@@ -1,0 +1,316 @@
+{
+  "destinations": [
+    {
+      "id": 1,
+      "value": 39008,
+      "label": "Boston"
+    },
+    {
+      "id": 2,
+      "value": 11915,
+      "label": "New York"
+    },
+    {
+      "id": 3,
+      "value": 7744,
+      "label": "Los Angeles"
+    },
+    {
+      "id": 4,
+      "value": 1784,
+      "label": "San Francisco"
+    },
+    {
+      "id": 5,
+      "value": 27022,
+      "label": "Chicago"
+    },
+    {
+      "id": 6,
+      "value": 35604,
+      "label": "Austin"
+    },
+    {
+      "id": 7,
+      "value": 10426,
+      "label": "Seattle"
+    },
+    {
+      "id": 8,
+      "value": 26787,
+      "label": "Denver"
+    },
+    {
+      "id": 9,
+      "value": 26967,
+      "label": "Miami"
+    },
+    {
+      "id": 10,
+      "value": 1672,
+      "label": "Philadelphia"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Digital Illustration",
+      "instructor": "Ben Wilder",
+      "description": "Bring your own tools or use ours \u2014 materials included.",
+      "city": "Philadelphia",
+      "duration": "2h",
+      "price": 21,
+      "rating": 4.0,
+      "imageUrl": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b",
+      "date": "2025-06-21T18:00:00",
+      "location": "Art Hub, Philadelphia"
+    },
+    {
+      "id": 2,
+      "title": "Pottery Basics",
+      "instructor": "John Doe",
+      "description": "No prior experience needed \u2014 just curiosity and passion!",
+      "city": "Los Angeles",
+      "duration": "1h",
+      "price": 65,
+      "rating": 4.0,
+      "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      "date": "2025-06-11T18:00:00",
+      "location": "City Studio, Los Angeles"
+    },
+    {
+      "id": 3,
+      "title": "Knitting for Beginners",
+      "instructor": "Noah Bright",
+      "description": "This session will guide you through the fundamentals of the craft.",
+      "city": "Boston",
+      "duration": "2h",
+      "price": 84,
+      "rating": 4.3,
+      "imageUrl": "https://images.unsplash.com/photo-1581090700227-1e8e1f52f059",
+      "date": "2025-06-26T10:00:00",
+      "location": "City Studio, Boston"
+    },
+    {
+      "id": 4,
+      "title": "Upcycled Fashion",
+      "instructor": "Anna Clay",
+      "description": "Bring your own tools or use ours \u2014 materials included.",
+      "city": "Philadelphia",
+      "duration": "3h",
+      "price": 52,
+      "rating": 3.6,
+      "imageUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b",
+      "date": "2025-06-15T10:00:00",
+      "location": "City Studio, Philadelphia"
+    },
+    {
+      "id": 5,
+      "title": "Creative Writing",
+      "instructor": "Noah Bright",
+      "description": "This session will guide you through the fundamentals of the craft.",
+      "city": "New York",
+      "duration": "3h",
+      "price": 91,
+      "rating": 3.8,
+      "imageUrl": "https://images.unsplash.com/photo-1573497019417-50fdf4a34c2d",
+      "date": "2025-06-14T18:00:00",
+      "location": "Art Hub, New York"
+    },
+    {
+      "id": 6,
+      "title": "Knitting for Beginners",
+      "instructor": "Zoe Bloom",
+      "description": "Join our hands-on workshop to explore your creative side.",
+      "city": "San Francisco",
+      "duration": "2h",
+      "price": 44,
+      "rating": 4.1,
+      "imageUrl": "https://images.unsplash.com/photo-1534515723974-cb1f2b2a55c4",
+      "date": "2025-06-24T10:00:00",
+      "location": "Art Hub, San Francisco"
+    },
+    {
+      "id": 7,
+      "title": "Intro to Watercolor",
+      "instructor": "Zoe Bloom",
+      "description": "Bring your own tools or use ours \u2014 materials included.",
+      "city": "Los Angeles",
+      "duration": "3h",
+      "price": 74,
+      "rating": 3.2,
+      "imageUrl": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc",
+      "date": "2025-06-11T14:00:00",
+      "location": "City Studio, Los Angeles"
+    },
+    {
+      "id": 8,
+      "title": "Digital Illustration",
+      "instructor": "Zoe Bloom",
+      "description": "Bring your own tools or use ours \u2014 materials included.",
+      "city": "San Francisco",
+      "duration": "1h",
+      "price": 97,
+      "rating": 4.0,
+      "imageUrl": "https://images.unsplash.com/photo-1573497169428-7fc5c9a9e8e6",
+      "date": "2025-06-21T10:00:00",
+      "location": "City Studio, San Francisco"
+    },
+    {
+      "id": 9,
+      "title": "Intro to Watercolor",
+      "instructor": "Ava Sky",
+      "description": "Meet local makers and learn by doing in a cozy setting.",
+      "city": "Chicago",
+      "duration": "2h",
+      "price": 36,
+      "rating": 4.2,
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
+      "date": "2025-06-23T14:00:00",
+      "location": "Art Hub, Chicago"
+    },
+    {
+      "id": 10,
+      "title": "Pottery Basics",
+      "instructor": "Noah Bright",
+      "description": "This session will guide you through the fundamentals of the craft.",
+      "city": "Chicago",
+      "duration": "1h",
+      "price": 72,
+      "rating": 3.8,
+      "imageUrl": "https://images.unsplash.com/photo-1534126511673-b6899657816a",
+      "date": "2025-06-16T10:00:00",
+      "location": "City Studio, Chicago"
+    },
+    {
+      "id": 11,
+      "title": "Pottery Basics",
+      "instructor": "Ella Sparks",
+      "description": "Meet local makers and learn by doing in a cozy setting.",
+      "city": "Seattle",
+      "duration": "1h",
+      "price": 99,
+      "rating": 3.3,
+      "imageUrl": "https://images.unsplash.com/photo-1559622214-68f36f8a4c98",
+      "date": "2025-06-16T14:00:00",
+      "location": "City Studio, Seattle"
+    },
+    {
+      "id": 12,
+      "title": "Digital Illustration",
+      "instructor": "Ben Wilder",
+      "description": "Meet local makers and learn by doing in a cozy setting.",
+      "city": "Boston",
+      "duration": "2h",
+      "price": 62,
+      "rating": 3.7,
+      "imageUrl": "https://images.unsplash.com/photo-1616627457036-bf5b019b95dd",
+      "date": "2025-06-23T18:00:00",
+      "location": "City Studio, Boston"
+    },
+    {
+      "id": 13,
+      "title": "Upcycled Fashion",
+      "instructor": "Liam Wood",
+      "description": "No prior experience needed \u2014 just curiosity and passion!",
+      "city": "New York",
+      "duration": "2h",
+      "price": 21,
+      "rating": 3.8,
+      "imageUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+      "date": "2025-06-17T18:00:00",
+      "location": "Art Hub, New York"
+    },
+    {
+      "id": 14,
+      "title": "Urban Sketching",
+      "instructor": "Ella Sparks",
+      "description": "Join our hands-on workshop to explore your creative side.",
+      "city": "Denver",
+      "duration": "1h",
+      "price": 99,
+      "rating": 3.1,
+      "imageUrl": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7",
+      "date": "2025-06-28T14:00:00",
+      "location": "Creative Loft, Denver"
+    },
+    {
+      "id": 15,
+      "title": "Urban Sketching",
+      "instructor": "John Doe",
+      "description": "Bring your own tools or use ours \u2014 materials included.",
+      "city": "Chicago",
+      "duration": "2h",
+      "price": 69,
+      "rating": 3.0,
+      "imageUrl": "https://images.unsplash.com/photo-1508780709619-79562169bc64",
+      "date": "2025-06-22T10:00:00",
+      "location": "Art Hub, Chicago"
+    },
+    {
+      "id": 16,
+      "title": "Pottery Basics",
+      "instructor": "Leo Green",
+      "description": "This session will guide you through the fundamentals of the craft.",
+      "city": "Chicago",
+      "duration": "1h",
+      "price": 79,
+      "rating": 3.9,
+      "imageUrl": "https://images.unsplash.com/photo-1581090700227-1e8e1f52f059",
+      "date": "2025-06-21T14:00:00",
+      "location": "Creative Loft, Chicago"
+    },
+    {
+      "id": 17,
+      "title": "Urban Sketching",
+      "instructor": "Noah Bright",
+      "description": "Bring your own tools or use ours \u2014 materials included.",
+      "city": "Austin",
+      "duration": "2h",
+      "price": 62,
+      "rating": 4.7,
+      "imageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c",
+      "date": "2025-06-30T18:00:00",
+      "location": "Art Hub, Austin"
+    },
+    {
+      "id": 18,
+      "title": "Digital Illustration",
+      "instructor": "Noah Bright",
+      "description": "No prior experience needed \u2014 just curiosity and passion!",
+      "city": "New York",
+      "duration": "3h",
+      "price": 61,
+      "rating": 4.0,
+      "imageUrl": "https://images.unsplash.com/photo-1515377905703-c4788e51af15",
+      "date": "2025-06-10T10:00:00",
+      "location": "Creative Loft, New York"
+    },
+    {
+      "id": 19,
+      "title": "Plant Care Workshop",
+      "instructor": "Anna Clay",
+      "description": "Join our hands-on workshop to explore your creative side.",
+      "city": "Miami",
+      "duration": "3h",
+      "price": 71,
+      "rating": 3.7,
+      "imageUrl": "https://images.unsplash.com/photo-1601758123927-196d5f5ca5e0",
+      "date": "2025-06-21T10:00:00",
+      "location": "City Studio, Miami"
+    },
+    {
+      "id": 20,
+      "title": "Aromatherapy 101",
+      "instructor": "Mia Stone",
+      "description": "Join our hands-on workshop to explore your creative side.",
+      "city": "Chicago",
+      "duration": "1h",
+      "price": 32,
+      "rating": 3.4,
+      "imageUrl": "https://images.unsplash.com/photo-1587614295999-6cb8c4ee278b",
+      "date": "2025-06-14T18:00:00",
+      "location": "City Studio, Chicago"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+.details {
+    padding: 32px 0;
+    h2 {
+        font-weight: 500;
+        font-size: 22px;
+        color: #222222;
+        margin-bottom: 6px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 14px;
+    }
+    li {
+        display: flex;
+        position: relative;
+        font-size: 16px;
+        color: #000000;
+        font-weight: 300;
+        &:after {
+            width: 2px;
+            height: 2px;
+            content: '';
+            display: block;
+            border-radius: 50%;
+            background: #222222;
+            position: absolute;
+            right: -8px;
+            top: 55%;
+            transform: translateY(-50%);
+        }
+        &:last-child:after {
+            display: none;
+        }
+    }
+}

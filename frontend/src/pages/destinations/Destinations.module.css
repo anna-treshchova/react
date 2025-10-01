@@ -1,9 +1,0 @@
-.destinations {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 140px);
-    font: var(--font-lg);
-    color: #d1d1d1;
-    text-transform: uppercase;
-}

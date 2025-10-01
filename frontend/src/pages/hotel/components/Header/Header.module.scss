@@ -1,0 +1,33 @@
+.hotelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    h1 {
+        font-weight: 500;
+        font-size: 24px;
+        color: #222222;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 10px;
+        color: #000000;
+        background-color: transparent;
+        padding: 10px 10px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: underline;
+        &:hover {
+            background-color: #f6f6f6;
+        }
+        svg {
+            width: 18px;
+            height: 18px;
+            color: #2b2b2b;
+            margin-right: 8px;
+        }
+    }
+}

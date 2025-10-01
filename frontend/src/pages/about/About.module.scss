@@ -1,9 +1,11 @@
-.about-us {
+@use '@/styles/variables' as *;
+
+.about {
     display: flex;
     align-items: center;
     justify-content: center;
     height: calc(100vh - 140px);
-    font: var(--font-lg);
+    font: $font-lg;
     color: #1e1e1e;
     text-transform: uppercase;
 }

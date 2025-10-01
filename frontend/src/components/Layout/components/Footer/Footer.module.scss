@@ -1,13 +1,13 @@
+@use '@/styles/variables' as *;
+
 .footer {
-    position: fixed;
-    bottom: 0;
     height: 80px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-primary-900);
-    color: var(--color-text);
-    font: var(--font-lg);
+    background-color: $color-primary-900;
+    color: $color-text;
+    font: $font-lg;
     text-transform: uppercase;
 }

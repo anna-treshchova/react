@@ -18,6 +18,8 @@
     --space-md: 24px;
     --space-lg: 32px;
     --space-xl: 40px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
 
     /*----- Fonts -----*/
     --font-family: Inter, sans-serif;
@@ -36,6 +38,9 @@
     /*----- Font sizes & line heights -----*/
     --font-size-xs: 12px;
     --font-line-height-xs: 16px;
+
+    --font-size-s: 13px; /*need it*/
+    --font-line-height-s: 16px;
 
     --font-size-sm: 14px;
     --font-line-height-sm: 20px;
@@ -63,8 +68,12 @@
 
     /*----- Font tokens -----*/
     /*font: [font-weight] [font-size]/[line-height] [font-family]*/
-    --font-xs: var(--font-weight-regular) var(--font-size-xs)/var(--font-line-height-xs) var(--font-family);
-    --font-sm: var(--font-weight-regular) var(--font-size-sm)/var(--font-line-height-sm) var(--font-family);
+    --font-xs: var(--font-weight-light) var(--font-size-xs)/var(--font-line-height-xs) var(--font-family);
+
+    --font-s: var(--font-weight-light) var(--font-size-s)/var(--font-line-height-s) var(--font-family);
+
+    --font-sm: var(--font-weight-light) var(--font-size-sm)/var(--font-line-height-sm) var(--font-family);
+
     --font-base: var(--font-weight-regular) var(--font-size-base)/var(--font-line-height-base) var(--font-family);
     --font-lg: var(--font-weight-regular) var(--font-size-lg)/var(--font-line-height-lg) var(--font-family);
     --font-xl: var(--font-weight-medium) var(--font-size-xl)/var(--font-line-height-xl) var(--font-family);
@@ -77,8 +86,8 @@
     --color-primary-900: #000000;
     --color-primary-700: #333333;
     --color-primary-500: #666666;
-    --color-primary-300: #c5c5c5;
-    --color-primary-100: #e5e5e5;
+    --color-primary-300: #f7f7f7; /*header*/
+    --color-primary-100: #ffffff;
 
     --color-primary-hover: #4d4d4d;
     --color-primary-active: #262626;
@@ -87,21 +96,13 @@
     --color-error: #E74C3C;
 
     --color-text: #e1e1e1;
+
+    --color-brand: #ff385b;
+
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--color-primary-300);
+    background-color: var(--color-primary-100);
     color: var(--color-text);
-}
-
-main {
-    width: 100%;
-    height: 100vh;
-    background-image:
-            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
-            url('./assets/img/bg.jpg');
-    background-size: cover;
-    background-position:  center;
-    background-repeat: no-repeat;
 }

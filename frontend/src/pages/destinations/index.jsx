@@ -1,27 +1,17 @@
-import { useLoaderData } from 'react-router';
+import SearchForm from './components/SearchForm';
+import HotelList from './components/HotelList';
 
-import styles from './Destinations.module.css'
-
-const API_URL = 'http://localhost:3000';
-
-export const destinationsLoader = async () => {
-    try {
-        const res = await fetch(`${API_URL}/destinations`);
-        if (!res.ok) {
-            throw new Error('Failed to fetch destinations');
-        }
-        return res.json();
-    } catch (err) {
-        console.error(err.message);
-    }
-}
+import styles from './Destinations.module.scss'
 
 const Destinations = () => {
-    const destinations =  useLoaderData();
-    console.log(destinations);
-
     return (
-        <div className={styles.destinations}>Destinations Page</div>
+        <div className={styles.destinations}>
+            <section className={styles.searchSection}>
+                <SearchForm />
+            </section>
+            <HotelList />
+
+        </div>
     )
 }
 

@@ -1,0 +1,23 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  background-color: #eff1f5;
+  color: #5d6064;
+  font-family: Montserrat, sans-serif;
+  min-width: 320px;
+}
+
+.rdp-nav_button svg {
+  stroke: #d21919; /* колір стрілок */
+}
+
+.rdp-nav_button:hover svg {
+  stroke: #a00000; /* колір при ховері */
+}

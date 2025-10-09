@@ -1,0 +1,124 @@
+{
+  "profile": {
+    "fullName": "Hanna Treshchova",
+    "specialisation": "Trainee Frontend Developer",
+    "avatar": "/assets/images/avatar.jpg"
+  },
+  "skills": [
+    {
+      "title": "Frontend Basic",
+      "items": ["HTML", "CSS", "SCSS & BEM", "CSS animations", "Responsive Design"]
+    },
+    {
+      "title": "Frontend Pro",
+      "items": [
+        "Advanced JavaScript (ES6+): functions, objects, arrays and methods, events",
+        "Asynchronous programming (promises, async/await, fetch API)",
+        "React: components, hooks, routing, component lifecycle",
+        "State management with Redux and Redux Toolkit, including Redux Thunk",
+        "TypeScript: static typing & type-safe React components",
+        "Build tools: Webpack and Vite",
+        "UI frameworks: Ant Design, Material UI (+React Toastify)",
+        "Backend basics with Express.js (routes, middleware, REST endpoints, CRUD operations, JSON handling)",
+        "Git and GitHub version control"
+      ]
+    }
+  ],
+  "stack": [
+    "HTML",
+    "CSS",
+    "SCSS",
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "React",
+    "React Router",
+    "Redux Toolkit",
+    "Webpack",
+    "Vite",
+    "Express.js",
+    "AntDesign",
+    "MUI",
+    "Git"
+  ],
+  "contacts": [
+    {
+      "type": "phone",
+      "value": "+380 663 795 721",
+      "link": "tel:+380663795721"
+    },
+    {
+      "type": "email",
+      "value": "anna.teshchova@gmail.com",
+      "link": "mailto:anna.teshchova@gmail.com"
+    },
+    {
+      "type": "location",
+      "value": "Lviv, Ukraine"
+    },
+    {
+      "type": "telegram",
+      "value": "@Anna_Treshchova"
+    },
+    {
+      "type": "linkedin",
+      "value": "LinkedIn",
+      "link": "https://www.linkedin.com/in/hanna-treshchova-0a011225a"
+    },
+    {
+      "type": "github",
+      "value": "GitHub",
+      "link": "https://github.com/anna-treshchova"
+    }
+  ],
+  "previousPositions": [
+    {
+      "title" : "Talent Researcher",
+      "company": "Five Jars",
+      "duration": "2023-2024 (1 year)"
+    },
+    {
+      "title" : "Talent Researcher",
+      "company": "Five Jars",
+      "duration": "2023-2024 (1 year)"
+    },
+    {
+      "title" : "Talent Researcher",
+      "company": "Five Jars",
+      "duration": "2023-2024 (1 year)"
+    }
+  ],
+  "courses": [
+    {
+      "title": "Frontend Basic",
+      "duration": "2 months",
+      "grade": "Excellent",
+      "school": "Hillel IT School"
+    },
+    {
+      "title": "Frontend Pro",
+      "duration": "5 months",
+      "grade": "Excellent",
+      "school": "Hillel IT School"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "B2",
+      "levelText": "Upper-Intermediate"
+    },
+    {
+      "name": "Ukrainian",
+      "level": "C2",
+      "levelText": "Native"
+    },
+    {
+      "name": "Russian",
+      "level": "C2",
+      "levelText": "Native"
+    }
+  ],
+  "extra": [
+    "Lorem ipsum", "dolor sit", "amet consectetur", "adipiscing elit", "sed do", "eiusmod tempor", "incididunt ut", "labore et", "dolore magna", "aliqua Ut", "enim ad", "minim veniam", "quis nostrud", "exercitation ullamco"
+  ]
+}

@@ -32,6 +32,7 @@ const app = express()            // створюємо додаток (майб�
 // імпорт роутів
 import destinationRoutes from './routes/destinations.js'
 import eventRoutes from './routes/events.js'
+import searchRoutes from './routes/search.js'
 
 // підключення middleware
 app.use(cors());
@@ -41,5 +42,6 @@ app.use(express.json());
 // підключення маршрутів
 app.use('/destinations', destinationRoutes);
 app.use('/events', eventRoutes);
+app.use('/search', searchRoutes);
 
 export default app;

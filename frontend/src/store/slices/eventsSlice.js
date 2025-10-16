@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getEvents } from '../thunks/eventThunk.js';
+import { getEvents } from '../thunks/eventsThunk.js';
 
-const eventSlice = createSlice({
+const eventsSlice = createSlice({
     name: 'events',
     initialState: {
         items: [],
@@ -27,4 +27,4 @@ const eventSlice = createSlice({
     }
 })
 
-export default eventSlice.reducer
+export default eventsSlice.reducer

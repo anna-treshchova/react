@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getDestinations } from '../thunks/destinationThunk.js';
+import { getDestinations } from '../thunks/destinationsThunk.js';
 
-const destinationSlice = createSlice({
+const destinationsSlice = createSlice({
     name: 'destinations',
     initialState: {
         items: [],
@@ -26,4 +26,4 @@ const destinationSlice = createSlice({
     }
 })
 
-export default destinationSlice.reducer;
+export default destinationsSlice.reducer;

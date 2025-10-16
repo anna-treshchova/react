@@ -1,9 +1,0 @@
-.sideBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font: var(--text-xl);
-    background-color: #272727;
-    border-top: 1px solid #818181;
-    border-bottom: 1px solid #818181;
-}

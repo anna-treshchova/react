@@ -13,8 +13,8 @@ export const getEvents = createAsyncThunk(
             })
 
             if (!res.ok) {
-                const err =  await res.json();
-                throw new Error(err.message || 'Failed to fetch events.');
+                const err = await res.json();
+                throw new Error(err.message || 'Failed to fetch events');
             }
 
             return await res.json();

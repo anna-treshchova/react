@@ -61,7 +61,7 @@
       "duration": "2h",
       "price": 21,
       "rating": 4.0,
-      "imageUrl": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b",
+      "imageUrl": "https://images.unsplash.com/photo-1682846133858-c0599bc99874?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2098",
       "date": "2025-06-21T18:00:00",
       "location": "Art Hub, Philadelphia"
     },
@@ -74,7 +74,7 @@
       "duration": "1h",
       "price": 65,
       "rating": 4.0,
-      "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      "imageUrl": "https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
       "date": "2025-06-11T18:00:00",
       "location": "City Studio, Los Angeles"
     },
@@ -87,7 +87,7 @@
       "duration": "2h",
       "price": 84,
       "rating": 4.3,
-      "imageUrl": "https://images.unsplash.com/photo-1581090700227-1e8e1f52f059",
+      "imageUrl": "https://images.unsplash.com/photo-1632649027900-389e810204e6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1064",
       "date": "2025-06-26T10:00:00",
       "location": "City Studio, Boston"
     },
@@ -113,7 +113,7 @@
       "duration": "3h",
       "price": 91,
       "rating": 3.8,
-      "imageUrl": "https://images.unsplash.com/photo-1573497019417-50fdf4a34c2d",
+      "imageUrl": "https://images.unsplash.com/photo-1590342814162-3986d72a2edc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2074",
       "date": "2025-06-14T18:00:00",
       "location": "Art Hub, New York"
     },
@@ -126,7 +126,7 @@
       "duration": "2h",
       "price": 44,
       "rating": 4.1,
-      "imageUrl": "https://images.unsplash.com/photo-1534515723974-cb1f2b2a55c4",
+      "imageUrl": "https://images.unsplash.com/photo-1632649027900-389e810204e6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1064",
       "date": "2025-06-24T10:00:00",
       "location": "Art Hub, San Francisco"
     },
@@ -152,7 +152,7 @@
       "duration": "1h",
       "price": 97,
       "rating": 4.0,
-      "imageUrl": "https://images.unsplash.com/photo-1573497169428-7fc5c9a9e8e6",
+      "imageUrl": "https://images.unsplash.com/photo-1628130235364-9e412ffaae5a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1641",
       "date": "2025-06-21T10:00:00",
       "location": "City Studio, San Francisco"
     },
@@ -191,8 +191,7 @@
       "duration": "1h",
       "price": 99,
       "rating": 3.3,
-      "imageUrl": "https://images.unsplash.com/photo-1559622214-68f36f8a4c98",
-      "date": "2025-06-16T14:00:00",
+      "imageUrl": "https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
       "location": "City Studio, Seattle"
     },
     {
@@ -204,7 +203,7 @@
       "duration": "2h",
       "price": 62,
       "rating": 3.7,
-      "imageUrl": "https://images.unsplash.com/photo-1616627457036-bf5b019b95dd",
+      "imageUrl": "https://images.unsplash.com/photo-1682846133858-c0599bc99874?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2098",
       "date": "2025-06-23T18:00:00",
       "location": "City Studio, Boston"
     },
@@ -217,7 +216,7 @@
       "duration": "2h",
       "price": 21,
       "rating": 3.8,
-      "imageUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1713586580802-854a58542159?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987",
       "date": "2025-06-17T18:00:00",
       "location": "Art Hub, New York"
     },
@@ -230,7 +229,7 @@
       "duration": "1h",
       "price": 99,
       "rating": 3.1,
-      "imageUrl": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7",
+      "imageUrl": "https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
       "date": "2025-06-28T14:00:00",
       "location": "Creative Loft, Denver"
     },
@@ -256,7 +255,7 @@
       "duration": "1h",
       "price": 79,
       "rating": 3.9,
-      "imageUrl": "https://images.unsplash.com/photo-1581090700227-1e8e1f52f059",
+      "imageUrl": "https://images.unsplash.com/photo-1597696929736-6d13bed8e6a8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
       "date": "2025-06-21T14:00:00",
       "location": "Creative Loft, Chicago"
     },
@@ -295,7 +294,7 @@
       "duration": "3h",
       "price": 71,
       "rating": 3.7,
-      "imageUrl": "https://images.unsplash.com/photo-1601758123927-196d5f5ca5e0",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1706005542509-a460d6efecb0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
       "date": "2025-06-21T10:00:00",
       "location": "City Studio, Miami"
     },
@@ -308,7 +307,7 @@
       "duration": "1h",
       "price": 32,
       "rating": 3.4,
-      "imageUrl": "https://images.unsplash.com/photo-1587614295999-6cb8c4ee278b",
+      "imageUrl": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
       "date": "2025-06-14T18:00:00",
       "location": "City Studio, Chicago"
     }

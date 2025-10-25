@@ -1,0 +1,5 @@
+@use '@/styles/variables' as *;
+
+.home {
+    min-height: calc(100vh - 198px - 60px);
+}

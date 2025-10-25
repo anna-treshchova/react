@@ -1,0 +1,77 @@
+@use '@/styles/variables' as *;
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  text-decoration: none;
+  color: #797979;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font: $font-sm;
+  transition: color 0.2s;
+  padding-bottom: 4px;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 6px);
+    height: 3px;
+    border-radius: 2px;
+    background: transparent;
+  }
+  &:first-child::after {
+    width: calc(100% - 10px);
+  }
+  &:nth-child(2)::after {
+    width: calc(100% - 20px);
+  }
+
+  .iconWrapper {
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  span {
+    padding-bottom: 12px;
+  }
+
+  &:hover {
+    color: #222222;
+    .iconWrapper {
+      transform: scale(1.1);
+    }
+
+  }
+  &.active {
+    color: #222222;
+    font-weight: 600;
+    &::after {
+      background: #222222;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navLink {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 12px;
+    &::after {
+      width: 100%;
+    }
+    &:first-child::after,
+    &:nth-child(2)::after {
+      width: 100%;
+    }
+    span {
+      padding: 0;
+    }
+  }
+}
+
+

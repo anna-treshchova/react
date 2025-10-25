@@ -1,21 +1,33 @@
-import ShareIcon from '@/assets/icons/Share.svg?react';
-import SaveIcon from '@/assets/icons/Save.svg?react'
+import HomeButton from '@/components/UI/atoms/HomeButton';
 
+import ShareIcon from './icons/Share.jsx';
+import SaveIcon from './icons/Save.jsx'
+
+
+import { Grid } from 'antd'
 import styles from './Header.module.scss';
 
+const { useBreakpoint } = Grid;
+
+const actions = [
+    { label: 'Share', icon: ShareIcon },
+    { label: 'Save', icon: SaveIcon }
+];
+
 const HotelHeader = ({ name }) => {
+    const screens = useBreakpoint();
+
     return (
-        <div className={styles.hotelHeader}>
-            <h1>{name}</h1>
-            <div style={{display: 'flex', gap: '20px'}}>
-                <button>
-                    <ShareIcon />
-                    Share
-                </button>
-                <button>
-                    <SaveIcon />
-                    Save
-                </button>
+        <div className={styles.header}>
+            {screens.md ? <h1>{name}</h1> : <HomeButton />}
+
+            <div className={styles.btnBox}>
+                {actions.map(({ label, icon: Icon }) => (
+                    <button key={label} className={styles.headerBtn}>
+                        <Icon strokeWidth={screens.md ? 2 : 2.5}/>
+                        {screens.md && label}
+                    </button>
+                ))}
             </div>
         </div>
     )

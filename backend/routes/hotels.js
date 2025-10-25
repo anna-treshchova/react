@@ -4,15 +4,18 @@ import { promises as fs } from 'fs';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const { city, guests, pets } = req.body;
+    const { destinationId, guests, pets } = req.body;
 
     try {
         const data = await fs.readFile('db.json', 'utf8');
         const db = JSON.parse(data);
 
+        const destination = db.destinations.find(d => d.id === destinationId);
+        if (!destination) return res.status(404).json({ message: 'Destination not found' });
+
         const filteredHotels = db.hotels
             .filter(hotel =>
-                hotel.city.toLowerCase() === city.toLowerCase() &&
+                hotel.city.toLowerCase() === destination.label.toLowerCase() &&
                 hotel.details?.max_guests >= guests &&
                 (pets === 0 || hotel.amenities?.includes('Pets allowed')) // повертає перший truthy, або останній, якщо всі falsy
             )

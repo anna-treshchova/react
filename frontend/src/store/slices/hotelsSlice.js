@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getHotels, toggleFavorite, getHotelById } from '../thunks/hotelsThunk.js';
+import { getHotels, toggleFavorite } from '../thunks/hotelsThunk.js';
 
 const hotelsSlice = createSlice({
     name: 'hotels',
     initialState: {
         items: [],
-        selectedItem: null,
         dates: [null,  null],
         nightsCount: 2,
         loading: {
@@ -28,6 +27,7 @@ const hotelsSlice = createSlice({
             .addCase(getHotels.pending, (state) => {
                 state.loading.list = true;
                 state.error.list = null;
+                state.items = [];
             })
             .addCase(getHotels.fulfilled, (state, action) => {
                 state.loading.list = false;
@@ -56,21 +56,6 @@ const hotelsSlice = createSlice({
                 state.loading.list = false;
                 state.error.list = action.payload;
             })
-
-            .addCase(getHotelById.pending, (state) => {
-                state.loading.selected = true;
-                state.error.selected = null;
-            })
-            .addCase(getHotelById.fulfilled, (state, action) => {
-                state.loading.selected = false;
-                state.selectedItem = action.payload;
-
-            })
-            .addCase(getHotelById.rejected, (state, action) => {
-                state.loading.selected = false;
-                state.error.selected = action.payload;
-            })
-
     }
 })
 

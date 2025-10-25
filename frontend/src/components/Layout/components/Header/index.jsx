@@ -1,52 +1,77 @@
-import { NavLink } from 'react-router';
-import { ConfigProvider, Button } from 'antd';
-import { LoginOutlined } from '@ant-design/icons';
+import { useLocation } from 'react-router';
 
-import AirbnbLogo from '/src/assets/AirbnbLogo.svg';
+import { Grid } from 'antd';
+
+import Container from '@/components/Container';
+
+import HeaderBar from './HeaderBar';
+import HeroSearch from './HeroSearch';
+
+const { useBreakpoint } = Grid
 
 import styles from './Header.module.scss'
+import {useEffect, useState} from "react";
 
 const Header = () => {
+    const { pathname } = useLocation();
+    const screens = useBreakpoint();
+
+    const isHotel = pathname.startsWith('/search/');
+
+    const initialState = {
+        destinationId: null,
+        destinationLabel: null,
+        dates: [null, null],
+        nights: 2,
+        guests: 0,
+        adults: 0,
+        children: 0,
+        infants: 0,
+        pets: 0
+    }
+
+    const [form, setForm] = useState(initialState);
+    const [isSearchOpen, setIsSearchOpen] = useState(true);
+
+    useEffect(() => {
+        if(screens.md && !pathname.startsWith('/search')) {
+            setIsSearchOpen(true);
+        } else {
+            setIsSearchOpen(false);
+        }
+
+    }, [screens.md,  pathname]);
+
+    useEffect(() => {
+        if (pathname === '/') {
+            setIsSearchOpen(true);
+        }
+
+        if (pathname === '/search/') {
+            setIsSearchOpen(false);
+        }
+    }, [pathname]);
+
+    if ( isHotel && !screens.md ) return null;
+
+    const bg = pathname.startsWith('/search') ? '#ffffff' : '#f7f7f7'
+
     return (
-        <header className={styles.header}>
-            <img src={AirbnbLogo} alt="Airbnb Logo" width={100} height={48} />
-            <nav>
-                <NavLink
-                    to='/'
-                    className={({ isActive }) =>
-                        `${isActive ? `${styles.navLink} ${styles.active}` : styles.navLink }`
-                    }
-                >
-                    Home
-                </NavLink>
-                <NavLink
-                    to='about'
-                    className={({ isActive }) =>
-                        `${isActive ? `${styles.navLink} ${styles.active}` : styles.navLink }`
-                    }
-                >About</NavLink>
-            </nav>
-            <div className={styles['header__btn-box']}>
-                <ConfigProvider
-                    theme={{
-                        components: {
-                            Button: {
-                                defaultHoverBorderColor: '#ff385b',
-                                defaultHoverColor: '#ff385b',
-                                defaultBackgroundColor: '#000000',
-                            }
-                        }
-                    }}
-                >
-                    <Button
-                        shape='circle'
-                        size='large'
-                        icon={<LoginOutlined />}
-                        component={NavLink}
-                        to="/about"
-                    />
-                </ConfigProvider>
-            </div>
+        <header className={styles.header} style={{ backgroundColor: bg }}>
+            <Container>
+                <HeaderBar
+                    form={form}
+                    isSearchOpen={isSearchOpen}
+                    setIsSearchOpen={setIsSearchOpen}
+                />
+                <HeroSearch
+                    form={form}
+                    setForm={setForm}
+                    initialState={initialState}
+                    isSearchOpen={isSearchOpen}
+                    setIsSearchOpen={setIsSearchOpen}
+                />
+            </Container>
         </header>
     )
 }

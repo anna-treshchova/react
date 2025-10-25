@@ -1,0 +1,30 @@
+.slider {
+  aspect-ratio: 1/1;
+}
+
+.slider :global(.swiper-pagination-fraction) {
+  position: absolute;
+  bottom: 8%;
+  right: 12px;
+  left: auto;
+  width: auto;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 300;
+  background-color: rgba(0, 0, 0, 0.44);
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+
+@media (max-width: 576px) {
+  .slider :global(.swiper-pagination-fraction) {
+    bottom: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider :global(.swiper-pagination-fraction) {
+    bottom: 12%;
+  }
+}

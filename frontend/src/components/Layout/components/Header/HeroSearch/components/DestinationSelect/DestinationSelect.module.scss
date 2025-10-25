@@ -1,0 +1,29 @@
+@use '@/styles/variables' as *;
+
+.destinationDropdown {
+    width: 200px;
+    text-transform: none;
+}
+
+.destinationDropdown :global(.ant-select-selection-placeholder) {/*текст в placeholder*/
+    color: #797979;
+    font: $font-sm;
+}
+.destinationDropdown :global(.ant-select-selection-item) { /*текст в селекторі*/
+    font: $font-sm;
+}
+.destinationDropdown :global(.ant-select-selection-search-input) {
+    font: $font-sm !important;
+}
+
+
+@media (max-width: 768px) {
+    .destinationDropdown {
+        width: 100%;
+        height: 54px;
+    }
+}
+
+
+
+

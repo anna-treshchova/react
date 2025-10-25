@@ -2,31 +2,18 @@
 
 .header {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px $space-2xl 0;
-    background-color: $color-primary-300;
+    border-bottom: 1px solid #ebebeb;
 }
-.navLink {
-    text-decoration: none;
-    color: #797979;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 12px $space-sm;
-    font: $font-sm;
-    border-bottom: 3px solid transparent;
-    transition: color 0.2s;
-    &:hover {
-        color: #222222;
-        background: transparent;
 
-    }
-    &.active {
-        border-color: #222222;
+@media (max-width: 768px) {
+    .header {
+        border-bottom: none;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        //background-color: #393269;
     }
 }
+
+
 
 
 

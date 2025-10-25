@@ -1,6 +1,5 @@
-*,
-*:before,
-*:after {
+body,
+html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -98,11 +97,18 @@
     --color-text: #e1e1e1;
 
     --color-brand: #ff385b;
-
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-primary-100);
     color: var(--color-text);
+}
+:global(.swiper-pagination-fraction) {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
 }

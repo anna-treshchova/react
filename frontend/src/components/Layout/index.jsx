@@ -8,9 +8,9 @@ import styles from './Layout.module.scss';
 const Layout = () => {
     return (
         <div className={styles.layout}>
-            <Header />
+            <Header/>
             <Outlet />
-            <Footer />
+            {/*<Footer />*/}
         </div>
     )
 }

@@ -6,7 +6,8 @@ import destinationsLoader from './loaders/destinationsLoader.js';
 import hotelLoader from './loaders/hotelLoader.js';
 
 //Pages
-import Destinations from './pages/destinations';
+import Home from './pages/home';
+import SearchResults from './pages/search-results';
 import Hotel from './pages/hotel/';
 const About = lazy(() => import('./pages/about'));
 
@@ -21,17 +22,26 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Destinations />,
+        element: <Home />,
         loader: destinationsLoader
       },
       {
-        path: '/hotels/:id',
+        path: '/search',
+        element: <SearchResults />,
+      },
+      {
+        path: '/search/:id',
         element: <Hotel />,
         loader: hotelLoader
       },
       {
         path: 'about',
         element: <About />,
+      },
+      {
+        path: '*',
+        element: <Home />,
+        loader: destinationsLoader
       }
     ]
   }

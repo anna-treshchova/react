@@ -1,6 +1,19 @@
+import store from '../store';
+import { getHotelsPage } from '../store/thunks/hotelsThunk.js';
+
 const API_URL = 'http://localhost:3000';
 
-async function hotelLoader({ params}) {
+export async function allHotelsLoader() {
+    try {
+        await store.dispatch(getHotelsPage(1));
+        return null;
+    } catch (err) {
+        console.error(err.message);
+        return null;
+    }
+}
+
+export async function hotelLoader({ params }) {
     const { id } = params;
 
     try {
@@ -17,4 +30,3 @@ async function hotelLoader({ params}) {
     }
 }
 
-export default hotelLoader;

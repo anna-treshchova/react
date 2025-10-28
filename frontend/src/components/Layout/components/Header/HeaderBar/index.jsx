@@ -7,7 +7,7 @@ import HeaderNav from './components/Nav';
 import HeaderSearchToggle from './components/SearchToggle';
 import HeaderAuth from './components/Auth';
 import HeaderSearchBar from './components/SearchBar'
-import HomeButton from '@/components/UI/atoms/HomeButton';
+import BackButton from '@/components/UI/atoms/BackButton';
 import FiltersButton from '@/components/UI/atoms/FiltersButton';
 
 import styles from './HeaderBar.module.scss';
@@ -35,7 +35,7 @@ const HeaderBar = ({ form, isSearchOpen, setIsSearchOpen }) => {
                 setIsSearchOpen={setIsSearchOpen}
             />
             <HeaderNav isSearchOpen={isSearchOpen} />
-            {!isSearchOpen && <HomeButton size='lg' />}
+            {!isSearchOpen && <BackButton size='lg' />}
             <HeaderSearchBar
                 form={form}
                 isSearchOpen={isSearchOpen}

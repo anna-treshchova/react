@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
 import { Card } from 'antd';
-import {StarFilled } from '@ant-design/icons';
+import { StarFilled } from '@ant-design/icons';
 
-import LikeButton from '../LikeButton/index.jsx';
+import LikeButton from '../LikeButton';
 
 import styles from './HotelCard.module.scss';
 

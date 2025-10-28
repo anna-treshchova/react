@@ -1,15 +1,14 @@
-import { useNavigate, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 
 import { Grid } from 'antd';
 
 import BackIcon from '@/assets/icons/Back.svg?react';
 
-import styles from './HomeButton.module.scss';
+import styles from './BackButton.module.scss';
 
 const { useBreakpoint } = Grid;
 
-const HomeButton = ({ size = 'md' }) => {
-    const navigate = useNavigate();
+const BackButton = ({ size = 'md' }) => {
     const { pathname } = useLocation();
     const screens = useBreakpoint();
 
@@ -18,10 +17,10 @@ const HomeButton = ({ size = 'md' }) => {
     return (
         <button
             className={`${styles.homeBtn} ${styles[`${size}Size`]}`}
-            onClick={() => navigate('/home')}>
+            onClick={() => window.history.back()}>
             <BackIcon />
         </button>
     )
 }
 
-export default HomeButton;
+export default BackButton;

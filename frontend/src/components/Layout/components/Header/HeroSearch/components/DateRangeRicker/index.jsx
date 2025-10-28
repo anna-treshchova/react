@@ -18,7 +18,11 @@ const DateRangePicker = ({ value, onChange = () => {} }) => {
 
     return (
         <RangePicker
-            popupClassName="myRangePickerPopup"
+            classNames={{
+                popup: {
+                    root: 'myRangePickerPopup'
+                }
+            }}
             value={value}
             className={dateStyles.rangePicker}
             disabledDate={disabledPastDates}

@@ -2,8 +2,8 @@ import { lazy } from 'react'; //lazy loading
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 //Loaders
-import destinationsLoader from './loaders/destinationsLoader.js';
-import hotelLoader from './loaders/hotelLoader.js';
+import { destinationsLoader } from './loaders/destinationsLoader.js';
+import { allHotelsLoader, hotelLoader } from './loaders/hotelsLoader.js';
 
 //Pages
 import Home from './pages/home';
@@ -19,11 +19,12 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    loader: destinationsLoader,
     children: [
       {
         index: true,
         element: <Home />,
-        loader: destinationsLoader
+        loader: allHotelsLoader
       },
       {
         path: '/search',
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <Home />,
-        loader: destinationsLoader
+        loader: allHotelsLoader
       }
     ]
   }

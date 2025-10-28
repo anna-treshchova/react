@@ -1,4 +1,4 @@
-import HomeButton from '@/components/UI/atoms/HomeButton';
+import BackButton from '@/components/UI/atoms/BackButton';
 
 import ShareIcon from './icons/Share.jsx';
 import SaveIcon from './icons/Save.jsx'
@@ -19,7 +19,7 @@ const HotelHeader = ({ name }) => {
 
     return (
         <div className={styles.header}>
-            {screens.md ? <h1>{name}</h1> : <HomeButton />}
+            {screens.md ? <h1>{name}</h1> : <BackButton />}
 
             <div className={styles.btnBox}>
                 {actions.map(({ label, icon: Icon }) => (

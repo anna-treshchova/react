@@ -3,7 +3,45 @@ import { promises as fs } from 'fs';
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 12;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    try {
+        const data = await fs.readFile('db.json', 'utf8');
+        const db = JSON.parse(data);
+
+        const hotelsPage = db.hotels.slice(startIndex, endIndex);
+
+        const items = hotelsPage.map(hotel => ({
+            id: hotel.id,
+            name: hotel.name,
+            rating: hotel.rating,
+            price_per_night: hotel.price_per_night,
+            image: hotel.images[0] || null,
+            favorite: hotel.favorite,
+        }));
+
+        res.json({
+            items,
+            total: db.hotels.length,
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+})
+
 router.post('/', async (req, res) => {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 18;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
     const { destinationId, guests, pets } = req.body;
 
     try {
@@ -32,7 +70,12 @@ router.post('/', async (req, res) => {
             return res.status(404).json({message: 'No hotels found in this destination.'});
         }
 
-        res.json(filteredHotels);
+        const filteredHotelsPage = filteredHotels.slice(startIndex, endIndex);
+
+        res.json({
+            items: filteredHotelsPage,
+            total: filteredHotels.length,
+        })
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Internal server error' });

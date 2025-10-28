@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 
 import { Grid } from 'antd';
@@ -10,7 +11,6 @@ import HeroSearch from './HeroSearch';
 const { useBreakpoint } = Grid
 
 import styles from './Header.module.scss'
-import {useEffect, useState} from "react";
 
 const Header = () => {
     const { pathname } = useLocation();

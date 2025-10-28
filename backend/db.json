@@ -134,7 +134,7 @@
         "Free cancellation up to two weeks",
         "City view"
       ],
-      "favorite": true
+      "favorite": false
     },
     {
       "id": 5018102,
@@ -424,7 +424,7 @@
         "City view",
         "Great location"
       ],
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 5018112,
@@ -814,7 +814,7 @@
       "phone": "+44 20 7946 0123",
       "website": "https://londonbridgehotel.co.uk",
       "images": [
-        "https://images.unsplash.com/photo-1590490359683-658d3d23f972?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "https://images.unsplash.com/photo-1592230228921-df3a88a2244e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2232"
       ],
       "favorite": false
     },
@@ -830,7 +830,7 @@
       "phone": "+39 06 1234567",
       "website": "https://romecentralhotel.it",
       "images": [
-        "https://images.unsplash.com/photo-1590490359683-658d3d23f972?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "https://images.unsplash.com/photo-1595161695996-f746349f4945?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1614"
       ],
       "favorite": false
     },
@@ -846,7 +846,7 @@
       "phone": "+34 93 123 4567",
       "website": "https://barcelonaseaview.com",
       "images": [
-        "https://images.unsplash.com/photo-1590490359683-658d3d23f972?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "https://plus.unsplash.com/premium_photo-1684175656161-21dddfef1324?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987"
       ],
       "favorite": false
     },
@@ -862,7 +862,7 @@
       "phone": "+31 20 123 4567",
       "website": "https://amsterdamcanalhotel.nl",
       "images": [
-        "https://images.unsplash.com/photo-1590490359683-658d3d23f972?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2940"
       ],
       "favorite": false
     },
@@ -878,7 +878,7 @@
       "phone": "+49 30 123456",
       "website": "https://berlinmittehotel.de",
       "images": [
-        "https://images.unsplash.com/photo-1590490359683-658d3d23f972?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "https://images.unsplash.com/photo-1578898886225-c7c894047899?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987"
       ],
       "favorite": false
     },
@@ -894,7 +894,7 @@
       "phone": "+43 1 2345678",
       "website": "https://viennacentralinn.at",
       "images": [
-        "https://images.unsplash.com/photo-1590490359683-658d3d23f972?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1674"
       ],
       "favorite": false
     }

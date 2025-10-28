@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { Grid } from 'antd';
 
-import { getHotels } from '@/store/thunks/hotelsThunk.js'
+import { getFilteredHotelsPage } from '@/store/thunks/hotelsThunk.js'
 import { setNightsCount } from '@/store/slices/hotelsSlice.js'
 
 import DestinationSelect from './components/DestinationSelect';
@@ -74,11 +74,12 @@ const HeroSearch = ({
 
         if (!form.destinationId) return
 
-        dispatch(getHotels({
+        dispatch(getFilteredHotelsPage({
             destinationId: form.destinationId,
             guests: form.guests,
             pets: form.pets,
             dates: form.dates,
+            page: 1,
         }));
 
         dispatch(setNightsCount(form.nights))

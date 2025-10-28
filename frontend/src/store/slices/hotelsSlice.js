@@ -1,22 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getHotelsPage, getFilteredHotelsPage, toggleFavorite } from '../thunks/hotelsThunk.js';
 
-import { getHotels, toggleFavorite } from '../thunks/hotelsThunk.js';
+
+const initialState = {
+    items: [],
+    total: 0,
+    page: 1,
+    mode: 'all',
+    filters: {
+        destinationId: null,
+        guest: null,
+        pets: null,
+    },
+    dates: [null, null],
+    nightsCount: 2,
+    loading: false,
+    error: null,
+}
 
 const hotelsSlice = createSlice({
     name: 'hotels',
-    initialState: {
-        items: [],
-        dates: [null,  null],
-        nightsCount: 2,
-        loading: {
-            list: false,
-            selected: false
-        },
-        error: {
-            list: null,
-            selected: null
-        }
-    },
+    initialState: initialState,
     reducers: {
         setNightsCount: (state, action) => {
             state.nightsCount = action.payload;
@@ -24,26 +28,51 @@ const hotelsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getHotels.pending, (state) => {
-                state.loading.list = true;
-                state.error.list = null;
+            .addCase(getHotelsPage.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getHotelsPage.fulfilled, (state, action) => {
+                state.loading = false;
+                state.items = action.payload.items;
+                state.total = action.payload.total;
+                state.page = action.meta.arg;
+                state.mode = 'all';
+            })
+            .addCase(getHotelsPage.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
                 state.items = [];
             })
-            .addCase(getHotels.fulfilled, (state, action) => {
-                state.loading.list = false;
-                state.items = action.payload;
+
+            .addCase(getFilteredHotelsPage.pending, (state) => {
+                state.loading = true;
+                state.error = null;
             })
-            .addCase(getHotels.rejected, (state, action) => {
-                state.loading.list = false;
-                state.error.list = action.payload;
+            .addCase(getFilteredHotelsPage.fulfilled, (state, action) => {
+                state.loading = false;
+                state.items = action.payload.items;
+                state.total = action.payload.total;
+                state.page = action.meta.arg.page;
+                state.mode = 'filtered';
+                state.filters = {
+                    destinationId: action.meta.arg.destinationId,
+                    guests: action.meta.arg.guests,
+                    pets: action.meta.arg.pets,
+                };
+            })
+            .addCase(getFilteredHotelsPage.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+                state.items = [];
             })
 
             .addCase(toggleFavorite.pending, (state) => {
-                state.loading.list = true;
-                state.error.list = null;
+                state.loading = true;
+                state.error = null;
             })
             .addCase(toggleFavorite.fulfilled, (state, action) => {
-                state.loading.list = false;
+                state.loading = false;
 
                 const updatedHotel = action.payload;
 
@@ -53,8 +82,8 @@ const hotelsSlice = createSlice({
 
             })
             .addCase(toggleFavorite.rejected, (state, action) => {
-                state.loading.list = false;
-                state.error.list = action.payload;
+                state.loading = false;
+                state.error = action.payload;
             })
     }
 })

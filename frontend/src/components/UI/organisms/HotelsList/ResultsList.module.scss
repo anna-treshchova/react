@@ -1,0 +1,44 @@
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 50px 90px;
+}
+
+.resultList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+:global(.ant-pagination-item) {
+  border-radius: 50% !important;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  margin-inline: 8px;
+}
+
+:global(.ant-pagination-item-active) {
+  border: none !important;
+}
+
+:global(.ant-pagination-item a) {
+  line-height: 32px;
+}
+
+:global(.ant-pagination-item-active a) {
+  color: #ffffff !important;
+}
+
+:global(.ant-pagination-jump-prev),
+:global(.ant-pagination-jump-next) {
+  pointer-events: none;
+}
+
+@media (max-width: 992px) {
+  .resultsContainer {
+    padding-block: 50px;
+  }
+}
+

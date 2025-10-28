@@ -1,11 +1,11 @@
 import Container from '@/components/Container';
-import ResultsList from './ResultsList';
+import HotelsList from '@/components/UI/organisms/HotelsList';
 
 const SearchResults = () => {
     return (
         <div>
             <Container>
-                <ResultsList />
+                <HotelsList />
             </Container>
         </div>
     )

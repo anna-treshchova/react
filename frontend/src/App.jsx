@@ -2,10 +2,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 
 //Loaders
 import { destinationsLoader } from './loaders/destinationsLoader.js';
+import { eventLoader } from './loaders/eventsLoader.js';
 
 //Pages
 import Events from './pages/events';
 import AboutUs from './pages/about-us';
+import Event from './pages/event';
 
 //Components
 import Layout from './components/Layout';
@@ -23,6 +25,11 @@ const router = createBrowserRouter([
             {
                 path: 'about-us',
                 element: <AboutUs />,
+            },
+            {
+                path: 'events/:id',
+                element: <Event />,
+                loader: eventLoader,
             },
             {
                 path: '*',

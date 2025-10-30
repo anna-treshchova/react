@@ -5,9 +5,19 @@ import { getDestinations } from '../thunks/destinationsThunk.js';
 const destinationsSlice = createSlice({
     name: 'destinations',
     initialState: {
+        selectedCity: null,
+        searchQuery: '',
         items: [],
         loading: false,
         error: null
+    },
+    reducers: {
+        setSelectedCity: (state, action) => {
+            state.selectedCity = action.payload;
+        },
+        setSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -25,5 +35,7 @@ const destinationsSlice = createSlice({
             })
     }
 })
+
+export const { setSelectedCity, setSearchQuery } = destinationsSlice.actions;
 
 export default destinationsSlice.reducer;

@@ -1,4 +1,4 @@
-import {configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 import destinationsReducer from './slices/destinationsSlice.js'
 import eventsReducer from './slices/eventsSlice.js'

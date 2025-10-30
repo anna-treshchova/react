@@ -1,29 +1,28 @@
 import { useNavigate } from 'react-router';
+import PropTypes from 'prop-types';
 
 import { Card, Button } from 'antd';
 
-const Event = ({ event }) => {
+const Event = ({ id, title, imageUrl, instructor, price, date, location }) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate(`/events/${event.id}`);
+        navigate(`/events/${id}`);
     };
 
-    const eventDate = new Date(event.date);
-    const date = `${eventDate.toLocaleDateString()} ${eventDate.toLocaleTimeString('en-US', {
+    const eventDate = new Date(date);
+    const formattedDate = `${eventDate.toLocaleDateString()} ${eventDate.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
     })}`;
 
-
-
     return (
         <Card
-            title={event.title}
+            title={title}
             cover={<img
                    draggable={false}
-                   alt={event.title}
-                   src={event.imageUrl}
+                   alt={title}
+                   src={imageUrl}
                    style={{
                        borderRadius: '6px',
                        height: '230px',
@@ -31,14 +30,18 @@ const Event = ({ event }) => {
                        objectFit: 'cover'
                    }}
             />}
-            style={{padding: '10px 15px', minWidth: '50%', boxShadow: '2px 4px 8px rgba(0,0,0,0.1)' }}
+            style={{
+                padding: '10px 15px',
+                maxWidth: '600px',
+                width: '100%',
+                boxShadow: '2px 4px 8px rgba(0,0,0,0.1)'
+            }}
         >
             <div style={{textAlign: 'start'}}>
-                <p><strong>Instructor: </strong>{event.instructor}</p>
-                <p><strong>Description: </strong>{event.description}</p>
-                <p><strong>Price: </strong>${event.price}</p>
-                <p><strong>Date: </strong>{date}</p>
-                <p><strong>Location: </strong>{event.location}</p>
+                <p><strong>Instructor: </strong>{instructor}</p>
+                <p><strong>Price: </strong>${price}</p>
+                <p><strong>Date: </strong>{formattedDate}</p>
+                <p><strong>Location: </strong>{location}</p>
             </div>
             <Button
                 type='primary'
@@ -51,9 +54,30 @@ const Event = ({ event }) => {
     )
 }
 
+Event.propTypes = {
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    instructor: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    date: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(Date)
+    ]),
+    location: PropTypes.string,
+
+    // obj: PropTypes.shape({
+    //     name: PropTypes.string,
+    //     age: PropTypes.number,
+    //     isSubscribed : PropTypes.bool,
+    // }),
+    // onClick: PropTypes.func.isRequired,
+    // skills: PropTypes.arrayOf(PropTypes.string),
+}
+
 export default Event;
 
-/*
+/*———————————————————————————————————————————————————————————
 
 SVG
 
@@ -63,12 +87,4 @@ SVG
 2. import HomeIcon from '@/assets/icons/home.svg?react';
    <HomeIcon />
 
-
-
-
-
-
-
-
-
- */
+———————————————————————————————————————————————————————————*/

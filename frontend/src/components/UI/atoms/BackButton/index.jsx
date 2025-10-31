@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router';
 
+import PropTypes from 'prop-types';
+
 import { Grid } from 'antd';
 
 import BackIcon from '@/assets/icons/Back.svg?react';
@@ -21,6 +23,10 @@ const BackButton = ({ size = 'md' }) => {
             <BackIcon />
         </button>
     )
+}
+
+BackButton.propTypes = {
+    size: PropTypes.string,
 }
 
 export default BackButton;

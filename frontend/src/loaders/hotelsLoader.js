@@ -1,11 +1,11 @@
 import store from '../store';
-import { getHotelsPage } from '../store/thunks/hotelsThunk.js';
+import { fetchHotelsPage } from '../store/thunks/hotelsThunk.js';
 
 const API_URL = 'http://localhost:3000';
 
 export async function allHotelsLoader() {
     try {
-        await store.dispatch(getHotelsPage(1));
+        await store.dispatch(fetchHotelsPage({ page: 1 }));
         return null;
     } catch (err) {
         console.error(err.message);

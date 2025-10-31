@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router';
 
+import PropTypes from 'prop-types';
+
 import { Grid } from 'antd';
 
 import OpenSearchButton from './components/OpenSearchButton/index.jsx';
@@ -11,17 +13,23 @@ const HeaderSearchToggle = ({ isSearchOpen, setIsSearchOpen }) => {
     const screens = useBreakpoint();
     const { pathname } = useLocation();
 
-    // if (pathname.startsWith('/hotels/')) return null;
+    const shouldSearchOpen = !screens.md && !isSearchOpen && !pathname.startsWith('/search');
+    const shouldSearchClose = !screens.md && isSearchOpen;
 
-    if (!screens.md && !isSearchOpen && !pathname.startsWith('/search')) return (
-        <OpenSearchButton onClick={() => setIsSearchOpen(true)}/>
-    );
+    if (shouldSearchOpen) {
+       return <OpenSearchButton onClick={() => setIsSearchOpen(true)}/>
+    }
 
-    if (!screens.md && isSearchOpen) return (
-        <CloseSearchButton onClick={() => setIsSearchOpen(false)}/>
-    )
+    if (shouldSearchClose) {
+        return <CloseSearchButton onClick={() => setIsSearchOpen(false)}/>
+    }
 
     return null;
+}
+
+HeaderSearchToggle.propTypes = {
+    isSearchOpen: PropTypes.bool.isRequired,
+    setIsSearchOpen: PropTypes.func.isRequired,
 }
 
 export default HeaderSearchToggle;

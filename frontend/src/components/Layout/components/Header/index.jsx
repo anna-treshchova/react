@@ -18,19 +18,6 @@ const Header = () => {
 
     const isHotel = pathname.startsWith('/search/');
 
-    const initialState = {
-        destinationId: null,
-        destinationLabel: null,
-        dates: [null, null],
-        nights: 2,
-        guests: 0,
-        adults: 0,
-        children: 0,
-        infants: 0,
-        pets: 0
-    }
-
-    const [form, setForm] = useState(initialState);
     const [isSearchOpen, setIsSearchOpen] = useState(true);
 
     useEffect(() => {
@@ -43,31 +30,22 @@ const Header = () => {
     }, [screens.md,  pathname]);
 
     useEffect(() => {
-        if (pathname === '/') {
-            setIsSearchOpen(true);
-        }
-
-        if (pathname === '/search/') {
-            setIsSearchOpen(false);
-        }
+        if (pathname === '/') return setIsSearchOpen(true);
+        if (pathname === '/search/') return setIsSearchOpen(false);
     }, [pathname]);
 
     if ( isHotel && !screens.md ) return null;
 
-    const bg = pathname.startsWith('/search') ? '#ffffff' : '#f7f7f7'
+    const backgroundColor = pathname.startsWith('/search') ? '#ffffff' : '#f7f7f7'
 
     return (
-        <header className={styles.header} style={{ backgroundColor: bg }}>
+        <header className={styles.header} style={{ backgroundColor }}>
             <Container>
                 <HeaderBar
-                    form={form}
                     isSearchOpen={isSearchOpen}
                     setIsSearchOpen={setIsSearchOpen}
                 />
                 <HeroSearch
-                    form={form}
-                    setForm={setForm}
-                    initialState={initialState}
                     isSearchOpen={isSearchOpen}
                     setIsSearchOpen={setIsSearchOpen}
                 />

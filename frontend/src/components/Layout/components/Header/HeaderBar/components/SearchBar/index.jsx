@@ -1,4 +1,8 @@
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+
+import PropTypes from 'prop-types';
+
 import dayjs from 'dayjs'
 
 import { Grid } from 'antd';
@@ -10,13 +14,14 @@ import styles from './HeaderSearchBar.module.scss';
 
 const { useBreakpoint } = Grid;
 
-const SearchBar = ({ form, isSearchOpen, setIsSearchOpen = () => {} }) => {
+const SearchBar = ({ isSearchOpen, setIsSearchOpen }) => {
     const { pathname } = useLocation();
     const screens = useBreakpoint();
 
+    const { dates, guests, destination } = useSelector((state) => state.filters);
+
     if (!pathname.startsWith('/search')) return null;
     if ((!screens.md && pathname.startsWith('/search/')) || isSearchOpen) return null;
-
 
     const handleClick = () => setIsSearchOpen(true);
 
@@ -30,21 +35,21 @@ const SearchBar = ({ form, isSearchOpen, setIsSearchOpen = () => {} }) => {
             : `${start.format('MMM D')} – ${end.format('MMM D')}`
     }
 
-    const destinationContent = form.destinationLabel ? form.destinationLabel : 'Hotels nearby';
+    const destinationContent = destination.label ? destination.label : 'Hotels nearby';
 
-    const datesContent = Array.isArray(form.dates) && form.dates[0] && form.dates[1]
-        ? formatDates(form.dates)
+    const datesContent = Array.isArray(dates) && dates[0] && dates[1]
+        ? formatDates(dates)
         : 'Any week'
 
-    const guestsContent = form.guests === 0
+    const guestsContent = guests === 0
         ? 'Add guests'
-        : `${form.guests} guest${form.guests > 1 ? 's' : ''}`;
+        : `${guests} guest${guests > 1 ? 's' : ''}`;
 
     return (
         <div className={styles.searchBar} onClick={handleClick}>
             <HomeIcon className={styles.homeIcon} />
             <div className={styles.searchItemsWrapper}>
-                <SearchItem className={styles.searchDestination}>
+                <SearchItem>
                     {destinationContent}
                 </SearchItem>
                 <SearchItem className={styles.searchDates}>
@@ -67,5 +72,10 @@ const SearchItem = ({ children, className }) => (
         <span className={className}>{children}</span>
     </div>
 )
+
+SearchBar.propTypes = {
+    isSearchOpen: PropTypes.bool.isRequired,
+    setIsSearchOpen: PropTypes.func.isRequired,
+}
 
 export default SearchBar;

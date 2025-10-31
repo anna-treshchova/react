@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router';
 
+import PropTypes from 'prop-types';
+
 import { Grid } from 'antd';
 
 import { NAV_ROUTES } from '@/constants/navRoutes.js';
@@ -20,7 +22,6 @@ const HeaderNav = ({ isSearchOpen }) => {
 
     const justify = screens.md || isSearchOpen ? 'center' : 'space-around';
 
-
     return (
         <nav
             className={styles.nav}
@@ -31,6 +32,10 @@ const HeaderNav = ({ isSearchOpen }) => {
             ))}
         </nav>
     )
+}
+
+HeaderNav.propTypes = {
+    isSearchOpen: PropTypes.bool.isRequired,
 }
 
 export default HeaderNav;

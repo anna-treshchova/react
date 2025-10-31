@@ -1,5 +1,6 @@
-import styles from './ClearAllButton.module.scss';
+import PropTypes from 'prop-types';
 
+import styles from './ClearAllButton.module.scss';
 
 const ClearAllButton = ({ onClick }) => {
     return (
@@ -12,4 +13,9 @@ const ClearAllButton = ({ onClick }) => {
         </button>
     )
 }
+
+ClearAllButton.propTypes = {
+    onClick: PropTypes.func.isRequired,
+}
+
 export default ClearAllButton;

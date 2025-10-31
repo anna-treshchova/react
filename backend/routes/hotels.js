@@ -3,38 +3,6 @@ import { promises as fs } from 'fs';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 12;
-
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-
-    try {
-        const data = await fs.readFile('db.json', 'utf8');
-        const db = JSON.parse(data);
-
-        const hotelsPage = db.hotels.slice(startIndex, endIndex);
-
-        const items = hotelsPage.map(hotel => ({
-            id: hotel.id,
-            name: hotel.name,
-            rating: hotel.rating,
-            price_per_night: hotel.price_per_night,
-            image: hotel.images[0] || null,
-            favorite: hotel.favorite,
-        }));
-
-        res.json({
-            items,
-            total: db.hotels.length,
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-})
-
 router.post('/', async (req, res) => {
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 18;
@@ -42,44 +10,56 @@ router.post('/', async (req, res) => {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
-    const { destinationId, guests, pets } = req.body;
+    const { destinationId, guests, pets } = req.body || {};
 
     try {
         const data = await fs.readFile('db.json', 'utf8');
         const db = JSON.parse(data);
 
-        const destination = db.destinations.find(d => d.id === destinationId);
-        if (!destination) return res.status(404).json({ message: 'Destination not found' });
+        let hotels = db.hotels;
 
-        const filteredHotels = db.hotels
-            .filter(hotel =>
-                hotel.city.toLowerCase() === destination.label.toLowerCase() &&
-                hotel.details?.max_guests >= guests &&
-                (pets === 0 || hotel.amenities?.includes('Pets allowed')) // повертає перший truthy, або останній, якщо всі falsy
+        if (destinationId) {
+            const destination = db.destinations.find(d => d.id === destinationId);
+
+            if (!destination) {
+                return res.status(404).json({ message: 'Destination not found' });
+            }
+
+            hotels = hotels.filter(
+                hotel => hotel.city.toLowerCase() === destination.label.toLowerCase()
             )
-            .map(hotel => ({
-                id: hotel.id,
-                name: hotel.name,
-                rating: hotel.rating,
-                price_per_night: hotel.price_per_night,
-                image: hotel.images[0] || null,
-                favorite: hotel.favorite,
-            }));
 
-        if (filteredHotels.length === 0) {
-            return res.status(404).json({message: 'No hotels found in this destination.'});
+            if (hotels || hotels.length === 0) {
+                return res.status(404).json({message: 'No hotels found in this destination.'});
+            }
         }
 
-        const filteredHotelsPage = filteredHotels.slice(startIndex, endIndex);
+        if (guests) {
+            hotels = hotels.filter(hotel => hotel.details?.max_guests >= guests);
+        }
+
+        if (pets) {
+            hotels = hotels.filter(hotel => hotel.amenities?.includes('Pets allowed'));
+        }
+
+        const paginatedHotels = hotels.slice(startIndex, endIndex);
+
+        const items = paginatedHotels.map(hotel => ({
+            id: hotel.id,
+            name: hotel.name,
+            rating: hotel.rating,
+            price_per_night: hotel.price_per_night,
+            image: hotel.images?.[0] || null,
+            favorite: hotel.favorite,
+        }));
 
         res.json({
-            items: filteredHotelsPage,
-            total: filteredHotels.length,
+            items,
+            total: hotels.length,
         })
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal server error' });
-
+        console.error('Error fetching hotels:', err);
+        res.status(500).json({ message: 'Internal server error'});
     }
 })
 

@@ -221,7 +221,7 @@
         "Self check-in",
         "Great location"
       ],
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 5018105,
@@ -424,7 +424,7 @@
         "City view",
         "Great location"
       ],
-      "favorite": true
+      "favorite": false
     },
     {
       "id": 5018112,
@@ -511,7 +511,7 @@
         "Fast wifi",
         "City view"
       ],
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 5018115,
@@ -539,7 +539,8 @@
         "Pets allowed",
         "Self check-in",
         "Free cancellation up to two weeks"
-      ]
+      ],
+      "favorite": true
     },
     {
       "id": 5018116,

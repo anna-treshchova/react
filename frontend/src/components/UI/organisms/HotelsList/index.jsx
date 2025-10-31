@@ -1,27 +1,14 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { getHotelsPage, getFilteredHotelsPage } from '@/store/thunks/hotelsThunk.js';
-
-import { Row, Col, Pagination, ConfigProvider } from 'antd';
+import { Row, Col } from 'antd';
 
 import HotelCard from './HotelCard';
+import ListPagination from './Pagination';
 
 import styles from './ResultsList.module.scss';
 
 const ResultsList = () => {
-    const dispatch = useDispatch();
-    const { items, total, page, mode, filters } = useSelector((state) => state.hotels);
-
-    const handlePageChange = (newPage) => {
-        if (mode === 'all') {
-            dispatch(getHotelsPage(newPage));
-        } else {
-            dispatch(getFilteredHotelsPage({
-                ...filters,
-                page: newPage,
-            }));
-        }
-    }
+    const { items } = useSelector((state) => state.hotels);
 
     return (
         <div className={styles.resultsContainer}>
@@ -32,33 +19,7 @@ const ResultsList = () => {
                     </Col>
                 ))}
             </Row>
-            <ConfigProvider
-                theme={{
-                    token: {
-                        colorBgTextHover: '#f7f7f7',
-                    },
-                    components: {
-                        Pagination: {
-                            itemActiveBg: '#222222',
-                            itemBg: 'transparent',
-                            itemSize: 32,
-                        }
-                    }
-                }}
-            >
-
-                {items.length > 0 && (
-                    <Pagination
-                        current={page}
-                        total={total}
-                        pageSize={18}
-                        showSizeChanger={false}
-                        showLessItems
-                        onChange={handlePageChange}
-                    />
-                )}
-            </ConfigProvider>
-
+            <ListPagination />
         </div>
 
     )

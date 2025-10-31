@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Col, Row } from 'antd';
 
 import styles from './DesktopGallery.module.scss';
@@ -22,6 +24,10 @@ const DesktopGallery = ({ images }) => {
             </Row>
         </div>
     )
+}
+
+DesktopGallery.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default DesktopGallery;

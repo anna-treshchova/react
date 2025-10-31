@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const LikeIcon = ({ favorite }) => {
     return (
         <svg
@@ -14,4 +16,9 @@ const LikeIcon = ({ favorite }) => {
         </svg>
     )
 }
+
+LikeIcon.propTypes = {
+    favorite: PropTypes.bool.isRequired,
+}
+
 export default LikeIcon;

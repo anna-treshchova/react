@@ -1,20 +1,35 @@
-import { DatePicker, Grid } from 'antd';
+import { useSelector } from 'react-redux';
+
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+
+import { DatePicker, Grid } from 'antd';
 
 import dateStyles from './DateRangePicker.module.scss'
 
 const { RangePicker } = DatePicker;
-
 const { useBreakpoint } = Grid;
 
-const DateRangePicker = ({ value, onChange = () => {} }) => {
+const DateRangePicker = ({ onChange }) => {
     const screens = useBreakpoint();
 
-    const maxWidth = screens.xs ? 180 : screens.sm ? 220 : 240;
+    const dates = useSelector((state) => state.filters.dates);
+
+    const parsedDates = dates.map(date => (date ? dayjs(date) : null));
 
     const disabledPastDates = (current) => {
         return current && current < dayjs().startOf('day');
     };
+
+    const handleOnChange = (value) => {
+        const serializedDates = value
+            ? value.map(date => (date ? date.toISOString() : null))
+            : [null, null];
+
+        onChange('dates', serializedDates);
+    }
+
+    const maxWidth = screens.xs ? 180 : screens.sm ? 220 : 240;
 
     return (
         <RangePicker
@@ -23,16 +38,20 @@ const DateRangePicker = ({ value, onChange = () => {} }) => {
                     root: 'myRangePickerPopup'
                 }
             }}
-            value={value}
+            value={parsedDates}
             className={dateStyles.rangePicker}
             disabledDate={disabledPastDates}
             size='middle'
             format='DD MMM'
-            onChange={onChange}
+            onChange={handleOnChange}
             placeholder={['Check in', 'Check out']}
-            style={{ maxWidth: maxWidth}}
+            style={{ maxWidth }}
         />
     )
+}
+
+DateRangePicker.propTypes = {
+    onChange: PropTypes.func.isRequired,
 }
 
 export default DateRangePicker;

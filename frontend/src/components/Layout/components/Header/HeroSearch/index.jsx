@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+
+import PropTypes from 'prop-types';
 
 import { Grid } from 'antd';
 
-import { getFilteredHotelsPage } from '@/store/thunks/hotelsThunk.js'
-import { setNightsCount } from '@/store/slices/hotelsSlice.js'
+import { setFilter, clearAllFilters } from '@/store/slices/filtersSlice.js'
+
+import { fetchHotelsPage } from '@/store/thunks/hotelsThunk.js'
 
 import DestinationSelect from './components/DestinationSelect';
 import DateRangePicker from './components/DateRangeRicker';
@@ -17,16 +20,15 @@ import styles from './HeroSearch.module.scss'
 
 const { useBreakpoint } = Grid;
 
-const HeroSearch = ({
-    form,
-    setForm = () => {},
-    initialState,
-    isSearchOpen,
-    setIsSearchOpen = () => {},
-}) => {
+const HeroSearch = ({ isSearchOpen, setIsSearchOpen }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const screens = useBreakpoint();
+
+    const { destination, guests, pets } = useSelector((state) => state.filters);
+
+    const initialGuestForm = { adults: 0, children: 0, infants: 0 };
+    const [guestForm, setGuestForm] = useState(initialGuestForm);
 
     useEffect(() => {
         if (isSearchOpen && !screens.md) {
@@ -39,54 +41,37 @@ const HeroSearch = ({
         };
     }, [isSearchOpen, screens.md]);
 
+    const onChange = useCallback((field, value) => {
+        const isGuestField = ['adults', 'children', 'infants'].includes(field);
 
-    if (!isSearchOpen) return null;
+        isGuestField
+            ? setGuestForm(prev => ({ ...prev, [field]: value }))
+            : dispatch(setFilter({ field, value }));
 
-    const setGuests = (field, value) => {
-        setForm((prev => ({
-            ...prev,
-            [field]: value}
-        )));
-    }
+    }, [dispatch]);
 
-    const setDestination = (id, label) => {
-        setForm((prev => ({
-            ...prev,
-            destinationId: id,
-            destinationLabel: label,
-        })))
-    }
-
-    const setDates = (value) => {
-        setForm(prev => ({
-            ...prev,
-            dates: value,
-            nights: value && value.length === 2
-                ? Math.max(value[1].diff(value[0], 'day'), 0)
-                : 2
-        }));
-    }
-
-    const handleClear = () => setForm(initialState);
+    const handleClear = () => {
+        setGuestForm(initialGuestForm)
+        dispatch(clearAllFilters());
+    };
 
     const handleSearch = (e) => {
         e.preventDefault();
 
-        if (!form.destinationId) return
+        if (!destination.id) return;
 
-        dispatch(getFilteredHotelsPage({
-            destinationId: form.destinationId,
-            guests: form.guests,
-            pets: form.pets,
-            dates: form.dates,
+        dispatch(fetchHotelsPage({
             page: 1,
+            destinationId: destination.id,
+            guests: guests,
+            pets: pets,
         }));
-
-        dispatch(setNightsCount(form.nights))
 
         setIsSearchOpen(false);
         navigate('/search');
     }
+
+    if (!isSearchOpen) return null;
 
     return (
         <form className={styles.form} onSubmit={handleSearch}>
@@ -94,31 +79,19 @@ const HeroSearch = ({
                 title={`Where${screens.md ? '' : '?'}`}
                 className={styles.destination}
             >
-                <DestinationSelect
-                    value={form.destinationId}
-                    onChange={(value, option) => setDestination(value,  option.label)}
-                />
+                <DestinationSelect onChange={onChange} />
             </FormField>
 
             <FormField title='When'>
-                <DateRangePicker value={form.dates} onChange={setDates} />
+                <DateRangePicker onChange={onChange} />
             </FormField>
 
             <FormField title='Who'>
-                <GuestPicker
-                    guests={form.guests}
-                    adults={form.adults}
-                    children={form.children}
-                    infants={form.infants}
-                    pets={form.pets}
-                    onChange={(key, value) => setGuests(key, value)}
-                />
+                <GuestPicker guestForm={guestForm} onChange={onChange} />
             </FormField>
 
             <div className={styles.btnBox}>
-                {!screens.md && (
-                    <ClearAllButton onClick={handleClear} />
-                )}
+                {!screens.md &&  <ClearAllButton onClick={handleClear} />}
                 <SearchButton />
             </div>
         </form>
@@ -131,5 +104,11 @@ const FormField = ({ children, title, className }) => (
         {children}
     </div>
 )
+
+
+HeroSearch.propTypes = {
+    isSearchOpen: PropTypes.bool.isRequired,
+    setIsSearchOpen: PropTypes.func.isRequired,
+}
 
 export default HeroSearch;

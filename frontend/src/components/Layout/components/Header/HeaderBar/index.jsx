@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router';
 
+import PropTypes from 'prop-types';
+
 import { Grid } from 'antd';
 
 import HeaderLogo from './components/Logo';
@@ -15,7 +17,7 @@ import styles from './HeaderBar.module.scss';
 const { useBreakpoint } = Grid
 
 
-const HeaderBar = ({ form, isSearchOpen, setIsSearchOpen }) => {
+const HeaderBar = ({ isSearchOpen, setIsSearchOpen }) => {
     const { pathname } = useLocation();
     const screens = useBreakpoint();
 
@@ -37,7 +39,6 @@ const HeaderBar = ({ form, isSearchOpen, setIsSearchOpen }) => {
             <HeaderNav isSearchOpen={isSearchOpen} />
             {!isSearchOpen && <BackButton size='lg' />}
             <HeaderSearchBar
-                form={form}
                 isSearchOpen={isSearchOpen}
                 setIsSearchOpen={setIsSearchOpen}
             />
@@ -45,6 +46,11 @@ const HeaderBar = ({ form, isSearchOpen, setIsSearchOpen }) => {
             <HeaderAuth />
         </div>
     )
+}
+
+HeaderBar.propTypes = {
+    isSearchOpen: PropTypes.bool.isRequired,
+    setIsSearchOpen: PropTypes.func.isRequired,
 }
 
 export default HeaderBar;

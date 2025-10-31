@@ -1,5 +1,6 @@
-import BackButton from '@/components/UI/atoms/BackButton';
+import PropTypes from 'prop-types';
 
+import BackButton from '@/components/UI/atoms/BackButton';
 import ShareIcon from './icons/Share.jsx';
 import SaveIcon from './icons/Save.jsx'
 
@@ -31,6 +32,10 @@ const HotelHeader = ({ name }) => {
             </div>
         </div>
     )
+}
+
+HotelHeader.propTypes = {
+    name: PropTypes.string.isRequired,
 }
 
 export default HotelHeader;

@@ -2,29 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const API_URL = 'http://localhost:3000';
 
-export const getHotelsPage = createAsyncThunk(
-    'hotels/getHotelsPage',
-    async (page, { rejectWithValue }) => {
+export const fetchHotelsPage = createAsyncThunk(
+    'hotels/fetchHotelsPage',
+    async ({ page = 1, destinationId, guests, pets }, { rejectWithValue }) => {
         try {
-            const res = await fetch(`${API_URL}/hotels?page=${page}&limit=18`);
 
-            if (!res.ok) {
-                const errBody = await res.json();
-                throw new Error(errBody.message || 'Failed to get hotels page');
-            }
+            const params = new URLSearchParams({ page, limit: '18' }).toString();
 
-            return res.json();
-        } catch (err) {
-            return rejectWithValue(err.message);
-        }
-    }
-)
-
-export const getFilteredHotelsPage = createAsyncThunk(
-    'hotels/getFilteredHotelsPage',
-    async ({ destinationId, guests, pets, page }, { rejectWithValue }) => {
-        try {
-            const res = await fetch(`${API_URL}/hotels?page=${page}&limit=18`, {
+            const res = await fetch(`${API_URL}/hotels?${params}`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ destinationId, guests, pets })

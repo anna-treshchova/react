@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
@@ -31,8 +33,11 @@ const GallerySlider = ({ images }) => {
                 ))}
             </Swiper>
         </div>
-
     )
+}
+
+GallerySlider.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default GallerySlider;

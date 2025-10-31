@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router';
 
+import PropTypes from 'prop-types';
+
 import { Grid } from 'antd';
 
 import FiltersIcon from '@/assets/icons/Filters.svg?react';
@@ -21,6 +23,10 @@ const HomeButton = ({ size = 'md' }) => {
             <FiltersIcon />
         </button>
     )
+}
+
+HomeButton.propTypes = {
+    size: PropTypes.string,
 }
 
 export default HomeButton;

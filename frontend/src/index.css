@@ -4,10 +4,14 @@ html, body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: #ffffff;
 }
 
 body {
     min-width: 768px;
+    font-family: "Inter", sans-serif;
+    background-color: #ffffff;
+    color: white;
 }
 
 @theme {
@@ -100,9 +104,4 @@ body {
     --color-text: #333333;
 }
 
-body {
-    font-family: "Inter", sans-serif;
-    background-color: #ffffff;
-    color: white;
-}
 

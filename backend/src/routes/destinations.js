@@ -1,12 +1,19 @@
 import express from 'express';   // імпортуємо функцію express з бібліотеки Express
+
+import { readJSON } from '#utils/db.js';
+
+import { paths } from '#config/paths.js';
+
 const router = express.Router(); // створюємо новий екземпляр роутера (router) — об’єкт для групи маршрутів
-import fs from 'fs';
 
-
-router.get('/', (req, res) => { // створюємо route
-    const db = JSON.parse(fs.readFileSync('db.json', 'utf-8')); // синхронно читаємо файл db.json й парсимо у JS-об'єкт
-    res.json(db.destinations); // відправляємо клієнту потрібну частину (destinations) в форматі JSON
-
+router.get('/', async (req, res) => { // створюємо route
+    try {
+        const destinations = await readJSON(paths.DB_PATH, 'destinations');
+        res.json(destinations); // відправляємо клієнту потрібну частину (destinations) в форматі JSON
+    } catch (err) {
+        console.error('Error reading destinations:', err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 export default router; // експортуємо router, щоб під’єднати його до додатку під конкретним шляхом (endpoint

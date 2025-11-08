@@ -65,14 +65,6 @@ Event.propTypes = {
         PropTypes.instanceOf(Date)
     ]),
     location: PropTypes.string,
-
-    // obj: PropTypes.shape({
-    //     name: PropTypes.string,
-    //     age: PropTypes.number,
-    //     isSubscribed : PropTypes.bool,
-    // }),
-    // onClick: PropTypes.func.isRequired,
-    // skills: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default Event;

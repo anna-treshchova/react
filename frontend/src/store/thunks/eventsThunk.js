@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL = 'http://localhost:4000'; //.env file
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const GET_EVENTS_URL = import.meta.env.VITE_GET_EVENTS;
 
 export const getEvents = createAsyncThunk(
     'events/getEvents',
     async ({ destinationId, query }, { rejectWithValue }) => {
         try {
-            const res = await fetch(`${API_URL}/search`, {
+            const res = await fetch(`${BASE_URL}${GET_EVENTS_URL}`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ destinationId, query })

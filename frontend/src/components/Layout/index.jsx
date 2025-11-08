@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router'
 import { NavLink } from 'react-router'
 
-import { siderRoutes } from '@/helpers/siderRoutes.jsx';
+import { SIDE_ROUTES } from '@/helpers/sideRoutes.jsx';
 
 import { Layout as AntLayout } from 'antd';
 const { Header, Footer, Sider, Content } = AntLayout;
@@ -16,7 +16,7 @@ const Layout = () => (
         <AntLayout>
             <Sider className={styles.sider}>
                 <div className='flex flex-col gap-2'>
-                    {siderRoutes.map(({ label, path, icon }) => (
+                    {SIDE_ROUTES.map(({ label, path, icon }) => (
                         <NavLink
                             key={label}
                             to={path}

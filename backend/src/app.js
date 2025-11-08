@@ -30,9 +30,10 @@ const app = express()            // створюємо додаток (майб�
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*/
 
 // імпорт роутів
-import destinationRoutes from './routes/destinations.js'
-import eventRoutes from './routes/events.js'
-import searchRoutes from './routes/search.js'
+import destinationRoutes from '#routes/destinations.js'
+import eventRoutes from '#routes/events.js'
+import searchRoutes from '#routes/search.js'
+import authRoutes from '#routes/auth.js'
 
 // підключення middleware
 app.use(cors());
@@ -43,5 +44,6 @@ app.use(express.json());
 app.use('/destinations', destinationRoutes);
 app.use('/events', eventRoutes);
 app.use('/search', searchRoutes);
+app.use('/auth', authRoutes);
 
 export default app;

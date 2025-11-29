@@ -16,7 +16,6 @@
 .formField {
     padding: 8px 0 12px;
 }
-
 .formTitle {
     font-size: $font-size-xs;
     text-transform: none;
@@ -71,7 +70,6 @@
                 bottom: 30px;
                 background-color: #e6e6e6;
             }
-
             .formTitle {
                 font-size: 22px;
                 font-weight: 600;
@@ -79,21 +77,19 @@
             }
         }
     }
-
     .formTitle {
         font-size: $font-size-sm;
         color: #222222;
         font-weight: 500;
         margin-left: 0;
     }
-
     .btnBox {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: auto;
-        padding: 12px 0;
+        padding: 22px 8px;
     }
 }
 

@@ -8,7 +8,7 @@ import { Grid } from 'antd';
 
 import { setFilter, clearAllFilters } from '@/store/slices/filtersSlice.js'
 
-import { fetchHotelsPage } from '@/store/thunks/hotelsThunk.js'
+import { fetchSearchResults } from '@/store/thunks/searchThunk.js';
 
 import DestinationSelect from './components/DestinationSelect';
 import DateRangePicker from './components/DateRangeRicker';
@@ -31,11 +31,10 @@ const HeroSearch = ({ isSearchOpen, setIsSearchOpen }) => {
     const [guestForm, setGuestForm] = useState(initialGuestForm);
 
     useEffect(() => {
-        if (isSearchOpen && !screens.md) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        (isSearchOpen && !screens.md)
+            ? document.body.style.overflow = 'hidden'
+            : document.body.style.overflow = ''
+
         return () => {
             document.body.style.overflow = '';
         };
@@ -60,7 +59,7 @@ const HeroSearch = ({ isSearchOpen, setIsSearchOpen }) => {
 
         if (!destination.id) return;
 
-        dispatch(fetchHotelsPage({
+        dispatch(fetchSearchResults({
             page: 1,
             destinationId: destination.id,
             guests: guests,

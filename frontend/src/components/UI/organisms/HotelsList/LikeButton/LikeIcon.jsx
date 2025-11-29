@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const LikeIcon = ({ favorite }) => {
+
     return (
         <svg
             width='26'

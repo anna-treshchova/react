@@ -1,12 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL = 'http://localhost:3000';
+const {
+    VITE_BASE_URL: BASE_URL,
+    VITE_DESTINATIONS: DESTINATIONS_URL,
+} = import.meta.env;
 
 export const getDestinations = createAsyncThunk(
     'destinations/getDestinations',
     async (_, { rejectWithValue }) => {
         try {
-            const res = await fetch(`${API_URL}/destinations`);
+            const res = await fetch(`${BASE_URL}${DESTINATIONS_URL}`);
             if (!res.ok) {
                 throw new Error('Failed to fetch destinations');
             }

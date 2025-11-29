@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import { toggleFavorite } from '@/store/thunks/hotelsThunk.js';
+import { toggleFavorite } from '@/store/thunks/searchThunk.js';
 
 import LikeIcon from './LikeIcon.jsx';
 

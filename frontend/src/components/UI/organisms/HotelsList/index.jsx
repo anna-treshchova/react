@@ -8,7 +8,7 @@ import ListPagination from './Pagination';
 import styles from './ResultsList.module.scss';
 
 const ResultsList = () => {
-    const { items } = useSelector((state) => state.hotels);
+    const { items } = useSelector((state) => state.search);
 
     return (
         <div className={styles.resultsContainer}>
@@ -21,7 +21,6 @@ const ResultsList = () => {
             </Row>
             <ListPagination />
         </div>
-
     )
 }
 

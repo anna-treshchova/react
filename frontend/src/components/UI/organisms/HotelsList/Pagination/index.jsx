@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchHotelsPage } from '@/store/thunks/hotelsThunk.js';
+import { fetchSearchResults } from '@/store/thunks/searchThunk.js';
 
 import { Pagination, ConfigProvider } from 'antd';
 
@@ -8,11 +8,11 @@ import './ListPagination.module.scss';
 
 const ListPagination = () => {
     const dispatch = useDispatch();
-    const { items, total, page} = useSelector((state) => state.hotels);
-    const {destination, guests, pets } = useSelector((state) => state.filters);
+    const { items, total, page} = useSelector((state) => state.search);
+    const { destination, guests, pets } = useSelector((state) => state.filters);
 
     const handlePageChange = (newPage) => {
-        dispatch(fetchHotelsPage({
+        dispatch(fetchSearchResults({
             page: newPage,
             destinationId: destination.id,
             guests,
@@ -23,9 +23,7 @@ const ListPagination = () => {
     return (
         <ConfigProvider
             theme={{
-                token: {
-                    colorBgTextHover: '#f7f7f7',
-                },
+                token: { colorBgTextHover: '#f7f7f7' },
                 components: {
                     Pagination: {
                         itemActiveBg: '#222222',

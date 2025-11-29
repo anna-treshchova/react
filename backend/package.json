@@ -1,13 +1,19 @@
 {
   "name": "backend",
   "type": "module",
-  "main": "index.js",
+  "imports": {
+    "#routes/*": "./src/routes/*",
+    "#config/*": "./src/config/*",
+    "#utils/*": "./src/utils/*"
+  },
+  "main": "src/server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0"
   },
   "devDependencies": {

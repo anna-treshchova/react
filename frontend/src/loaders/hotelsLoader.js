@@ -1,11 +1,14 @@
-import store from '../store';
-import { fetchHotelsPage } from '../store/thunks/hotelsThunk.js';
+import store from '@/store';
+import { fetchSearchResults } from '@/store/thunks/searchThunk.js';
 
-const API_URL = 'http://localhost:3000';
+const {
+    VITE_BASE_URL: BASE_URL,
+    VITE_HOTELS: HOTELS_URL
+} = import.meta.env;
 
 export async function allHotelsLoader() {
     try {
-        await store.dispatch(fetchHotelsPage({ page: 1 }));
+        await store.dispatch(fetchSearchResults({ page: 1 }));
         return null;
     } catch (err) {
         console.error(err.message);
@@ -14,16 +17,16 @@ export async function allHotelsLoader() {
 }
 
 export async function hotelLoader({ params }) {
-    const { id } = params;
-
     try {
-        const res = await fetch(`${API_URL}/hotels/${id}`);
+        const { id } = params;
 
+        const res = await fetch(`${BASE_URL}${HOTELS_URL}/${id}`);
+
+        const data = await res.json();
         if (!res.ok) {
-            const errorBody = await res.json();
-            throw new Error(errorBody.message || 'Hotel not found.');
+            throw new Error(data.message || 'Hotel not found.');
         }
-        return res.json();
+        return data;
     } catch (err) {
         console.error(err.message);
         return null;

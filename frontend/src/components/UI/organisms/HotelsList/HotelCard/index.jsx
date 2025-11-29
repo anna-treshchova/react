@@ -12,7 +12,6 @@ import { Card } from 'antd';
 import { StarFilled } from '@ant-design/icons';
 
 import styles from './HotelCard.module.scss';
-import HotelDetails from "@/pages/hotel/components/Details/index.jsx";
 
 
 const HotelCard = ({ hotel }) => {
@@ -85,7 +84,7 @@ const HotelCard = ({ hotel }) => {
     )
 }
 
-HotelDetails.propTypes = {
+HotelCard.propTypes = {
     hotel: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string,

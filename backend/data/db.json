@@ -163,7 +163,7 @@
         "Self check-in",
         "City view"
       ],
-      "favorite": true
+      "favorite": false
     },
     {
       "id": 5018103,
@@ -192,7 +192,7 @@
         "Free cancellation up to two weeks",
         "Fast wifi"
       ],
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 5018104,
@@ -685,7 +685,7 @@
         "Great location",
         "Fast wifi"
       ],
-      "favorite": false
+      "favorite": true
     },
     {
       "id": 5018121,

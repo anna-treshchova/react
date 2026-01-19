@@ -18,8 +18,7 @@ router.patch('/:id', async (req, res) => {
             return res.status(404).json({ message: 'Selected hotel not found.' });
         }
 
-        hotels[index] = {...hotels[index], ...req.body};
-        const hotel =  hotels[index];
+        const hotel = hotels[index] = {...hotels[index], ...req.body};
 
         db.hotels = hotels;
         await fs.writeFile(paths.DB_PATH, JSON.stringify(db,  null, 2));

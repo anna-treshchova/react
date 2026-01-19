@@ -2,13 +2,15 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchSearchResults } from '@/store/thunks/searchThunk.js';
 
+import { PAGE_SIZE } from '@/constants/pagination.js';
+
 import { Pagination, ConfigProvider } from 'antd';
 
 import './ListPagination.module.scss';
 
 const ListPagination = () => {
     const dispatch = useDispatch();
-    const { items, total, page} = useSelector((state) => state.search);
+    const { total, page } = useSelector((state) => state.search);
     const { destination, guests, pets } = useSelector((state) => state.filters);
 
     const handlePageChange = (newPage) => {
@@ -33,11 +35,11 @@ const ListPagination = () => {
                 }
             }}
         >
-            {items.length > 0 && (
+            {total > PAGE_SIZE && (
                 <Pagination
                     current={page}
                     total={total}
-                    pageSize={18}
+                    pageSize={PAGE_SIZE}
                     showSizeChanger={false}
                     showLessItems
                     onChange={handlePageChange}

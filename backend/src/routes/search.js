@@ -1,13 +1,19 @@
 import express from 'express';
+
 import { readJSON } from '#utils/db.js';
 import { paths } from '#config/paths.js';
+
+import { DEFAULT_PAGE, DEFAULT_LIMIT, MAX_LIMIT } from '#config/pagination.js';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
-        const page = Number(req.query.page) || 1;
-        const limit = Number(req.query.limit) || 18;
+        const pageFromQuery = Number(req.query.page) || DEFAULT_PAGE;
+        const limitFromQuery = Number(req.query.limit) || DEFAULT_LIMIT;
+
+        const page = Math.max( 1, pageFromQuery);
+        const limit = Math.min(Math.max(1, limitFromQuery), MAX_LIMIT);
 
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;

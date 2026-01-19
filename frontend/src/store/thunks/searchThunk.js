@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { PAGE_SIZE } from '@/constants/pagination.js';
+
 const {
     VITE_BASE_URL: BASE_URL,
     VITE_SEARCH: SEARCH_URL,
@@ -10,7 +12,10 @@ export const fetchSearchResults = createAsyncThunk(
     'search/fetchSearchResults',
     async ({ page = 1, destinationId, guests, pets }, { rejectWithValue }) => {
         try {
-            const params = new URLSearchParams({ page, limit: '18' }).toString();
+            const params = new URLSearchParams({
+                page: String(page),
+                limit: String(PAGE_SIZE),
+            }).toString();
 
             const res = await fetch(`${BASE_URL}${SEARCH_URL}?${params}`, {
                 method: 'POST',

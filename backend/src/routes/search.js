@@ -9,11 +9,18 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
-        const pageFromQuery = Number(req.query.page) || DEFAULT_PAGE;
-        const limitFromQuery = Number(req.query.limit) || DEFAULT_LIMIT;
+        let page = Number(req.query.page);
+        let limit = Number(req.query.limit);
 
-        const page = Math.max( 1, pageFromQuery);
-        const limit = Math.min(Math.max(1, limitFromQuery), MAX_LIMIT);
+        if (!Number.isInteger(page) || page <= 0) {
+            page = DEFAULT_PAGE;
+        }
+
+        if (!Number.isInteger(limit) || limit <= 0 ) {
+            limit = DEFAULT_LIMIT;
+        }
+
+        limit = Math.min(limit, MAX_LIMIT);
 
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;

@@ -1,0 +1,35 @@
+.radioGroup {
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    padding: 20px 26px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.radioGroup legend {
+    text-align: left;
+    color: #a8a8a8;
+    font-weight: 300;
+    font-size: 12px;
+    margin-left: 12px;
+    padding: 0 8px;
+}
+
+.radioGroup label {
+    font-weight: 200;
+    font-size: 14px;
+}
+
+.radioGroup input {
+    margin-right: 40px;
+}
+
+.radioGroup.hasError:not(:focus) {
+    border-color: var(--border-color-error);
+}
+
+.radioGroup.hasError:not(:focus) legend {
+    color: var(--border-color-error);
+}

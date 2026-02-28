@@ -1,7 +1,5 @@
 import express from 'express';
-
 import { readJSON } from '#utils/db.js'
-
 import { paths } from '#config/paths.js';
 
 const router = express.Router();

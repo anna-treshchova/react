@@ -1,0 +1,15 @@
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    text-align: left;
+    min-height: 16px;
+    margin-left: 6px;
+    color: var(--color-error);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    margin-top: 6px;
+}

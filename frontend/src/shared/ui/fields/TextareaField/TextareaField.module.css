@@ -1,0 +1,55 @@
+.control {
+    position: relative;
+    display: flex;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    padding: 12px 8px 8px;
+    width: 100%;
+}
+
+.label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    color: #a8a8a8;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+    padding: 0 8px;
+    background-color: #ffffff;
+    transition: font-weight .2s linear;
+}
+
+.textarea {
+    outline: none;
+    font-weight: 300;
+    resize: vertical;
+    min-height: 80px;
+    width: 100%;
+}
+
+.control:focus-within {
+    border: 1px solid #0063cb;
+    box-shadow: 0 0 0 1px #0063cb;
+}
+
+.control:focus-within label {
+    color: #0063cb;
+    font-weight: 400;
+}
+
+.control.hasError:not(:focus) {
+    border-color: var(--border-color-error);
+}
+
+.control.hasError:not(:focus) label {
+    color: var(--border-color-error);
+}
+
+.control.hasError:focus-within {
+    border-color: var(--border-color-error);
+    box-shadow:  0 0 0 1px var(--border-color-error);
+}
+.control.hasError:focus-within label {
+    color: var(--border-color-error);
+}

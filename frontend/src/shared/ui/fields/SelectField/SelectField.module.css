@@ -1,0 +1,22 @@
+.select {
+    outline: none;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 8px 2px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #a8a8a8;
+}
+
+.selected {
+    color: #000000;
+}
+
+.select:focus {
+    outline: none;
+    border-bottom: 1px solid #0063cb;
+    box-shadow: 0 1px 0 0 #0063cb;
+}
+
+.select.hasError:not(:focus) {
+    border-color: var(--border-color-error);
+}

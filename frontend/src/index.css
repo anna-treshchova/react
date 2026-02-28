@@ -10,8 +10,7 @@ html, body {
 body {
     min-width: 768px;
     font-family: "Inter", sans-serif;
-    background-color: #ffffff;
-    color: white;
+    box-sizing: border-box;
 }
 
 @theme {
@@ -99,9 +98,10 @@ body {
     --color-primary-active: #006E63;
     --color-primary-disabled: #9ACFC8;
 
-    --color-error: #E74C3C;
-
     --color-text: #333333;
+
+    --color-error: #E74C3C;
+    --border-color-error: #E74C3C;
 }
 
 

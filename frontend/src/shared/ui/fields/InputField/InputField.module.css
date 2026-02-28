@@ -1,0 +1,27 @@
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 8px 6px;
+}
+
+.input:focus {
+    outline: none;
+    border-bottom: 1px solid #0063cb;
+    box-shadow: 0 1px 0 0 #0063cb;
+}
+
+.input::placeholder {
+    color: #a8a8a8;
+    font-weight: 300;
+}
+
+.input.hasError:not(:focus) {
+    border-color: var(--border-color-error);
+}
+
+

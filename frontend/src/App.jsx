@@ -2,22 +2,27 @@ import { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { useDispatch } from 'react-redux';
 
-//loaders, thunks
-import { fetchCurrentUser } from '@/store/thunks/authThunk.js';
-import { destinationsLoader } from '@/loaders/destinationsLoader.js';
-import { eventLoader } from '@/loaders/eventsLoader.js';
+import {
+    LoginPage,
+    SignupPage,
+    fetchCurrentUser
+} from '@/features/auth';
 
-//pages
-import Login from '@/pages/login';
-import Signup from '@/pages/signup';
-import Events from '@/pages/events';
-import AboutUs from '@/pages/about-us';
-import Event from '@/pages/event';
-import Wishlist from '@/pages/wishlist';
+import {
+    EventsPage,
+    EventPage,
+    destinationsLoader,
+    eventLoader
+} from '@/features/events';
 
-//components
-import Layout from '@/components/Layout';
-import PrivateRoute from '@/components/PrivateRoute';
+
+import { AboutPage } from '@/features/about';
+import { WishlistPage } from '@/features/wishlist';
+import { FormsPage } from '@/features/formik-forms';
+
+import Layout from '@/app/Layout';
+import PrivateRoute from '@/app/PrivateRoute';
+
 
 const router = createBrowserRouter([
     {
@@ -26,33 +31,37 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'login',
-                element: <Login />,
+                element: <LoginPage />,
             },
             {
                 path: 'signup',
-                element: <Signup />,
+                element: <SignupPage />,
             },
             {
                 index: true,
-                element: <Events />,
+                element: <EventsPage />,
                 loader: destinationsLoader,
             },
             {
-                path: 'about-us',
-                element: <AboutUs />,
+                path: 'about',
+                element: <AboutPage />,
             },
             {
                 path: 'events/:id',
-                element: <Event />,
+                element: <EventPage />,
                 loader: eventLoader,
             },
             {
                path: 'wishlist',
                 element: (
                     <PrivateRoute>
-                        <Wishlist />
+                        <WishlistPage />
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: 'formik-forms',
+                element: <FormsPage />,
             },
             {
                 path: '*',

@@ -1,0 +1,30 @@
+@use '@/styles/mixins' as *;
+
+.footer {
+  @include layout($screen: 'mob', $mode: 'expanded') {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    padding-inline: 8px;
+    opacity: 0;
+
+    animation: slideInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  }
+
+  @include layout($screen: (desk, tab)) {
+    justify-self: end;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(70px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

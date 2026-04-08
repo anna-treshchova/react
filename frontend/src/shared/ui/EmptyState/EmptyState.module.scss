@@ -1,0 +1,29 @@
+.emptyState {
+  min-height: calc(100vh - 200px - 60px);
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    margin-bottom: 42px;
+  }
+  h1 {
+    font-size: 36px;
+    color: #4a4a4a;
+    margin-bottom: 24px;
+  }
+  p { color: #73706d; }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 32px; }
+  }
+
+  @media (max-width: 576px) {
+    p {
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+
+}

@@ -19,6 +19,11 @@ html, body {
   color: $color-text;
 }
 
+html {
+  // Вмикаємо магнітний скрол по вертикалі
+  scroll-snap-type: y mandatory;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -34,4 +39,5 @@ button, input, select {
 ul, ol {
   list-style: none;
 }
+
 

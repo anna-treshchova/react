@@ -1,0 +1,67 @@
+@use '@/styles/variables' as *;
+
+.button {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 12px;
+    font: $font-sm;
+    color: var(--btn-text-color);
+    width: 180px;
+    &:hover {
+        color: var(--btn-text-color) !important;
+    }
+
+    @media (min-width: 480px) { width: 240px }
+    @media (min-width: 576px) { width: 300px }
+    @media (min-width: 768px) { width: 100% }
+}
+
+.arrowIcon {
+    color: #bfbfbf;
+    font-size: 12px;
+}
+
+.popoverContent {
+    padding: 12px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title {
+        font-weight: 600;
+        font-size: 16px
+    }
+    .subtitle {
+        color: #797979;
+        font: $font-sm;
+        &.pets {
+            text-decoration: underline;
+        }
+    }
+    .input {
+        width: 64px;
+    }
+}
+
+
+
+
+
+
+
+
+
+

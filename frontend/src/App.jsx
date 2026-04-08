@@ -1,57 +1,54 @@
-import { lazy } from 'react'; //lazy loading
-import { createBrowserRouter, RouterProvider } from 'react-router';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router';
 
 //Loaders
-import { destinationsLoader } from './loaders/destinationsLoader.js';
-import { allHotelsLoader, hotelLoader } from './loaders/hotelsLoader.js';
+import { destinationsLoader } from './entities/destinations';
 
-//Pages
-import Home from './pages/home';
-import SearchResults from './pages/search-results';
-import Hotel from './pages/hotel/';
-const About = lazy(() => import('./pages/about'));
+import ExperiencesPage from './pages/Experiences';
+import ServicesPage from './pages/Services';
 
+import {
+  HotelsPage,
+  HotelPage,
+  hotelsLoader,
+  hotelDetailsLoader,
+} from './features/hotels';
 
 //Components
-import Layout from './components/Layout';
+import Layout from './app/Layout';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
     loader: destinationsLoader,
+    shouldRevalidate: ({ currentUrl, nextUrl }) => {
+      return currentUrl.pathname !== nextUrl.pathname;
+    },
     children: [
       {
         index: true,
-        element: <Home />,
-        loader: allHotelsLoader
+        element: <HotelsPage />,
+        loader: hotelsLoader,
       },
       {
-        path: '/search',
-        element: <SearchResults />,
+        path: 'hotels/:id',
+        element: <HotelPage />,
+        loader: hotelDetailsLoader,
       },
       {
-        path: '/search/:id',
-        element: <Hotel />,
-        loader: hotelLoader
+        path: 'experiences',
+        element: <ExperiencesPage />,
       },
       {
-        path: 'about',
-        element: <About />,
-      },
-      {
-        path: '*',
-        element: <Home />,
-        loader: allHotelsLoader
+        path: 'services',
+        element: <ServicesPage />,
       }
     ]
-  }
+  },
 ])
 
 function App() {
-  return (
-    <RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App;

@@ -1,0 +1,73 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.summaryLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 30px;
+  border: 1px solid #dedede;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+
+  @include layout($screen: (desk, tab)) {
+    --summary-scale-x: calc(var(--form-width) / var(--summary-width));
+    --summary-scale-y: calc(var(--form-height) / var(--summary-height));
+
+    height: calc(var(--summary-height) * 1px);
+    width: auto;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08),
+                0 4px 12px rgba(0, 0, 0, 0.05);
+
+    will-change: transform, opacity;
+
+    transition: box-shadow 0.175s cubic-bezier(0.2, 0, 0, 1),
+                opacity $anim-slow,
+                transform $anim-slow;
+    &:hover {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02),
+                  0 8px 24px 0 rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  @include layout($screen: (desk, tab), $mode: 'expanded') {
+    opacity: 0;
+    transform: scale(var(--summary-scale-x), var(--summary-scale-y));
+    pointer-events: none;
+  }
+
+  @include layout($mode: 'collapsed') {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  @include layout($screen: 'mob', $mode: 'collapsed') {
+    height: 58px;
+    width: 100%;
+    transition: border-color .2s ease-out;
+    pointer-events: auto;
+
+    &:hover { border-color: #000000; }
+    &:active { border-color: #000000; }
+  }
+
+  @include layout($screen: 'mob', $hub: true) {
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  @include layout($screen: 'mob', $mode: 'expanded') {
+    display: none;
+  }
+
+  @include layout($disabled: true) {
+    display: none;
+  }
+}

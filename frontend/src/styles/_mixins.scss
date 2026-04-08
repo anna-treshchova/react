@@ -1,0 +1,61 @@
+@use 'sass:meta';
+@use 'sass:list';
+
+@mixin layout(
+  $mode:            null,
+  $floating:        null,
+  $overlay:         null,
+
+  $hub:             null,
+  $view:            null,
+  $disabled:        null,
+
+  $screen:          null,
+  $nav-offscreen:   null,
+  $icons-offscreen: null,
+) {
+  $suffix: "";
+
+  @if $mode             { $suffix: $suffix + "[data-mode='#{$mode}']"; }
+  @if $floating != null { $suffix: $suffix + "[data-floating='#{$floating}']"; }
+  @if $overlay != null  { $suffix: $suffix + "[data-overlay='#{$overlay}']"; }
+
+  @if $hub != null      { $suffix: $suffix + "[data-hub='#{$hub}']"; }
+  @if $view             { $suffix: $suffix + "[data-view='#{$view}']"; }
+  @if $disabled != null { $suffix: $suffix + "[data-disabled='#{$disabled}']"; }
+
+  @if $nav-offscreen != null   { $suffix: $suffix + "[data-nav-offscreen='#{$nav-offscreen}']"; }
+  @if $icons-offscreen != null { $suffix: $suffix + "[data-icons-offscreen='#{$icons-offscreen}']"; }
+
+  $result-selector: ();
+
+  @if meta.type-of($screen) == "list" {
+    @each $s in $screen {
+      $current: ":global([data-screen='#{$s}']#{$suffix}) &";
+      $result-selector: list.append($result-selector, $current, comma);
+    }
+  } @else {
+    $prefix: "";
+
+    @if $screen {
+      $prefix: "[data-screen='#{$screen}']";
+    };
+    $result-selector: ":global(#{$prefix}#{$suffix}) &";
+  }
+
+  $is-empty: $result-selector == ":global() &";
+
+  @if not $is-empty {
+    #{$result-selector} {
+      @content;
+    }
+  }
+}
+
+@mixin no-transitions {
+  &:global([data-no-transitions='true']) {
+    &, & * {
+      transition: none !important;
+    }
+  }
+}

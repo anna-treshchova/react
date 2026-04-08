@@ -1,14 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import destinationsReducer from './slices/DestinationsSlice.js';
-import searchReducer from './slices/SearchSlice.js';
-import filtersReducer from './slices/filtersSlice.js';
+import { destinationsReducer } from '@/entities/destinations';
+import { hotelsReducer } from '@/features/hotels';
 
 const store = configureStore({
    reducer: {
        destinations: destinationsReducer,
-       search: searchReducer,
-       filters: filtersReducer,
+       hotels: hotelsReducer,
    }
 })
 

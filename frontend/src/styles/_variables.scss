@@ -74,3 +74,11 @@ $color-error: #E74C3C;
 
 $color-text: #e1e1e1;
 $color-brand: #ff385b;
+
+$color-btn: #e10c41;
+
+/*----- Animations -----*/
+$anim-slow: .5s cubic-bezier(0.22, 1, 0.36, 1);
+$anim-medium: .2s ease-out;
+$anim-fast: .1s ease-out;
+$anim-delay: .2s;

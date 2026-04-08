@@ -1,9 +1,9 @@
-import SelfCheckInIcon from '../assets/icons/selfCheckIn.svg?react';
-import CancellationIcon from '../assets/icons/Cancellation.svg?react';
-import PetsIcon from '../assets/icons/Pets.svg?react';
-import CityViewIcon from '../assets/icons/CityView.svg?react';
-import WifiIcon from '../assets/icons/Wifi.svg?react';
-import LocationIcon from '../assets/icons/Location.svg?react';
+import SelfCheckInIcon from '@/assets/icons/self-checkin.svg?react';
+import CancellationIcon from '@/assets/icons/cancellation.svg?react';
+import PetsIcon from '@/assets/icons/pets.svg?react';
+import CityViewIcon from '@/assets/icons/city-view.svg?react';
+import WifiIcon from '@/assets/icons/wifi.svg?react';
+import LocationIcon from '@/assets/icons/location.svg?react';
 
 
 export const AMENITIES = {

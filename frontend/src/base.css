@@ -97,6 +97,9 @@ html {
     --color-text: #e1e1e1;
 
     --color-brand: #ff385b;
+
+    --anim: .5s ease-out;
+    --anim-delay: .5s;
 }
 
 body {

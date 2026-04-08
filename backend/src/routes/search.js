@@ -7,10 +7,23 @@ import { DEFAULT_PAGE, DEFAULT_LIMIT, MAX_LIMIT } from '#config/pagination.js';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        let page = Number(req.query.page);
-        let limit = Number(req.query.limit);
+        const {
+            page: pageQuery,
+            limit: limitQuery,
+            destinationId: destinationIdQuery,
+            guests: guestsQuery,
+            pets: petsQuery,
+        } = req.query;
+
+        const destinationId = Number(destinationIdQuery) || null;
+
+        const guests = Number(guestsQuery ?? 0);
+        const pets = Number(petsQuery ?? 0);
+
+        let page = Number(pageQuery);
+        let limit = Number(limitQuery);
 
         if (!Number.isInteger(page) || page <= 0) {
             page = DEFAULT_PAGE;
@@ -25,7 +38,6 @@ router.post('/', async (req, res) => {
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
 
-        const { destinationId, guests, pets } = req.body || {};
 
         const db = await readJSON(paths.DB_PATH);
 
@@ -42,7 +54,7 @@ router.post('/', async (req, res) => {
                 hotel => hotel.city.toLowerCase() === destination.label.toLowerCase()
             )
 
-            if (!hotels || hotels.length === 0) {
+            if (hotels.length === 0) {
                 return res.status(404).json({message: 'No hotels found in this destination.'});
             }
         }

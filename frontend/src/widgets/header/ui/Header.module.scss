@@ -1,0 +1,183 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.headerRoot {
+    @include transitions-disabled;
+}
+
+.headerSentinel {
+    height: 10px;
+    position: absolute;
+    top: 0;
+}
+
+.navSentinel {
+    height: 52px;
+    position: absolute;
+    top: 0;
+}
+
+.header {
+    @include layout($screen: 'mob', $is-header-collapsed: false) {
+        height: 100vh;
+        background-color: #f7f7f7;
+
+        .topBar {
+            position: relative;
+            display: flex;
+        }
+    }
+}
+
+.shadowLine {
+    display: none;
+
+    @include layout($screen: 'mob', $is-hub: true, $is-nav-hidden: false) {
+        display: block;
+        position: sticky;
+        top: 100px;
+        height: 0;
+        width: 100%;
+        z-index: 10;
+        pointer-events: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            box-shadow:
+                    0 4px 8px rgba(0, 0, 0, 0.01),
+                    0 12px 16px rgba(0, 0, 0, 0.04);
+            pointer-events: none;
+            background-color: transparent;
+        }
+    }
+
+    @include layout($screen: 'mob', $is-form-disabled: true) {
+        &::after {
+            top: -56px;
+        }
+    }
+}
+
+.userWrapper {
+    position: fixed;
+    right: 24px;
+    top: 0;
+    transform: translateY(24px);
+    gap: 12px;
+    transition: transform 0.3s ease-out;
+    z-index: 5;
+    display: none;
+
+    @include layout($screen: (desk, tab)) {
+        display: flex;
+        @media (min-width: 1200px) { right: 40px; }
+    }
+
+    @include layout($screen: 'tab', $is-header-collapsed: true) {
+        transform: translateY(18px);
+    }
+
+    @include layout($screen: 'desk', $is-header-collapsed: true) {
+        transform: translateY(28px);
+    }
+
+    @include layout($page-type: 'details') {
+        position: absolute;
+    }
+}
+
+.topBackground {
+    display: none;
+
+    @include layout($screen: (desk, tab)) {
+        display: block;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 200px;
+        border-bottom: 2px solid #ebebeb;
+        z-index: 4;
+        transition: transform $anim-slow;
+    }
+    @include layout($is-hub: false) {
+        background: #ffffff;
+    }
+    @include layout($is-hub: true) {
+        background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    }
+
+    @include layout($screen: 'desk', $is-header-collapsed: true) {
+        transform: translateY(-50%);
+    }
+
+    @include layout($screen: 'tab', $is-header-collapsed: true) {
+        transform: translateY(-120px);
+    }
+
+    @include layout($page-type: 'details') {
+        position: absolute;
+    }
+}
+
+.spacer {
+    display: block;
+
+    @include layout($screen: (mob, tab), $is-hub: false) {
+        height: 80px;
+    }
+
+    @include layout($screen: (desk, tab), $is-hub: true) {
+        height: 200px;
+    }
+
+    @include layout($screen: 'desk', $is-hub: false) {
+        height: 100px;
+    }
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $anim-medium, visibility $anim-medium;
+
+    @media (min-width: 768px) {
+        z-index: 2;
+    }
+
+    @include layout($has-header-overlay: true) {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.closeButtonWrapper {
+    display: none;
+
+    @include layout($screen: 'mob', $is-header-collapsed: false) {
+        display: block;
+        position: absolute;
+        top: 26px;
+        right: 20px;
+        z-index: 4;
+
+        @media(max-width: 390px) {
+            position: static;
+            margin: 26px 12px 0 0;
+        }
+    }
+}
+
+
+
+
+
+

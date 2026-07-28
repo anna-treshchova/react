@@ -1,0 +1,92 @@
+.hotel {
+  @media (min-width: 768px) {
+    margin-top: 24px;
+  }
+}
+
+.details {
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 26px 26px 0 0;
+  margin: -28px -24px 0;
+  padding: 22px 24px 24px;
+  z-index: 1;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    inset-inline: 24px;
+    display: block;
+    height: 1px;
+    background-color: #dddddd;;
+  }
+}
+
+
+.name, .specs, .amenities {
+  width: 100%;
+  background-color: #ebebeb;
+  border-radius: 4px;
+}
+
+.name {
+  height: 34px;
+  max-width: 440px;
+}
+
+.specs {
+  height: 16px;
+  margin-block: 26px 4px;
+  max-width: 300px;
+}
+
+.amenities {
+  height: 16px;
+  max-width: 260px;
+}
+
+.gallerySlider {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background-color: #ebebeb;
+  border-radius: 4px;
+
+  @media (max-width: 575px) {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media(min-width: 768px) {
+  .details {
+    position: static;
+    display: block;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .name {
+    height: 30px;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .specs {
+    height: 28px;
+    max-width: 360px;
+    margin-block: 36px 6px;
+  }
+
+  .amenities {
+    height: 18px;
+    max-width: 320px;
+  }
+}

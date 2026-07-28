@@ -1,0 +1,12 @@
+{
+  "blacklist": [
+    {
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMxYjYzYWE5LWMzZjEtNDdiOC1iMjU4LTU5M2UwNmU3YzVkZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc4OTkxMDg1LCJleHAiOjE3Nzg5OTQ2ODV9.PyeFSIu-IYB_7LsvBb4bBVKFQQ-NBpL11NQq6vCbuGY",
+      "expiresAt": 1778994685
+    },
+    {
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMxYjYzYWE5LWMzZjEtNDdiOC1iMjU4LTU5M2UwNmU3YzVkZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc4OTkxMjUwLCJleHAiOjE3Nzg5OTQ4NTB9.d6QrhmFeWV91qiLY56j4p6INx1PAComsuLbUZbLRVEQ",
+      "expiresAt": 1778994850
+    }
+  ]
+}

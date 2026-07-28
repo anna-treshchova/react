@@ -1,0 +1,90 @@
+@use '@/shared/styles/variables' as *;
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.field[data-error='true'] .inputWrapper {
+  background-color: #fff6f4;
+  box-shadow: inset 0 0 0 1px #dc4037;
+
+  &:focus-within {
+    box-shadow: inset 0 0 0 1.5px #dc4037;
+  }
+
+  label {
+    color: #d7251b;
+    font-weight: 500;
+    transition: color $transition-minor,
+    font-weight $transition-minor,
+    transform $transition-minor;
+  }
+}
+
+.field[data-disabled='true'] .inputWrapper {
+  background-color: #f7f7f7;
+  box-shadow: inset 0 0 0 1px #ebebeb;
+
+  input {
+    color: #6C6C6C;
+  }
+}
+
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  z-index: 3;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 1px #8c8c8c;
+  transition: box-shadow $transition-minor,
+              background-color $transition-minor;
+
+  &:focus-within {
+    box-shadow: inset 0 0 0 1.5px #222222;
+  }
+
+  input {
+    width: 100%;
+    padding: 30px 16px 10px;
+    color: #222222;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 20px;
+
+    &:focus + label,
+    &:not(:placeholder-shown) + label {
+      transform: translateY(-8px) scale(0.75);
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    color: #6c6c6c;
+    font-weight: 350;
+    line-height: 20px;
+    transform-origin: top left;
+    transition: transform $transition-minor,
+                color $transition-minor;
+  }
+}
+
+.error {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-top: 10px;
+
+  span {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    color: #c13515;
+  }
+}
+

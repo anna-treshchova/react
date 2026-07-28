@@ -1,0 +1,82 @@
+@use '@/shared/styles/variables' as *;
+
+.hotelCard {
+    width: 100%;
+    border: none;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.imageFrame {
+    position: relative;
+    aspect-ratio: 7 / 5;
+    overflow: hidden;
+
+    @media(min-width: 576px) {
+        aspect-ratio: 1 / 0.9;
+    }
+}
+
+.wishlistButtonWrapper {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+}
+
+.content {
+    padding-top: 4px;
+    padding-left: 6px;
+    text-transform: none;
+    h4 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: $font-size-s;
+        line-height: $line-height-sm;
+        text-transform: none;
+        font-weight: 600;
+        color: #2b2b2b;
+        margin-bottom: 2px;
+    }
+}
+
+.meta {
+    display: flex;
+    gap: 10px;
+    font: $font-xs;
+    color: #6c6c6c;
+}
+
+.price {
+    position: relative;
+    &:after {
+        width: 2px;
+        height: 2px;
+        content: '';
+        display: block;
+        border-radius: 50%;
+        background-color: #a1a1a1;
+        position: absolute;
+        right: -6px;
+        top: 55%;
+        transform: translateY(-50%);
+    }
+}
+
+.rating {
+    display: flex;
+    gap: 4px;
+    span {
+        color: #898989;
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
+
+
+
+
+
+
+

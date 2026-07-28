@@ -1,0 +1,28 @@
+@use '@/shared/styles/mixins' as *;
+
+.placeholder {
+  display: none;
+
+  @include layout($screen: 'mob', $is-hub: true) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 2px;
+
+    .icon {
+      display: block;
+      height: 12px;
+      width: 12px;
+      stroke: #222222;
+      stroke-width: 4px;
+      overflow: visible;
+      margin-right: 8px;
+    }
+  }
+}
+

@@ -1,0 +1,79 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.form {
+    @include layout($screen: 'mob', $is-header-collapsed: false) {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        opacity: 1;
+        overflow: visible;
+        pointer-events: auto;
+
+    }
+
+    @include layout($screen: 'mob', $is-header-collapsed: true) {
+        display: none;
+    }
+
+    @include layout($screen: (desk, tab)) {
+        --form-scale-x: calc(var(--summary-width) / var(--form-width));
+        --form-scale-y: calc(var(--summary-height) / var(--form-height));
+
+        height: calc(var(--form-height) * 1px);
+        width: 100%;
+        max-width: 776px;
+
+        display: grid;
+        grid-template-columns: 1fr 1.1fr 1fr 0.3fr;
+        column-gap: 14px;
+        align-items: center;
+        padding-inline: 32px 12px;
+        border: 1px solid #dedede;
+        border-radius: 50px;
+        background-color: #ffffff;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        will-change: transform, opacity;
+        transform-origin: center center;
+
+        transition: opacity $anim-slow,
+        transform $anim-slow;
+    }
+
+    @include layout($screen: (desk, tab), $is-header-collapsed: false) {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+
+    @include layout($screen: (desk, tab), $is-header-collapsed: true) {
+        opacity: 0;
+        transform: scale(var(--form-scale-x), var(--form-scale-y));
+        pointer-events: none;
+    }
+
+    @include layout($is-form-disabled: true) {
+        position: relative;
+        box-shadow: none;
+        border: 1px solid #dedede;
+        background-color: #ffffff;
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: 5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+

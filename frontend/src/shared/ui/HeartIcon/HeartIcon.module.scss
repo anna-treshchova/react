@@ -1,0 +1,38 @@
+.outline {
+  stroke: #222222;
+  fill: transparent;
+}
+
+.outline-overlay {
+  stroke: #ffffff;
+  fill: rgba(0, 0, 0, 0.5);
+}
+
+.filled-overlay {
+  stroke: #ffffff;
+  fill: #ff395c;
+}
+
+.filled {
+  stroke: #ff395c;
+  fill: #ff395c;
+}
+
+.xs {
+  width: 16px;
+  height: 16px;
+}
+
+.sm {
+  width: 24px;
+  height: 24px;
+}
+
+.weight-regular {
+  stroke-width: 2;
+}
+
+.weight-medium {
+  stroke-width: 2.5;
+}
+

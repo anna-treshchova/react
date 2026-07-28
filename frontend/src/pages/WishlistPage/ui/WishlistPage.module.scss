@@ -1,0 +1,34 @@
+.wishlistPage {
+  padding-block: 40px 20px;
+  h1 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+
+
+  @media (min-width: 992px) {
+    padding-block: 60px 100px;
+    h1 { margin-bottom: 40px; }
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+@media (min-width: 576px) {
+  .wishlistPage {
+    padding-top: 50px;
+  }
+
+  h1 { font-size: 32px; }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+}

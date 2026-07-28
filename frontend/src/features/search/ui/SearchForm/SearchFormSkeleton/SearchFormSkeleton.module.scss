@@ -1,0 +1,67 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.form {
+  display: none;
+
+  @include layout($screen: (desk, tab), $is-hub: true ) {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr 0.3fr;
+    column-gap: 14px;
+    max-width: 776px;
+    width: 100%;
+    height: 72px;
+    padding-inline: 32px 12px;
+    background-color: #ffffff;
+    border: 1px solid #dedede;
+    border-radius: 50px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 8px 14px;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    background-color: #ebebeb;
+    color: transparent;
+    border-radius: 4px;
+    padding-left: 12px;
+  }
+
+  .control {
+    width: 70%;
+    height: 22px;
+    background-color: #ebebeb;
+    border-radius: 4px;
+  }
+
+  .button {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: $color-btn;
+    margin-left: auto;
+
+    svg {
+      display: block;
+      height: 16px;
+      width: 16px;
+      stroke: #ffffff;
+      stroke-width: 4px;
+      overflow: visible;
+    }
+  }
+}

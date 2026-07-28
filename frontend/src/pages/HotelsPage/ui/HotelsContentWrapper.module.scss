@@ -1,0 +1,29 @@
+@use '@/shared/styles/mixins' as *;
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(var(--padding-top) * 1px);
+  padding-bottom: 80px;
+  contain: layout style;
+  will-change: transform;
+  height: 100%;
+
+  @include layout($screen: ('desk', 'tab'), $is-hub: true) {
+    padding-bottom: 0;
+  }
+
+  @include layout($screen: ('desk', 'tab'), $is-hub: true, $are-transitions-disabled: false) {
+    padding-bottom: 0;
+    transform: translateY(calc(var(--content-shift) * -1px));
+    animation: slideDown 1.5s cubic-bezier(0.33, 1, 0.3, 1) forwards;
+  }
+
+  @include layout($screen: mob) {
+    padding-block: 40px;
+  }
+}
+
+@keyframes slideDown {
+  to { transform: translateY(0); }
+}

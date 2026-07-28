@@ -4,7 +4,14 @@ import { fileURLToPath } from 'url';
 const _fileName = fileURLToPath(import.meta.url);
 const _dirName = path.dirname(_fileName);
 
+const SRC_ROOT = path.resolve(_dirName, '..');
+const PROJECT_ROOT = path.resolve(SRC_ROOT, '..');
+
 export const paths = {
-    DB_PATH: path.resolve(_dirName, '../../data/db.json'),
-    USERS_PATH: path.resolve(_dirName, '../../data/users.json'),
+    data: {
+        db: path.join(PROJECT_ROOT, 'data', 'db.json'),
+        users: path.join(PROJECT_ROOT, 'data', 'users.json'),
+        verifications: path.join(PROJECT_ROOT, 'data', 'verifications.json'),
+    },
+    logo: path.join(SRC_ROOT, 'assets', 'logo.png'),
 }

@@ -1,0 +1,20 @@
+.resend {
+  color: #222222;
+  font-size: 14px;
+  margin-top: 24px;
+  button {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color .2s ease-out, text-decoration-thickness .1s ease;
+
+    &:hover:not(.throttled) {
+      text-decoration-thickness: 1.5px;
+    }
+
+    &.throttled {
+      color: #a3a3a3;
+      cursor: not-allowed;
+    }
+  }
+}

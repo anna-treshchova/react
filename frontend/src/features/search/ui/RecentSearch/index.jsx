@@ -1,40 +1,37 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router';
 
-import { useLayoutStore } from '@/app/layout/useLayoutStore.js';
-import { formatDates } from '@/features/search/lib/utils.js';
-import {
-    pluralize,
-    calcTotalGuests,
-    loadFromStorage,
-    createSearchParams
-} from '@/shared/utils';
+import { useLayoutStore, selectIsHub } from '@/shared/model';
+import { loadFromStorage } from '@/shared/lib/storage.js';
+import { calcTotalGuests } from '@/shared/lib/guests.js';
+import { pluralize } from '@/shared/lib/text.js';
+import ArrowIcon from '@/shared/assets/icons/arrow.svg?react';
 
-import ArrowIcon from '@/assets/icons/arrow.svg?react';
+import { mapFormStateToSearchParams } from '@/entities/search';
+
+import { formatDates } from '../../lib';
+
 import styles from './RecentSearch.module.scss';
 
-const RecentSearch = () => {
+export const RecentSearch = () => {
     const navigate = useNavigate();
-
-    const isHub = useLayoutStore(state => state.isHub);
+    const isHub = useLayoutStore(selectIsHub);
 
     const recentData = useMemo(() => {
         if (!isHub) return null;
-       return loadFromStorage('recent_search')
+        return loadFromStorage('recent_search')
     }, [isHub])
 
     if (!recentData) return null;
 
     const { destination, guestCategories, dates, timestamp, images } = recentData;
-    const { adults, children } = guestCategories;
 
     const handleContinueSearch = () => {
-        const params = createSearchParams({
-            destinationId: destination.id,
-            ...guestCategories,
-            checkin: dates[0],
-            checkout: dates[1],
-        });
+        const params = mapFormStateToSearchParams({
+            destination,
+            guestCategories,
+            dates
+        })
 
         navigate({
             pathname: '/',
@@ -44,7 +41,7 @@ const RecentSearch = () => {
 
     const label = destination?.label;
 
-    const guests = calcTotalGuests(adults, children);
+    const guests = calcTotalGuests(guestCategories);
     const guestsContent = guests ? pluralize(guests, 'guest') : '';
 
     const datesContent = formatDates(dates[0], dates[1], timestamp);
@@ -61,8 +58,8 @@ const RecentSearch = () => {
                     </div>
 
                     <span className={styles.arrow}>
-                <ArrowIcon/>
-            </span>
+                        <ArrowIcon/>
+                    </span>
                 </div>
                 <div className={styles.images}>
                     {images?.map((image, index) => (
@@ -75,5 +72,3 @@ const RecentSearch = () => {
         </div>
     )
 }
-
-export default RecentSearch;

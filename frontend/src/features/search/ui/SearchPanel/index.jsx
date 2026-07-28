@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState} from 'react';
-import { useLayoutStore } from '@/app/layout/useLayoutStore.js';
-import SearchForm from './SearchForm';
-import SearchSummary from './SearchSummary';
-import { CompactNav } from '@/shared/ui/Nav';
+
+import {useLayoutStore, selectIsMobile} from '@/shared/model';
+
+import { SearchForm } from '../SearchForm';
+import { SearchSummary } from '../SearchSummary';
 
 import styles from './SearchPanel.module.scss';
 
-const SearchPanel = ({ openSearch }) => {
-    const isMobile = useLayoutStore(state => state.isMobile);
+export const SearchPanel = ({ expandHeader, compactNavSlot }) => {
     const formRef = useRef(null);
     const summaryRef = useRef(null);
+
+    const isMobile = useLayoutStore(selectIsMobile);
 
     const [dimensions, setDimensions] = useState({
         formWidth: 776,
@@ -52,12 +54,9 @@ const SearchPanel = ({ openSearch }) => {
                 '--summary-height': 46,
             }}
         >
-            <SearchForm ref={formRef} />
-
-            <SearchSummary ref={summaryRef} openSearch={openSearch} />
-            <CompactNav />
+            <SearchForm ref={formRef}/>
+            <SearchSummary ref={summaryRef} onClick={expandHeader} />
+            {compactNavSlot}
         </div>
     )
 }
-
-export default SearchPanel;

@@ -1,0 +1,75 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  align-items: flex-end;
+  inset: 0;
+  background-color: rgba(0,0,0,0.35);
+  z-index: 1000;
+
+  &[data-animation='entering'] {
+    animation: fadeIn .2s ease-out forwards;
+  }
+
+  &[data-animation='exiting'] {
+    animation: fadeOut .15s ease-out forwards;
+  }
+}
+
+.window {
+  width: 100%;
+  height: calc(100vh - 20px);
+  background-color: #ffffff;
+  border-radius: 32px 32px 0 0;
+
+  .overlay[data-animation='entering'] & {
+    animation: slideUp .5s cubic-bezier(0.25, 1, 0.3, 1) forwards;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 64px;
+  padding-inline: 16px;
+  &.between {
+    justify-content: space-between;
+  }
+}
+
+.content {
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .overlay {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .window {
+    width: 480px;
+    height: auto;
+    border-radius: 32px;
+  }
+
+  .content {
+    min-height: 360px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); }
+  to { transform: translateY(0); }
+}

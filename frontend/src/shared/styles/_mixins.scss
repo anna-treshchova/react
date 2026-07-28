@@ -1,0 +1,83 @@
+@use 'sass:meta';
+@use 'sass:list';
+
+@mixin layout(
+  $is-header-collapsed:      null,
+  $has-header-overlay:       null,
+
+  $is-hub:                   null,
+  $page-type:                null,
+  $is-form-disabled:         null,
+
+  $screen:                   null,
+  $is-nav-hidden:            null,
+  $are-nav-icons-hidden:     null,
+
+  $are-transitions-disabled: null,
+
+  $self:                     false,
+) {
+
+  $selectors-map: (
+    "header-collapsed": $is-header-collapsed,
+    "header-overlay": $has-header-overlay,
+    "hub": $is-hub,
+    "page-type": $page-type,
+    "form-disabled": $is-form-disabled,
+    "nav-hidden": $is-nav-hidden,
+    "nav-icons-hidden": $are-nav-icons-hidden,
+    "transitions-disabled": $are-transitions-disabled,
+  );
+
+  $selectors-chain: "";
+
+  @each $name, $value in $selectors-map {
+    @if $value != null {
+      $selectors-chain: $selectors-chain + "[data-#{$name}='#{$value}']";
+    }
+  }
+
+  $screen-list: (null);
+
+  @if meta.type-of($screen) == "list" {
+    $screen-list: $screen;
+  } @else if $screen {
+    $screen-list: ($screen);
+  }
+
+  $final-selector-list: ();
+
+  @each $s in $screen-list {
+    $screen-selector: "";
+
+    @if($s) {
+      $screen-selector: "[data-screen='#{$s}']"
+    }
+
+    $full-path: "";
+
+    @if $self {
+      $full-path: "&" + $screen-selector + $selectors-chain;
+    } @else {
+      $full-path: ":global(#{$screen-selector}#{$selectors-chain}) &";
+    }
+
+    $final-selector-list: list.append($final-selector-list, $full-path, comma);
+  }
+
+  $has-selectors: ($selectors-chain != "" or $screen != null);
+
+  @if $has-selectors {
+    #{$final-selector-list} {
+      @content;
+    }
+  }
+}
+
+@mixin transitions-disabled {
+  &:global([data-transitions-disabled='true']) {
+    &, & * {
+      transition: none !important;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+/*----- Spacing -----*/
+$space-xs: 8px;
+$space-s: 12px;
+$space-sm: 16px;
+$space-md: 24px;
+$space-lg: 32px;
+$space-xl: 40px;
+$space-2xl: 48px;
+$space-3xl: 64px;
+
+/*----- Typography -----*/
+$font-family: 'Inter', sans-serif;
+
+/* Font weights */
+$font-weight-thin: 100;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+
+/* Font sizes */
+$font-size-xs: 12px;
+$font-size-s: 13px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 30px;
+$font-size-4xl: 36px;
+$font-size-5xl: 48px;
+
+/* Line heights */
+$line-height-xs: 16px;
+$line-height-s: 16px;
+$line-height-sm: 20px;
+$line-height-base: 24px;
+$line-height-lg: 28px;
+$line-height-xl: 28px;
+$line-height-2xl: 32px;
+$line-height-3xl: 36px;
+$line-height-4xl: 44px;
+$line-height-5xl: 56px;
+
+/* Font tokens */
+$font-xs: #{$font-weight-light} #{$font-size-xs}/#{$line-height-xs} #{$font-family};
+$font-s: #{$font-weight-light} #{$font-size-s}/#{$line-height-s} #{$font-family};
+$font-sm: #{$font-weight-light} #{$font-size-sm}/#{$line-height-sm} #{$font-family};
+$font-base: #{$font-weight-regular} #{$font-size-base}/#{$line-height-base} #{$font-family};
+$font-lg: #{$font-weight-regular} #{$font-size-lg}/#{$line-height-lg} #{$font-family};
+$font-xl: #{$font-weight-medium} #{$font-size-xl}/#{$line-height-xl} #{$font-family};
+$font-2xl: #{$font-weight-semibold} #{$font-size-2xl}/#{$line-height-2xl} #{$font-family};
+$font-3xl: #{$font-weight-bold} #{$font-size-3xl}/#{$line-height-3xl} #{$font-family};
+$font-4xl: #{$font-weight-bold} #{$font-size-4xl}/#{$line-height-4xl} #{$font-family};
+$font-5xl: #{$font-weight-black} #{$font-size-5xl}/#{$line-height-5xl} #{$font-family};
+
+
+/*----- Colors -----*/
+$color-primary-900: #000000;
+$color-primary-700: #333333;
+$color-primary-500: #666666;
+$color-primary-300: #f7f7f7;
+$color-primary-100: #ffffff;
+
+$color-primary-hover: #4d4d4d;
+$color-primary-active: #262626;
+$color-primary-disabled: #bfbfbf;
+
+$color-error: #E74C3C;
+
+$color-text: #e1e1e1;
+$color-brand: #ff385b;
+
+$color-btn: #e10c41;
+
+/*----- Animations -----*/
+$anim-slow: .5s cubic-bezier(0.22, 1, 0.36, 1);
+$anim-medium: .2s ease-out;
+$anim-fast: .1s ease-out;
+$anim-delay: .2s;
+
+$duration-slow: .4s;
+$duration-fast: .2s;
+$duration-instant: 0.15s;
+
+$ease-expressive: cubic-bezier(0, 0, 0.2, 1);
+$ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+$transition-major: $duration-slow $ease-expressive;
+$transition-minor: $duration-fast $ease-soft;
+$transition-instant: $duration-instant $ease-soft;

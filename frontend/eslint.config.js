@@ -1,8 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import conartiFsdPlugin from '@conarti/eslint-plugin-feature-sliced';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -13,6 +14,10 @@ export default defineConfig([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
+    plugins: {
+      'feature-sliced': conartiFsdPlugin}
+    ,
+
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -27,6 +32,20 @@ export default defineConfig([
         varsIgnorePattern: '^[A-Z_]',
         argsIgnorePattern: '^_',
       }],
+
+      'feature-sliced/layers-slices': [
+        'error',
+        { 'alias': '@' }
+      ],
+
+      'feature-sliced/absolute-relative': [
+        'error',
+        { 'alias': '@' }
+      ],
+      'feature-sliced/public-api': [
+        'error',
+        { 'alias': '@' }
+      ],
     },
   },
 ])

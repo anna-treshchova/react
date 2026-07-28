@@ -1,0 +1,190 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+  height: 58px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  border: 1px solid #dedede;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06);
+
+  @include layout($screen: (desk, tab), $is-hub: false) {
+    width: auto;
+    height: 46px;
+    margin-top: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08),
+                0 4px 12px rgba(0, 0, 0, 0.05);
+
+    .fields {
+      display: flex;
+    }
+  }
+  @include layout($screen: (desk, tab), $is-hub: true) {
+    display: none;
+  }
+}
+
+.fields {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+
+}
+
+.field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+
+  span {
+    border-radius: 4px;
+    background-color: #ebebeb;
+    color: transparent;
+  }
+
+  @include layout($screen: 'mob') {
+    padding-inline: 8px;
+
+    &:first-child {
+      margin-bottom: 4px;
+      width: 100%;
+    }
+
+    &:nth-child(2) {
+      border-radius: 4px 0 0 4px;
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+      padding-right: 0;
+    }
+
+    &:nth-child(n + 2) {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 12px;
+      background-color: #ebebeb;
+    }
+  }
+
+  @include layout($screen: (desk, tab)) {
+    padding-inline: 16px;
+    padding-block: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 2px;
+
+
+
+    &::after {
+      content: '';
+      width: 1px;
+      height: 100%;
+      background-color: #e1e1e1;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:first-child {
+      padding-left: 0;
+
+    }
+    &:last-child::after {
+      content: none;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  img {
+    display: none;
+  }
+
+  @include layout($screen: (desk, tab)) {
+    padding-block: 2px;
+    padding-inline: 8px 6px;
+
+    img {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background-color: $color-btn;
+      border-radius: 50%;
+
+      svg {
+        display: block;
+        height: 12px;
+        width: 12px;
+        stroke: #ffffff;
+        stroke-width: 5px;
+        overflow: visible;
+        will-change: transform;
+      }
+    }
+  }
+
+  @include layout($is-hub: true) {
+    display: none;
+  }
+}
+
+.placeholder {
+  display: none;
+
+  @include layout($screen: 'mob', $is-hub: true) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 2px;
+  }
+
+  svg {
+    display: block;
+    height: 12px;
+    width: 12px;
+    stroke: #222222;
+    stroke-width: 4px;
+    overflow: visible;
+    margin-right: 8px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ebebeb;
+    background-color: #ebebeb;
+    border-radius: 4px;
+  }
+}
+
+
+

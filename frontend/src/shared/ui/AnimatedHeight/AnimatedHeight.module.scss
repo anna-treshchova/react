@@ -1,0 +1,24 @@
+@use '@/shared/styles/variables' as *;
+
+.animatedHeight {
+  height: 0;
+  overflow: hidden;
+  transition: height $transition-major;
+  & > * {
+    min-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity $transition-minor .1s,
+                visibility $transition-minor .1s
+  }
+
+  &[data-open='true'] > * {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+    transition: transform $transition-major,
+                opacity $transition-instant,
+                visibility $transition-instant;
+  }
+}

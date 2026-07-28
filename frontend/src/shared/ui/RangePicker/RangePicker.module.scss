@@ -1,0 +1,96 @@
+@use '@/shared/styles/variables' as *;
+
+.input {
+  width: 180px;
+  font: $font-sm;
+  color: #000000E0;
+
+  @media (min-width: 480px) { width: 240px;}
+  @media (min-width: 576px) { width: 300px }
+  @media (min-width: 768px) { width: 100% }
+}
+
+.customDatePopup {
+  top: 58px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  :global(.ant-picker-panels) {
+    padding: 30px !important;
+  }
+
+  :global(.ant-picker-panel-container) {
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .customDatePopup {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+    :global(.ant-picker-panel-container) {
+      border-radius: 26px !important;
+    }
+    :global(.ant-picker-content th) {
+      font-weight: 500 !important;
+    }
+
+    :global(.ant-picker-panels) {
+      flex-direction: column !important;
+    }
+
+    :global([class*='-arrow']) {
+      &::before, &::after {
+        display: none;
+      }
+    }
+
+    animation-duration: .5s !important;
+
+    &:global(.ant-slide-up-leave-active) {
+      animation-duration: .1s !important;
+      animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+    }
+  }
+}
+
+
+@media (max-width: 400px) {
+  .customDatePopup {
+    max-width: 290px;
+
+    :global(.ant-picker-panels) {
+      padding: 16px !important;
+    }
+
+    :global(.ant-picker-header) {
+      max-width: 258px;
+
+      button {
+        font-size: 12px !important;
+      }
+    }
+
+    :global(.ant-picker-content th) {
+      font-size: 12px !important;
+    }
+
+    :global(.ant-picker-content) {
+      width: 220px !important;
+    }
+
+    :global(.ant-picker-cell) {
+      padding: 2px 0 !important;
+    }
+
+    :global(.ant-picker-cell-inner) {
+      font-size: 12px !important;
+      width: 28px !important;
+      height: 28px !important;
+      line-height: 28px !important;
+    }
+  }
+}

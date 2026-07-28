@@ -1,5 +1,5 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
 
 .panel {
   display: flex;
@@ -9,28 +9,31 @@
   background: transparent;
   z-index: 4;
 
-  @include layout($screen: 'mob', $mode: 'collapsed') {
+  @include layout($screen: 'mob', $is-header-collapsed: true) {
     position: fixed;
     top: 0;
     padding-top: 12px;
+    background-color: #ffffff;
   }
 
-
-  @include layout($screen: 'mob', $hub: false, $mode: 'collapsed') {
-    padding-bottom: 14px;
+  @include layout($screen: 'mob', $is-hub: false, $is-header-collapsed: true) {
+    padding-block: 10px 12px;
     background: linear-gradient(to bottom, #ffffff, #fdfdfd);
-    border-bottom: 2px solid #ebebeb;
+    box-shadow: rgb(0 0 0/16%) 0 0 6px;
   }
 
 
-  @include layout($screen: 'mob', $mode: 'expanded') {
+  @include layout($screen: 'mob', $is-header-collapsed: false) {
     position: static;
     height: calc(100vh - 80px);
-    padding: 18px 12px 16px;
+    padding: 18px 12px 20px;
   }
 
-  @include layout($screen: 'mob', $nav-offscreen: true) {
+  @include layout($screen: 'mob', $is-hub: true, $is-nav-hidden: true) {
     background-color: #ffffff;
+    box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.01),
+            0 12px 16px rgba(0, 0, 0, 0.04);
   }
 
   @include layout($screen: (desk, tab)) {
@@ -51,19 +54,19 @@
     }
   }
 
-  @include layout($screen: 'tab', $mode: 'collapsed') {
+  @include layout($screen: 'tab', $is-header-collapsed: true) {
     height: 80px;
   }
 
-  @include layout($screen: 'desk', $mode: 'collapsed') {
+  @include layout($screen: 'desk', $is-header-collapsed: true) {
     height: 100px;
   }
 
-  @include layout($screen: (desk, tab), $mode: 'collapsed') {
+  @include layout($screen: (desk, tab), $is-header-collapsed: true) {
     transform: translateY(0);
   }
 
-  @include layout($view: 'details') {
+  @include layout($page-type: 'details') {
     position: absolute;
   }
 }

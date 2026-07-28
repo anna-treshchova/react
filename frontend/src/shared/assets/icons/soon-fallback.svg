@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 60" width="100%" height="100%" fill="none">
+  <path d="M14 30H104" stroke="#DDDDDD" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+
+  <path d="M164 30H254" stroke="#DDDDDD" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+
+  <circle cx="14" cy="30" r="14" fill="#222222" opacity="0.04"/>
+  <circle cx="14" cy="30" r="8" stroke="#222222" stroke-width="1.5" fill="#FFFFFF"/>
+  <circle cx="14" cy="30" r="3.5" fill="#222222"/>
+
+  <circle cx="134" cy="30" r="12" fill="#00A699"/>
+  <circle cx="134" cy="30" r="24" stroke="#00A699" stroke-width="2" opacity="0.15"/>
+
+  <path d="M129.5 23.5H138.5M129.5 36.5H138.5M130 24V24.5C130 27.5 132 29 133 29.5M138 24V24.5C138 27.5 136 29 135 29.5M130 36V35.5C130 32.5 132 31 133 30.5M138 36V35.5C138 32.5 136 31 135 30.5"
+        stroke="#FFFFFF"
+        stroke-width="1.5"
+        stroke-linecap="round"/>
+  <circle cx="134" cy="32.5" r="0.8" fill="#FFFFFF"/>
+
+  <circle cx="254" cy="30" r="14" fill="#717171" opacity="0"/>
+  <circle cx="254" cy="30" r="8" stroke="#717171" stroke-width="1.5" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="254" cy="30" r="2.5" fill="#717171" opacity="0.3"/>
+</svg>
+
+

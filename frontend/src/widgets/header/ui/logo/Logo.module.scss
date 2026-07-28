@@ -1,0 +1,45 @@
+@use '@/shared/styles/mixins' as *;
+
+.logoWrapper {
+  display: none;
+
+  @include layout($screen: (desk, tab)) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 24px;
+
+    transform: translateY(26px);
+    z-index: 5;
+    cursor: pointer;
+    transition: transform 0.3s ease-out;
+
+    @media (min-width: 1200px) {
+      left: 40px;
+    }
+  }
+
+  @include layout($screen: 'tab') {
+    .letter { display: block; }
+    .full { display: none; }
+  }
+
+  @include layout($screen: 'tab', $is-header-collapsed: true) {
+    transform: translateY(20px);
+  }
+
+  @include layout($screen: 'desk') {
+    transform: translateY(18px);
+    .letter { display: none; }
+    .full { display: block; }
+  }
+
+  @include layout($screen: 'desk', $is-header-collapsed: true) {
+    transform: translateY(22px);
+  }
+
+  @include layout($page-type: 'details') {
+    position: absolute;
+  }
+}
+

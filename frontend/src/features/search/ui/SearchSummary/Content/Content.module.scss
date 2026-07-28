@@ -1,0 +1,43 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @include layout($screen: 'mob', $is-hub: true) {
+    display: none;
+  }
+
+  @include layout($screen: (desk, tab)) {
+    padding-block: 2px;
+    padding-inline: 8px 6px;
+
+    .icon {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  @include layout($screen: (desk, tab), $is-header-collapsed: false) {
+    justify-content: flex-end;
+
+    .icon {
+      opacity: 0;
+      transition: opacity $anim-fast;
+    }
+  }
+
+  @include layout($screen: (desk, tab), $is-header-collapsed: true) {
+    .icon {
+      transition: opacity $anim-medium $anim-delay;
+    }
+  }
+
+  @include layout($screen: 'mob', $is-header-collapsed: true) {
+    .icon { display: none; }
+  }
+}

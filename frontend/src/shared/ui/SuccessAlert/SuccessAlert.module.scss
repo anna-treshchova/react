@@ -1,0 +1,21 @@
+.inner {
+  display: flex;
+  align-items: center;
+  padding-block: 10px;
+  padding: 16px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.02),
+              0 6px 8px 0 rgba(0,0,0,0.10),
+              0 16px 56px 0 rgba(0,0,0,0.18);
+  z-index: 2000;
+
+  .icon {
+    font-size: 20px;
+    color: #12A139;
+    margin-right: 6px;
+  }
+}

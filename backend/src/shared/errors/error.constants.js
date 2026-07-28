@@ -1,13 +1,17 @@
-export const APP_ERRORS = {
+export const ERROR_CODES = {
     system: {
         INTERNAL_SERVER_ERROR: {
             code: 'INTERNAL_SERVER_ERROR',
-            message: '',
+            message: 'Unhandled server exception or runtime crash.',
         },
         BAD_REQUEST: {
             code: 'BAD_REQUEST',
-            message: '',
+            message: 'Invalid or malformed request parameters.',
         },
+        RESOURCE_NOT_FOUND: {
+            code: 'RESOURCE_NOT_FOUND',
+            message: 'The requested resource does not exist in the database.',
+        }
     },
     auth: {
         request: {
@@ -28,10 +32,6 @@ export const APP_ERRORS = {
             MISSING_FIELDS: {
                 code: 'MISSING_FIELDS',
                 message: 'Verification payload is incomplete: email or code is missing.'
-            },
-            VERIFICATION_NOT_FOUND: {
-                code:'VERIFICATION_NOT_FOUND',
-                message: 'Verification failed: no active verification session found for this email.'
             },
             CODE_EXPIRED: {
                 code: 'CODE_EXPIRED',
@@ -60,12 +60,26 @@ export const APP_ERRORS = {
                 code: 'TOKEN_EXPIRED',
                 message: 'Authentication rejected: token expiration time (exp) has been reached.'
             },
-        },
-        logout: {
-            LOGOUT_FAILED: {
-                code: 'LOGOUT_FAILED',
-                message: 'Logout failed: unable to blacklist access token during logout operation.'
+            TOKEN_BLACKLISTED: {
+                code: 'TOKEN_BLACKLISTED',
+                message: 'Authentication rejected: token has been blacklisted.'
             },
+        },
+    },
+    users: {
+        USER_NOT_FOUND: {
+            code: 'USER_NOT_FOUND',
+            message: 'User not found: the requested user does not exist in the database.'
         }
     }
+}
+
+export const ERROR_TO_HTTP_STATUS = {
+    [ERROR_CODES.auth.request.CODE_RESEND_DELAY.code]: 429,
+    [ERROR_CODES.auth.token.NO_TOKEN_PROVIDED.code]: 401,
+    [ERROR_CODES.auth.token.TOKEN_EXPIRED.code]: 401,
+    [ERROR_CODES.auth.token.INVALID_TOKEN.code]: 401,
+    [ERROR_CODES.auth.token.TOKEN_BLACKLISTED.code]: 401,
+    [ERROR_CODES.users.USER_NOT_FOUND.code]: 401,
+    [ERROR_CODES.system.RESOURCE_NOT_FOUND.code]: 404,
 }

@@ -1,13 +1,20 @@
-export const validateBody = (validateFn) => {
+export const validateRequest = (validateFn, source = 'body') => {
    return (req, res, next) => {
-      const { value, errorCode } = validateFn(req.body);
+      try{
+         const validatedData = validateFn(req[source]);
 
-      if (errorCode)  {
-         return res.status(400).json({ errorCode });
+         for (const key in req[source]) {
+            delete req[source][key];
+         }
+
+         Object.assign(req[source], validatedData);
+
+         next();
+      } catch (err) {
+         next(err);
       }
-
-      req.body = value;
-      next();
    }
 }
+
+
 

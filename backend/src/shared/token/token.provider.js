@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { ERROR_CODES } from '#shared/constants/errors.js';
+import { ERROR_CODES } from '../errors/index.js';
+const { token: TOKEN_ERRORS } = ERROR_CODES.auth;
 
 export const generateAccessToken = (payload = {}) => {
     return jwt.sign(
@@ -15,13 +16,12 @@ export const generateAccessToken = (payload = {}) => {
 export const verifyAccessToken = (token) => {
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET);
-        return { payload };
+        return { payload, errorCode: null };
     } catch (jwtErr) {
+        const errorConfig = jwtErr.name === 'TokenExpiredError'
+            ? TOKEN_ERRORS.TOKEN_EXPIRED
+            : TOKEN_ERRORS.INVALID_TOKEN
 
-        const errorCode = jwtErr.name === 'TokenExpiredError'
-            ? ERROR_CODES.auth.token.TOKEN_EXPIRED
-            : ERROR_CODES.auth.token.INVALID_TOKEN
-
-        return { errorCode };
+        return { payload: null, errorConfig };
     }
 }

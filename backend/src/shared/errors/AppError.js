@@ -1,12 +1,20 @@
+import { ERROR_CODES } from './error.constants.js';
+
 export class AppError extends Error {
-    constructor(errConfig, status, details) {
-        super(errConfig?.message || 'Unknown error');
+    constructor(errConfig, details) {
+        const isValidConfig = !!(errConfig?.code && errConfig?.message);
 
-        this.code = errConfig?.code || 'UNKNOWN_ERROR';
-        this.status = status;
-        this.details = details;
+        const errMessage = isValidConfig
+            ? errConfig.message
+            : `AppError Initialization Failed: Invalid or missing errConfig. Passed: ${JSON.stringify(errConfig)}`;
 
-        this.isOperational = true;
+        super(errMessage);
+
+        this.code = isValidConfig ? errConfig.code : ERROR_CODES.system.INTERNAL_SERVER_ERROR.code;
+
+        this.details = details || null;
+
+        this.isOperational = isValidConfig;
 
         Error.captureStackTrace(this, this.constructor);
     }

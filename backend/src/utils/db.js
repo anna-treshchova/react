@@ -1,22 +1,38 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 
-export const readJSON = async (filePath, key = null) => {
+export const readJSONSync = (filePath) => {
     try {
-        const fileData = await fs.readFile(filePath, 'utf-8');
-        const db = JSON.parse(fileData);
-        return key ? db[key] : db;
+        const fileData = fs.readFileSync(filePath, 'utf-8');
+
+        if (!fileData || fileData.trim() === '') {
+            return [];
+        }
+
+        return JSON.parse(fileData);
     } catch(err) {
         if (err.code === 'ENOENT') {
             return null;
         }
+        console.error(`[FATAL STARTUP ERROR] Database file ${filePath} is corrupted or inaccessible!`, err)
         throw err;
     }
 }
 
-export const writeJSON = (filePath, data, key = null) => {
-    const structuredData = key ? { [key]: data } : data;
-    const jsonData = JSON.stringify(structuredData,  null, 2);
+export const writeJSON = async (filePath, data) => {
+    let jsonData;
 
-    return fs.writeFile(filePath, jsonData, 'utf-8');
+    try {
+        jsonData = JSON.stringify(data,  null, 2);
+        await fs.promises.writeFile(filePath, jsonData, 'utf-8')
+
+    } catch(err) {
+        err.context = {
+            ...err.context,
+            filePath,
+            operation: jsonData ? 'fs.promises.writeFile' : 'JSON.stringify'
+        }
+
+        throw err;
+    }
 }
 

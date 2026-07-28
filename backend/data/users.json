@@ -1,3 +1,9 @@
-{
-  "users": []
-}
+[
+  {
+    "id": "user_1fd64f49-8f60-452e-abc3-bf95d6119dbc",
+    "email": "anna.treshchova@gmail.com",
+    "name": null,
+    "role": "user",
+    "createdAt": "2026-07-16T17:39:54.456Z"
+  }
+]

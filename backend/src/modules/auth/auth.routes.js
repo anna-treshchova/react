@@ -1,169 +1,17 @@
 import express from 'express';
 
-import { validateBody } from '#middleware/validate.js';
-
-import { EMAIL_REGEX } from '#constants/regex.js';
-import { ERROR_CODES, SERVER_ERROR_LOGS } from '#constants/errors.js';
-
-import { PATHS } from '#config/paths.js';
-import { sendMail } from '#shared/lib/mailer';
-
-import { generateAccessToken, verifyAccessToken } from '#shared/lib/tokens/tokens';
-
-import { renderAuthCodeTemplate } from '#shared/lib/mailer/templates/renderAuthCodeTemplate.js';
-
-import {
-    createVerification,
-    revokeVerification,
-    checkThrottle,
-    validateCode
-} from '#entities/verifications/index.js';
-import { upsertUser } from '#entities/users/upsertUser.js';
-
-import { readJSON, writeJSON } from '#utils/db.js';
-import {AUTH_CONFIG} from "#config/auth.js";
+import { validateRequest } from '#shared/validation/index.js';
+import { requireAuth } from './auth.middleware.js';
+import { validateEmail, validateEmailAndCode } from './auth.validator.js';
+import { sendCode, verifyCode, logout } from './auth.controller.js';
 
 const router = express.Router();
 
-export const validateEmail = (body) => {
-    const { timezone, is12Hour } = body;
-    const email = body.email?.trim().toLowerCase();
+router.post('/send-code', validateRequest(validateEmail), sendCode);
 
-    if (!email) {
-        return { errorCode: ERROR_CODES.auth.request.EMAIL_REQUIRED };
-    }
+router.post('/verify-code', validateRequest(validateEmailAndCode), verifyCode);
 
-    if (!EMAIL_REGEX.test(email)) {
-        return { errorCode: ERROR_CODES.auth.request.INVALID_EMAIL }
-    }
-
-    return { value: { email, timezone, is12Hour } }
-}
-
-export const validateEmailAndCode = (body) => {
-    const email = body.email?.trim().toLowerCase();
-    const code = body.code?.trim();
-
-    if (!email || !code) {
-        return { errorCode: ERROR_CODES.auth.verify.MISSING_FIELDS };
-    }
-    return { value: { email, code } };
-}
-
-
-
-
-
-router.post('/send-code', validateBody(validateEmail), async (req, res) => {
-    const { email } = req.body;
-
-    let verificationData = null;
-    try {
-        const { isThrottled, remainingTimeMs } = await checkThrottle(email);
-
-        if (isThrottled) {
-            return res.status(429).json({
-                errorCode: ERROR_CODES.auth.request.CODE_RESEND_DELAY,
-                retryAfterMs: remainingTimeMs,
-            })
-        }
-
-        verificationData = await createVerification(email);
-
-        const { subject, html } = renderAuthCodeTemplate(verificationData.code, timezone, is12Hour)
-        await sendMail({ to: email, subject, html });
-
-        res.status(201).json({
-            verification: {
-                email: verificationData.email,
-                expiresInMs: verificationData.expiresInMs,
-            },
-            retryAfterMs: verificationData.retryAfterMs,
-        })
-    } catch (err) {
-        console.error(`[${SERVER_ERROR_LOGS.auth.CODE_SEND_FAILED}]: for ${email}: `, err);
-
-        if (verificationData) {
-           await revokeVerification(email).catch((err) => {
-               console.error(`[${SERVER_ERROR_LOGS.auth.VERIFICATION_REVOKE_FAILED}]: for ${email}: `, err);
-           });
-        }
-
-        res.status(500).json({ errorCode: ERROR_CODES.auth.request.CODE_SEND_FAILED });
-    }
-})
-
-
-
-router.post('/verify-code', validateBody(validateEmailAndCode), async (req, res) => {
-    const { email, code } = req.body;
-
-    try {
-        const errorCode = await validateCode(email, code);
-
-        if (errorCode) {
-            return res.status(400).json({ errorCode })
-        }
-
-        const user = await upsertUser(email);
-
-         const accessToken = generateAccessToken({ id: user.id, role: user.role });
-
-         res.status(200).json({
-             accessToken,
-             user: {
-                id: user.id,
-                email: user.email,
-                name: user.name,
-                role: user.role,
-            },
-        })
-    } catch (err) {
-        console.error(`[${SERVER_ERROR_LOGS.auth.CODE_VERIFICATION_FAILED}]: for ${email}: `, err);
-        res.status(500).json({ errorCode: ERROR_CODES.auth.verify.CODE_VERIFICATION_FAILED });
-    }
-})
-
-
-router.get('/me', async (req, res) => {
-
-})
-
-router.post('/logout', async (req, res) => {
-    try {
-        const authHeader = req.headers.authorization;
-
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return res.status(401).json({ errorCode: ERROR_CODES.auth.token.NO_TOKEN_PROVIDED});
-        }
-
-        const accessToken = authHeader.split(' ')[1];
-        const nowISO = new Date().toISOString();
-
-        const { payload, errorCode } = verifyAccessToken(accessToken);
-
-        if (errorCode) {
-            return res.status(401).json({ errorCode });
-        }
-
-        const blockedTokens = await readJSON(PATHS.data.blacklist, 'blacklist') || [];
-        const filteredTokens = blockedTokens.filter(t => t.expiresAt > nowISO);
-
-        const newBlockedToken = {
-            accessToken,
-            expiresAt: new Date(payload.exp * 1000).toISOString()
-        }
-
-        filteredTokens.push(newBlockedToken);
-        await writeJSON(PATHS.data.blacklist, filteredTokens, 'blacklist');
-
-        res.sendStatus(200);
-    } catch (err) {
-        console.error(`[${SERVER_ERROR_LOGS.auth.LOGOUT_FAILED}]: `, err);
-        res.status(500).json({ errorCode: ERROR_CODES.auth.logout.LOGOUT_FAILED });
-    }
-})
-
+router.post('/logout', requireAuth, logout);
 
 export default router;
 

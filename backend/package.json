@@ -3,7 +3,10 @@
   "type": "module",
   "imports": {
     "#routes/*": "./src/routes/*",
+    "#modules/*": "./src/modules/*",
+    "#shared/*": "./src/shared/*",
     "#config/*": "./src/config/*",
+    "#constants/*": "./src/constants/*",
     "#utils/*": "./src/utils/*"
   },
   "main": "src/server.js",
@@ -13,8 +16,12 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dayjs": "^1.11.20",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^8.0.5",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",

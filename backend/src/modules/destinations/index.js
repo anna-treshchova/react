@@ -1,0 +1,1 @@
+export { default as destinationsRouter } from './destinations.routes.js';

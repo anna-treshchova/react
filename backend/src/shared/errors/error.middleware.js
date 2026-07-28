@@ -1,16 +1,22 @@
-import { APP_ERRORS } from './constants.js';
+import { ERROR_CODES, ERROR_TO_HTTP_STATUS } from './error.constants.js';
 
-export const errorHandler = (err, req, res) => {
+export const errorHandler = (err, req, res, next) => {
+    const reqLine = `[${req.method} ${req.originalUrl}]`;
+    const reqContext = err.context ? ` | Context: ${JSON.stringify(err.context)}`: '';
+
+    const statusCode = err.isOperational
+        ? ERROR_TO_HTTP_STATUS[err.code] || 400
+        : 500;
+
     if (err.isOperational) {
-        return res.status(err.status).json({
+        console.warn(`[${err.code}] ${reqLine}${reqContext}: ${err.message}`);
+
+        return res.status(statusCode).json({
             errorCode: err.code,
-           ...(err.details ? { details: err.details } : {})
+           ...(err.details ?? {})
         })
     }
 
-    const reqLine = `[${req.method} ${req.originalUrl}]`
-    const reqContext = err.context ? ` Context: ${JSON.stringify(err.context)}`: '';
-
-    console.error(`[SERVER_ERROR] ${reqLine}${reqContext}: `, err);
-    res.status(500).json({ errorCode: 'SERVER_ERROR' });
+    console.error(`[${ERROR_CODES.system.INTERNAL_SERVER_ERROR.code}] ${reqLine}${reqContext}:`, err);
+    res.status(statusCode).json({ errorCode: ERROR_CODES.system.INTERNAL_SERVER_ERROR.code });
 }

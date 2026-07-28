@@ -1,5 +1,5 @@
 import { NAV_ROUTES } from '../../model/navigation.constants.js';
-import NavItem from './NavItem';
+import { NavItem } from './NavItem';
 import styles from './RegularNav.module.scss';
 
 export const RegularNav = () => {

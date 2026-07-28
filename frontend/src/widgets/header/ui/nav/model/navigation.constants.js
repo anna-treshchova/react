@@ -1,13 +1,9 @@
-import homesAnimation from '../../../../../shared/assets/animations/house-flip.json';
-import expAnimation from '../../../../../shared/assets/animations/hot-air-balloon.json';
-import servicesAnimation from '../../../../../shared/assets/animations/hotel-bell.json';
-
 export const NAV_ROUTES = [
     {
         id: 'homes',
         label: 'Homes',
         path: '/',
-        animation: homesAnimation,
+        animationPath: '/animations/house-flip.lottie',
         iconSize: 50,
         mobileWidth: 45,
     },
@@ -15,7 +11,7 @@ export const NAV_ROUTES = [
         id: 'experiences',
         label: 'Experiences',
         path: '/experiences',
-        animation: expAnimation,
+        animationPath: '/animations/hot-air-balloon.lottie',
         iconSize: 55,
         mobileWidth: 72,
     },
@@ -23,7 +19,7 @@ export const NAV_ROUTES = [
         id: 'services',
         label: 'Services',
         path: '/services',
-        animation: servicesAnimation,
+        animationPath: '/animations/hotel-bell.json',
         iconSize: 55,
         mobileWidth: 50,
     },

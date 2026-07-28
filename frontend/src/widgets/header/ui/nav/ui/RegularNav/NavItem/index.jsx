@@ -28,7 +28,7 @@ const ICON_OFFSETS = {
     }
 }
 
-const NavItem = ({ route }) => {
+export const NavItem = ({ route }) => {
     const isMobile = useLayoutStore(selectIsMobile);
 
     const lottieRef = useRef(null);
@@ -73,5 +73,3 @@ const NavItem = ({ route }) => {
         </NavLink>
     )
 }
-
-export default NavItem;

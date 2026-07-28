@@ -1,11 +1,11 @@
-import { useEffect, forwardRef } from 'react';
-import Lottie from 'lottie-react';
+import { forwardRef, useEffect, useState } from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { useLayoutStore, selectIsHeaderCollapsed, selectIsMobile } from '@/shared/model';
 
 import styles from './LottieIcon.module.scss'
 
-const getIconStyles = (offsets, baseSize, isMobile, isHeaderCollapsed) => {
+const getIconStyles = ({ offsets, baseSize, isMobile, isHeaderCollapsed }) => {
     const margins = isMobile ? offsets.margins.mobile : offsets.margins.desktop;
 
     const size = isMobile
@@ -28,23 +28,49 @@ export const LottieIcon = forwardRef(({ route, offsets, handleComplete }, ref) =
     const isHeaderCollapsed = useLayoutStore(selectIsHeaderCollapsed);
     const isMobile = useLayoutStore(selectIsMobile);
 
-    useEffect(() => {
-        if (ref?.current && offsets?.speed) {
-            ref.current.setSpeed(offsets.speed);
-        }
-    }, [ref, offsets?.speed]);
+    const iconStyles = getIconStyles({
+        offsets,
+        baseSize: route.iconSize,
+        isMobile,
+        isHeaderCollapsed
+    });
 
-    const iconStyles = getIconStyles(offsets,route.iconSize, isMobile, isHeaderCollapsed);
+    const [dotLottie, setDotLottie] = useState(null);
+
+    // 1. Правильно реєструємо подію onComplete
+    useEffect(() => {
+        if (dotLottie && handleComplete) {
+            dotLottie.addEventListener('complete', handleComplete);
+
+            // Очищення слухача при розмонтуванні
+            return () => dotLottie.removeEventListener('complete', handleComplete);
+        }
+    }, [dotLottie, handleComplete]);
+
+    // 2. Правильно обробляємо ref
+    const dotLottieRefCallback = (instance) => {
+        setDotLottie(instance); // Зберігаємо для локального useEffect
+
+        // Безпечно синхронізуємо з батьківським компонентом (NavList/NavItem)
+        if (typeof ref === 'function') {
+            ref(instance);
+        } else if (ref) {
+            ref.current = instance;
+        }
+    };
 
     return (
         <div className={styles.icon} style={iconStyles}>
-            <Lottie
-                lottieRef={ref}
-                animationData={route.animation}
+            <DotLottieReact
+                dotLottieRefCallback={dotLottieRefCallback}
+                src={route.animationPath}
+                speed={offsets?.speed ?? 1}
                 loop={false}
                 autoplay={false}
-                onComplete={handleComplete}
+                renderConfig={{
+                    devicePixelRatio: window.devicePixelRatio,
+                }}
             />
         </div>
-    )
+    );
 })

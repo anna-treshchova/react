@@ -12,6 +12,7 @@
   "dependencies": {
     "@ant-design/icons": "^6.0.2",
     "@conarti/eslint-plugin-feature-sliced": "^1.0.5",
+    "@lottiefiles/dotlottie-react": "^0.19.12",
     "@reduxjs/toolkit": "^2.9.0",
     "antd": "^6.3.7",
     "dayjs": "^1.11.18",

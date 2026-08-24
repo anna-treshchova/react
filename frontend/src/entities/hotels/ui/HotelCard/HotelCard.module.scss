@@ -11,6 +11,7 @@
     position: relative;
     aspect-ratio: 7 / 5;
     overflow: hidden;
+    border-radius:  24px;
 
     @media(min-width: 576px) {
         aspect-ratio: 1 / 0.9;
@@ -24,9 +25,9 @@
     z-index: 1;
 }
 
-.content {
+.textContent {
     padding-top: 4px;
-    padding-left: 6px;
+    padding-inline: 6px;
     text-transform: none;
     h4 {
         white-space: nowrap;
@@ -73,10 +74,3 @@
         line-height: 16px;
     }
 }
-
-
-
-
-
-
-

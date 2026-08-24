@@ -3,24 +3,52 @@
 .contentWrapper {
   display: flex;
   flex-direction: column;
-  padding-top: calc(var(--padding-top) * 1px);
-  padding-bottom: 80px;
+  padding-block: 40px;
   contain: layout style;
   will-change: transform;
   height: 100%;
 
-  @include layout($screen: ('desk', 'tab'), $is-hub: true) {
-    padding-bottom: 0;
+  @media(min-width: 768px) {
+    padding-bottom: 80px;
+
+    @include layout($is-hub: true) {
+      padding-bottom: 0;
+    }
+
+    @include layout($is-hub: true, $intro-status: (pending, ready), $skip-intro: false) {
+      transform: translateY(-20px);
+    }
+
+    @include layout($is-hub: true, $intro-status: 'ready', $skip-intro: false) {
+      animation: slideDown 1s cubic-bezier(0.33, 1, 0.3, 1) forwards;
+
+      &.hasRecentSearch {
+        transform: translateY(calc((var(--recent-search-height) + 20px) * -1));
+        animation: slideDown 1.5s cubic-bezier(0.33, 1, 0.3, 1) forwards;
+      }
+    }
   }
 
-  @include layout($screen: ('desk', 'tab'), $is-hub: true, $are-transitions-disabled: false) {
-    padding-bottom: 0;
-    transform: translateY(calc(var(--content-shift) * -1px));
-    animation: slideDown 1.5s cubic-bezier(0.33, 1, 0.3, 1) forwards;
-  }
+  @media(min-width: 992px) {
+    padding-top: 60px;
 
-  @include layout($screen: mob) {
-    padding-block: 40px;
+    &.hasRecentSearch {
+      padding-top: 40px;
+    }
+
+    @include layout($is-hub: true, $intro-status: (pending, ready), $skip-intro: false) {
+      transform: translateY(-40px);
+
+      &.hasRecentSearch {
+        transform: translateY(-20px);
+      }
+    }
+
+    @include layout($is-hub: true, $intro-status: 'ready', $skip-intro: false) {
+      &.hasRecentSearch {
+        transform: translateY(calc((var(--recent-search-height) + 20px) * -1));
+      }
+    }
   }
 }
 

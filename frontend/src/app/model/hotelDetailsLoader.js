@@ -1,4 +1,4 @@
-import { fetchCriticalData } from '@/shared/lib/router.js';
+import { fetchCriticalData } from '@/shared/lib/critical-data';
 import { hotelsApi } from '@/entities/hotels';
 import { store } from '../providers/StoreProvider';
 

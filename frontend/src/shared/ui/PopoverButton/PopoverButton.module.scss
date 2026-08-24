@@ -1,0 +1,31 @@
+@use '@/shared/styles/variables' as *;
+
+.popoverButton {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font: $font-sm;
+    color: #bfbfbf;
+    width: 100%;
+    &:hover {
+        color: #bfbfbf !important;
+    }
+
+    &.hasValue {
+        color: #000000E0;
+        &:hover {
+            color: #000000E0 !important;
+        }
+    }
+
+    span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.arrowIcon {
+    color: #bfbfbf;
+    font-size: 12px;
+}

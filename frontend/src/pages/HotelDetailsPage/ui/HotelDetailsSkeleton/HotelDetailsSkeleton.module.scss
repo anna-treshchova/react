@@ -1,6 +1,12 @@
-.hotel {
+@use '@/shared/styles/variables' as *;
+
+.hotelSkeleton {
   @media (min-width: 768px) {
-    margin-top: 24px;
+    margin-top: calc($header-tab-collapsed + 24px);
+  }
+
+  @media (min-width: 992px) {
+    margin-top: calc($header-desk-collapsed + 24px);
   }
 }
 
@@ -13,7 +19,7 @@
   text-align: center;
   border-radius: 26px 26px 0 0;
   margin: -28px -24px 0;
-  padding: 22px 24px 24px;
+  padding: 26px 24px 24px;
   z-index: 1;
   &::after {
     content: '';
@@ -25,7 +31,6 @@
     background-color: #dddddd;;
   }
 }
-
 
 .name, .specs, .amenities {
   width: 100%;
@@ -40,12 +45,12 @@
 
 .specs {
   height: 16px;
-  margin-block: 26px 4px;
+  margin-block: 30px 4px;
   max-width: 300px;
 }
 
 .amenities {
-  height: 16px;
+  height: 14px;
   max-width: 260px;
 }
 
@@ -75,7 +80,7 @@
 
   .name {
     height: 30px;
-    max-width: 480px;
+    max-width: 340px;
     margin-bottom: 32px;
   }
 

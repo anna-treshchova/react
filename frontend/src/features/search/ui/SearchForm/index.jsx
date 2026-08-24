@@ -1,26 +1,22 @@
 import { forwardRef } from 'react'
 import { useNavigate } from 'react-router';
 
-import { useLayoutStore, selectLayoutActions } from '@/shared/model';
+import { useUIStore, selectUIActions } from '@/shared/model/uiStore';
 
 import { mapFormStateToSearchParams } from '@/entities/search';
 
-import { useRecentSearchStore, selectRecentSearchActions } from '../../model';
-
 import { useSearchForm } from './useSearchForm';
-import { DestinationSelect } from './components/DestinationSelect';
-import { DateRangePicker } from './components/DateRangePicker';
-import GuestPicker from './components/GuestsPicker/index.jsx';
-import { Field } from './components/Field';
-import Footer from './components/Footer/index.jsx';
+import { DestinationSelect } from './DestinationSelect';
+import { DateRangePicker } from './DateRangePicker';
+import { GuestsPicker } from './GuestsPicker';
+import { Field } from './Field';
+import Footer from './Footer';
 
-import styles from './SearchForm.module.scss'
+import styles from './SearchForm.module.scss';
 
-export const SearchForm = forwardRef((props, ref) => {
+export const SearchForm = forwardRef(({ onSubmit }, ref) => {
     const navigate = useNavigate();
-
-    const { setHeaderState } = useLayoutStore(selectLayoutActions);
-    const { initRecentSearch } = useRecentSearchStore(selectRecentSearchActions);
+    const { setHeaderState } = useUIStore(selectUIActions);
 
     const {
         formState,
@@ -31,10 +27,10 @@ export const SearchForm = forwardRef((props, ref) => {
         resetFormState,
     } = useSearchForm();
 
-    const onSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        initRecentSearch(formState);
+        onSubmit(formState)
 
         const params = mapFormStateToSearchParams(formState);
         params.set('page', '1');
@@ -51,7 +47,7 @@ export const SearchForm = forwardRef((props, ref) => {
         <form
             ref={ref}
             className={styles.form}
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit}
         >
             <Field title='Where'>
                 <DestinationSelect
@@ -69,7 +65,7 @@ export const SearchForm = forwardRef((props, ref) => {
             </Field>
 
             <Field title='Who'>
-                <GuestPicker
+                <GuestsPicker
                     guestCategories={formState.guestCategories}
                     guests={guests}
                     handleChange={setGuestCategory} />

@@ -32,8 +32,9 @@ function AppContent() {
         }
 
         void checkAuth();
-
     }, [initialHasToken, dispatch]);
+
+    // return <MainAppSkeleton />
 
     if (!isAuthChecked) {
         return <MainAppSkeleton />

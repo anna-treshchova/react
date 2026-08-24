@@ -1,7 +1,33 @@
-.hotelsSkeleton {
-  margin-top: 38px;
+@use '@/shared/styles/mixins' as *;
+@use '@/shared/styles/variables' as *;
 
-  @media(min-width: 768px){
-    margin-top: 60px;
+.hotelsSkeleton {
+  margin-top: 40px;
+
+  @include layout($has-passed-threshold: true) {
+    margin-top: 0;
+  }
+
+  @media(min-width: 768px) {
+    margin-top: 20px;
+
+    @include layout($is-hub: false) {
+      margin-top: calc($header-tab-collapsed + 40px);
+    }
+
+    @include layout($has-passed-threshold: true) {
+      margin-top: 0;
+    }
+  }
+
+  @media(min-width: 992px) {
+    @include layout($is-hub: false) {
+      margin-top: calc($header-desk-collapsed + 60px);
+    }
+
+    @include layout($has-passed-threshold: true) {
+      margin-top: 0;
+    }
   }
 }
+

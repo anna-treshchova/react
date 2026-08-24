@@ -9,34 +9,35 @@
   background: transparent;
   z-index: 4;
 
-  @include layout($screen: 'mob', $is-header-collapsed: true) {
-    position: fixed;
-    top: 0;
-    padding-top: 12px;
-    background-color: #ffffff;
+  @media (max-width: 767px) {
+    @include layout($is-header-collapsed: true) {
+      position: fixed;
+      top: 0;
+      padding-top: 12px;
+      background-color: #ffffff;
+    }
+
+    @include layout($is-header-collapsed: false) {
+      position: static;
+      height: calc(100vh - 80px);
+      padding: 18px 12px 20px;
+    }
+
+    @include layout($is-hub: false, $is-header-collapsed: true) {
+      padding-block: 10px 12px;
+      background: linear-gradient(to bottom, #ffffff, #fdfdfd);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02),
+                  0 12px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    @include layout($is-hub: true, $is-nav-hidden: true) {
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.01),
+                  0 12px 16px rgba(0, 0, 0, 0.04);
+    }
   }
 
-  @include layout($screen: 'mob', $is-hub: false, $is-header-collapsed: true) {
-    padding-block: 10px 12px;
-    background: linear-gradient(to bottom, #ffffff, #fdfdfd);
-    box-shadow: rgb(0 0 0/16%) 0 0 6px;
-  }
-
-
-  @include layout($screen: 'mob', $is-header-collapsed: false) {
-    position: static;
-    height: calc(100vh - 80px);
-    padding: 18px 12px 20px;
-  }
-
-  @include layout($screen: 'mob', $is-hub: true, $is-nav-hidden: true) {
-    background-color: #ffffff;
-    box-shadow:
-            0 4px 8px rgba(0, 0, 0, 0.01),
-            0 12px 16px rgba(0, 0, 0, 0.04);
-  }
-
-  @include layout($screen: (desk, tab)) {
+  @media (min-width: 768px) {
     position: fixed;
     top: 0;
     display: grid;
@@ -52,22 +53,20 @@
     & > * {
       grid-area: 1/1;
     }
+
+    @include layout($is-header-collapsed: true) {
+      height: 78px;
+      transform: translateY(0);
+    }
   }
 
-  @include layout($screen: 'tab', $is-header-collapsed: true) {
-    height: 80px;
-  }
-
-  @include layout($screen: 'desk', $is-header-collapsed: true) {
-    height: 100px;
-  }
-
-  @include layout($screen: (desk, tab), $is-header-collapsed: true) {
-    transform: translateY(0);
+  @media (min-width: 992px) {
+    @include layout($is-header-collapsed: true) {
+      height: 98px;
+    }
   }
 
   @include layout($page-type: 'details') {
     position: absolute;
   }
 }
-

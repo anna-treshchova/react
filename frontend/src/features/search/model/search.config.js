@@ -1,5 +1,5 @@
 export const formFieldsConfig = [
-    { title: 'Where', defaultText: 'Hotels nearby' },
-    { title: 'When', defaultText: 'Any week' },
-    { title: 'Who', defaultText: 'Add guests' },
+    { title: 'Where', scrolledText: 'Anywhere', emptySearchText: 'Hotels nearby' },
+    { title: 'When', scrolledText: 'Anytime', emptySearchText: 'Any week' },
+    { title: 'Who', scrolledText: 'Add guests', emptySearchText: 'Add guests' },
 ];

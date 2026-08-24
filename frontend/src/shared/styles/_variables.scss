@@ -9,7 +9,7 @@ $space-2xl: 48px;
 $space-3xl: 64px;
 
 /*----- Typography -----*/
-$font-family: 'Inter', sans-serif;
+$font-family: 'Inter', 'Inter-Fallback', sans-serif;
 
 /* Font weights */
 $font-weight-thin: 100;
@@ -35,7 +35,7 @@ $font-size-4xl: 36px;
 $font-size-5xl: 48px;
 
 /* Line heights */
-$line-height-xs: 16px;
+$line-height-xs: 14px;
 $line-height-s: 16px;
 $line-height-sm: 20px;
 $line-height-base: 24px;
@@ -57,7 +57,6 @@ $font-2xl: #{$font-weight-semibold} #{$font-size-2xl}/#{$line-height-2xl} #{$fon
 $font-3xl: #{$font-weight-bold} #{$font-size-3xl}/#{$line-height-3xl} #{$font-family};
 $font-4xl: #{$font-weight-bold} #{$font-size-4xl}/#{$line-height-4xl} #{$font-family};
 $font-5xl: #{$font-weight-black} #{$font-size-5xl}/#{$line-height-5xl} #{$font-family};
-
 
 /*----- Colors -----*/
 $color-primary-900: #000000;
@@ -93,3 +92,14 @@ $ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-major: $duration-slow $ease-expressive;
 $transition-minor: $duration-fast $ease-soft;
 $transition-instant: $duration-instant $ease-soft;
+
+/* Header height */
+$header-mob-hub-collapsed: 148px;
+$header-mob-other-collapsed: 80px;
+$header-mob-hub-scrolled: 100px;
+
+$header-tab-collapsed: 80px;
+$header-desk-collapsed: 100px;
+
+$header-mob-expanded: 100vh;
+$header-tab-expanded: 200px;

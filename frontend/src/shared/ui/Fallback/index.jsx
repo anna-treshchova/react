@@ -10,14 +10,33 @@ const FALLBACK_ICONS = {
     soon: SoonFallbackIcon,
 }
 
+const FALLBACK_DEFAULTS = {
+    empty: {
+        title: "No results found",
+        description: "Try adjusting your search or clearing the filters.",
+    },
+    error: {
+        title: "Something went wrong",
+        description: "We encountered an error while loading the data. Please try again.",
+    },
+    soon: {
+        title: "Coming soon",
+        description: "We're working on bringing this feature to you. Check back soon.",
+    }
+}
+
 export const Fallback = ({ variant, title, description, children }) => {
     const CurrentIcon = FALLBACK_ICONS[variant];
+    const defaults = FALLBACK_DEFAULTS[variant] || FALLBACK_DEFAULTS.error;
+
+    const finalTitle = title ?? defaults.title;
+    const finalDescription = description ?? defaults.description;
 
     return (
         <div className={`${styles.fallback} ${variant === 'error' ? styles.error : ''}`}>
             <div className={styles.details}>
-                <h1>{title}</h1>
-                <p>{description}</p>
+                <h1>{finalTitle}</h1>
+                <p>{finalDescription}</p>
             </div>
 
             {CurrentIcon && (

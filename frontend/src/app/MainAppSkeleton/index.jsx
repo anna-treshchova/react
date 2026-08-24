@@ -1,49 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useUIStore, selectScreen, selectIsHeaderCollapsed } from '@/shared/model/uiStore';
+import { getPageContext } from '@/shared/lib/page-context';
+import { hasHeaderPassedTransformThreshold } from '@/shared/lib/header-metrics';
 
-import { HUB_PATHS, DETAILS_PATHS, WISHLIST_PATH } from '@/shared/constants/paths.js';
-
+import { useRecentSearchStore, selectHasRecentSearch } from '@/features/recentSearch';
 import { HeaderSkeleton } from '@/widgets/header';
 
 import { HotelsPageSkeleton } from '@/pages/HotelsPage';
 import { HotelDetailsSkeleton } from '@/pages/HotelDetailsPage';
 import { WishlistSkeleton } from '@/pages/WishlistPage';
 
-const getScreen = () => {
-    if (typeof window === 'undefined') return 'desk';
-    if (window.innerWidth < 768) return 'mob';
-    if (window.innerWidth < 992) return 'tab';
-    return 'desk';
-}
-
-const getPageType = () => {
-    if (typeof window === 'undefined') return 'hub';
-    const pathname = window.location.pathname;
-    const search = window.location.search;
-
-    const isHub = HUB_PATHS.includes(pathname) && !search;
-    const isDetails = DETAILS_PATHS.some(path => pathname.startsWith(path));
-    const isWishlist = pathname === WISHLIST_PATH;
-
-    if (isHub) return 'home';
-    if (isDetails) return 'details';
-    if (isWishlist) return 'wishlist';
-
-    return 'catalog';
-}
-
 export const MainAppSkeleton = () => {
-    const [screen, setScreen] = useState(getScreen);
-    const pageType = getPageType();
+    const { pathname, search } = window.location;
+    const { pageType, isHub } = getPageContext(pathname, search);
 
-    const isHub = pageType === 'home';
+    const screen = useUIStore(selectScreen);
+    const hasTopSlot = useRecentSearchStore(selectHasRecentSearch);
 
-    useEffect(() => {
-        const handleResize = () => setScreen(getScreen());
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [])
+    const hasPassedThreshold = hasHeaderPassedTransformThreshold(screen, pageType, hasTopSlot);
 
-    const isHeaderHidden = pageType === 'details' && screen === 'mob';
+    const isForcedToCollapse = screen === 'mob' || !isHub;
 
     const renderContentSkeleton = () => {
         switch (pageType) {
@@ -51,19 +26,20 @@ export const MainAppSkeleton = () => {
                 return <HotelDetailsSkeleton isMobile={screen === 'mob'} />
             case 'wishlist':
                 return <WishlistSkeleton />
-            case 'home':
+            case 'hub':
             case 'catalog':
                 return <HotelsPageSkeleton />
         }
     }
+
     return (
         <div
-            data-screen={screen}
             data-hub={isHub}
             data-page-type={pageType}
+            data-header-collapsed={isForcedToCollapse ? true : hasPassedThreshold}
+            data-passed-threshold={hasPassedThreshold}
         >
-            {!isHeaderHidden && <HeaderSkeleton isHub={isHub} />}
-
+            <HeaderSkeleton />
             <main>
                 {renderContentSkeleton()}
             </main>

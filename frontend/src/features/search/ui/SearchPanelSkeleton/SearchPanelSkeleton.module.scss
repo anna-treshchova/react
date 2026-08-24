@@ -1,10 +1,6 @@
-@use '@/shared/styles/variables' as *;
-@use '@/shared/styles/mixins' as *;
-
-.panel {
+.panelSkeleton {
   width: 100%;
   display: flex;
   justify-content: center;
-
-  @include layout($screen: (desk, tab)) { padding: 0; }
+  padding: 0;
 }

@@ -1,14 +1,16 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useNavigate, useLoaderData, useLocation } from 'react-router';
 
-import { calcTotalGuests } from '@/shared/lib/guests';
-import { generateSearchId } from '@/shared/lib/search';
-
-import { mapSearchParamsToFormState } from '@/entities/search';
+import { mapSearchParamsToFormState, calcGuests } from '@/entities/search';
 import { useGetHotelsQuery } from '@/entities/hotels';
 
-import { useRecentSearchStore, selectRecentSearchActions } from '@/features/search';
 import { useRequireAuth } from '@/features/auth';
+import {
+    useRecentSearchStore,
+    selectHasRecentSearch,
+    selectRecentSearchActions,
+    generateSearchId
+} from '@/features/recentSearch';
 
 export const useHotelsPage = () => {
     const navigate = useNavigate();
@@ -16,6 +18,7 @@ export const useHotelsPage = () => {
     const queryArgs = useLoaderData();
     const checkAuth = useRequireAuth();
 
+    const hasRecentSearch = useRecentSearchStore(selectHasRecentSearch);
     const { syncRecentSearchImages } = useRecentSearchStore(selectRecentSearchActions);
 
     const { data, isLoading } = useGetHotelsQuery(queryArgs, {
@@ -23,19 +26,21 @@ export const useHotelsPage = () => {
         refetchOnReconnect: true,
     });
 
-    const { hotels } = data || {};
+    const { hotels, total } = data || {};
 
-    const searchParams = new URLSearchParams(search);
+    const { destination, guestCategories, dates, page } = useMemo(() => {
+        const searchParams = new URLSearchParams(search);
 
-    const { destination, guestCategories, dates } =
-        mapSearchParamsToFormState(searchParams);
+        const formState = mapSearchParamsToFormState(searchParams);
+        const page = Number(searchParams.get('page')) || 1;
 
-    const page = Number(searchParams.get('page')) || 1;
+        return { ...formState, page }
+    }, [search])
 
     const searchId = generateSearchId(
         destination?.id,
         dates,
-        calcTotalGuests(guestCategories)
+        calcGuests(guestCategories)
     );
 
     useEffect(() => {
@@ -60,15 +65,16 @@ export const useHotelsPage = () => {
     }, [search, navigate]);
 
     return {
-        data,
-        isLoading,
+        hotels,
+        total,
+        isInitialLoading: isLoading && !data,
 
         search,
         page,
         dates,
+        hasRecentSearch,
 
         handlePageChange,
         checkAuth,
     }
 }
-

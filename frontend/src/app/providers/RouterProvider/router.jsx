@@ -1,11 +1,11 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 
 import { mapSearchParamsToFormState } from '@/entities/search';
 
 import { PrivateRoute } from '@/features/auth';
-import { useSearchFormStore} from '@/features/search';
+import { useSearchFormStore } from '@/features/search';
 
 import { Layout } from '../../layouts/Layout';
 import { MainAppSkeleton } from '../../MainAppSkeleton';
@@ -72,6 +72,10 @@ export const router = createBrowserRouter([
                                 },
                             },
                         ]
+                    },
+                    {
+                        path: '*',
+                        element: <Navigate to='/' replace />,
                     }
                 ]
             }

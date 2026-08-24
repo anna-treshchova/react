@@ -1,6 +1,6 @@
-import { PAGE_SIZE } from '@/shared/config';
-import { fetchCriticalData } from '@/shared/lib/router.js';
-import { calcTotalGuests } from '@/shared/lib/guests.js';
+import { PAGE_SIZE } from '@/shared/config/pagination';
+import { fetchCriticalData } from '@/shared/lib/critical-data';
+import { calcGuests } from '@/entities/search';
 
 import { hotelsApi } from '@/entities/hotels';
 import { mapSearchParamsToFormState } from '@/entities/search';
@@ -13,7 +13,7 @@ export const hotelsLoader = async ({ request }) => {
     const { destination, guestCategories } = mapSearchParamsToFormState(url.searchParams);
     const page = url.searchParams.get('page') || 1;
 
-    const guests = calcTotalGuests(guestCategories);
+    const guests = calcGuests(guestCategories);
 
     const rawQueryArgs = {
         page,

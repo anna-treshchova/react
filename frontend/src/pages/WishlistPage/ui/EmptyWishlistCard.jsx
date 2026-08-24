@@ -3,7 +3,6 @@ import { Card } from 'antd';
 import HeartPlusIcon from '@/shared/assets/icons/heart-plus.svg?react';
 import styles from './EmptyWishlistCard.module.scss';
 
-
 export const EmptyWishlistCard = () => {
     return (
         <Card

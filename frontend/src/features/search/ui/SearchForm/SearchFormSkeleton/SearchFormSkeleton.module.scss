@@ -4,20 +4,21 @@
 .form {
   display: none;
 
-  @include layout($screen: (desk, tab), $is-hub: true ) {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr 1fr 0.3fr;
-    column-gap: 14px;
-    max-width: 776px;
-    width: 100%;
-    height: 72px;
-    padding-inline: 32px 12px;
-    background-color: #ffffff;
-    border: 1px solid #dedede;
-    border-radius: 50px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  @media (min-width: 768px) {
+    @include layout($is-header-collapsed: false ) {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr 0.3fr;
+      column-gap: 14px;
+      max-width: 776px;
+      width: 100%;
+      height: 72px;
+      padding-inline: 32px 12px;
+      background-color: #ffffff;
+      border: 1px solid #dedede;
+      border-radius: 50px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
   }
-
 
   .field {
     display: flex;

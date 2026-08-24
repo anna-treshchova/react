@@ -1,5 +1,5 @@
 import { Pagination as AntdPagination, ConfigProvider } from 'antd';
-import './Pagination.module.scss';
+import styles from './Pagination.module.scss';
 
 const paginationTheme = {
     token: { colorBgTextHover: '#f7f7f7' },
@@ -15,14 +15,17 @@ const paginationTheme = {
 export const Pagination = ({ total, pageSize, currentPage, onChange }) => {
     return (
         <ConfigProvider theme={paginationTheme}>
-            <AntdPagination
-                current={currentPage}
-                total={total}
-                pageSize={pageSize}
-                showSizeChanger={false}
-                showLessItems
-                onChange={onChange}
-            />
+            <div className={styles.paginationWrapper}>
+                <AntdPagination
+                    current={currentPage}
+                    total={total}
+                    pageSize={pageSize}
+                    showSizeChanger={false}
+                    showLessItems
+                    onChange={onChange}
+                />
+            </div>
+
         </ConfigProvider>
     )
 }

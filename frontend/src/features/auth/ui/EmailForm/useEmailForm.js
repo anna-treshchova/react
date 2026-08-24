@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useDelayedValue } from '@/shared/hooks/useDelayExit.js';
+import { useDelayedExit } from '@/shared/hooks/useDelayedExit.js';
 
 import {
     useSendCodeMutation,
@@ -33,7 +33,7 @@ export const useEmailForm = () => {
         goToCode
     } = useAuthStore(selectAuthActions);
 
-    const isUiLoading = useDelayedValue(isLoading, 400)
+    const isUiLoading = useDelayedExit(isLoading, 400);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

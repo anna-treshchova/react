@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState} from 'react';
 
-import {useLayoutStore, selectIsMobile} from '@/shared/model';
+import { useUIStore, selectIsMobile } from '@/shared/model/uiStore';
 
 import { SearchForm } from '../SearchForm';
 import { SearchSummary } from '../SearchSummary';
 
 import styles from './SearchPanel.module.scss';
 
-export const SearchPanel = ({ expandHeader, compactNavSlot }) => {
+export const SearchPanel = ({ expandHeader, onSubmit, compactNavSlot }) => {
     const formRef = useRef(null);
     const summaryRef = useRef(null);
 
-    const isMobile = useLayoutStore(selectIsMobile);
+    const isMobile = useUIStore(selectIsMobile);
 
     const [dimensions, setDimensions] = useState({
         formWidth: 776,
@@ -54,7 +54,7 @@ export const SearchPanel = ({ expandHeader, compactNavSlot }) => {
                 '--summary-height': 46,
             }}
         >
-            <SearchForm ref={formRef}/>
+            <SearchForm ref={formRef} onSubmit={onSubmit} />
             <SearchSummary ref={summaryRef} onClick={expandHeader} />
             {compactNavSlot}
         </div>

@@ -1,5 +1,18 @@
+.hotelsRoot {
+  --recent-search-height: 72px;
+
+  @media (min-width: 992px) {
+    --recent-search-height: 76px;
+  }
+}
+
 .paginationWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+
+  @media (min-width: 768px) {
+    margin-top: 30px;
+  }
 }

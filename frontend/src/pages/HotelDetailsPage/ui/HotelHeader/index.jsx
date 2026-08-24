@@ -1,17 +1,22 @@
 import { useLocation, useNavigate } from 'react-router';
 
-import { useLayoutStore, selectIsMobile } from '@/shared/model';
+import { useUIStore, selectIsMobile } from '@/shared/model/uiStore';
 import { CircleButton } from '@/shared/ui/CircleButton';
 import { ToggleWishlistButton } from '@/features/wishlist';
 import BackIcon from '@/shared/assets/icons/back.svg?react';
 
 import styles from './HotelHeader.module.scss';
 
-export const HotelHeader = ({ id, name, isFavorite, checkAuth }) => {
+export const HotelHeader = ({
+    id,
+    name,
+    isFavorite,
+    checkAuth
+}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const isMobile = useLayoutStore(selectIsMobile);
+    const isMobile = useUIStore(selectIsMobile);
 
     const handleGoBack = () => {
         if (location.key !== 'default') {
@@ -43,6 +48,8 @@ export const HotelHeader = ({ id, name, isFavorite, checkAuth }) => {
                     itemName={name}
                     isFavorite={isFavorite}
                     canToggle={checkAuth}
+                    isMobile={isMobile}
+                    isDetailsPage
                 />
             </div>
         </div>

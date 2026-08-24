@@ -1,0 +1,102 @@
+@use '@/shared/styles/mixins' as *;
+
+.compactNav {
+  display: none;
+
+  @include layout($is-hub: true, $has-passed-threshold: true) {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    z-index: 10;
+    margin-block: auto 8px;
+  }
+
+  .navItem {
+    font-size: 12px;
+    line-height: 12px;
+    padding-inline: 2px;
+    background-color: #ebebeb;
+    color: transparent;
+    border-radius: 8px;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    @include layout($is-hub: true, $has-passed-threshold: true) {
+      display: none;
+    }
+  }
+}
+
+.regularNav {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  @include layout($has-passed-threshold: true) {
+    display: none;
+  }
+
+  @include layout($is-hub: false) {
+    display: none;
+  }
+
+  .navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: var(--mob-width);
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ebebeb;
+  }
+
+  .label {
+    font-size: 12px;
+    line-height: 12px;
+    padding-inline: 2px;
+    background-color: #ebebeb;
+    color: transparent;
+    border-radius: 8px;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  @media(min-width: 768px) {
+    justify-content: center;
+    gap: 22px;
+    padding-top: 2px;
+    width: 100%;
+
+    @include layout($is-header-collapsed: true) {
+      display: none;
+    }
+
+    .navItem {
+      gap: 4px;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: var(--desk-width);
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .label {
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 6px;
+    }
+  }
+}

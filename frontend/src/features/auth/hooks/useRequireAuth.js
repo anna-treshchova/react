@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectLayoutActions, useLayoutStore } from '@/shared/model';
+import { useUIStore, selectUIActions } from '@/shared/model/uiStore';
 
 import { useFetchMeQuery } from '@/entities/user';
 
@@ -10,7 +10,7 @@ import { selectHasToken } from '../model';
 export const useRequireAuth = () => {
     const hasToken = useSelector(selectHasToken);
 
-    const { openAuthModal } = useLayoutStore(selectLayoutActions);
+    const { openAuthModal } = useUIStore(selectUIActions);
 
     const {
         currentData: { me } = {},

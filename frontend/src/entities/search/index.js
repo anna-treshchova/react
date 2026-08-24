@@ -2,4 +2,6 @@ export {
     mapSearchParamsToFormState,
     mapFormStateToSearchParams,
     useSearchFormParams
-} from './model/hotelsParams.js';
+} from './model';
+
+export { formatDates, calcGuests  } from './lib';

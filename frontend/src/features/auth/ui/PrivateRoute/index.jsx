@@ -1,8 +1,7 @@
 import { Navigate, Outlet } from 'react-router';
 import { useSelector } from 'react-redux';
 
-import { useLayoutStore, selectLayoutActions } from '@/shared/model';
-import { transformToResponseError } from '@/shared/lib/router';
+import { transformToErrorResponse } from '@/shared/lib/error-response';
 
 import { useFetchMeQuery } from '@/entities/user';
 
@@ -10,8 +9,6 @@ import { selectHasToken } from '../../model';
 
 export const PrivateRoute = () => {
     const hasToken = useSelector(selectHasToken);
-
-    const { setHeaderTransitions } = useLayoutStore(selectLayoutActions);
 
     const {
         currentData: { me } = {},
@@ -26,16 +23,32 @@ export const PrivateRoute = () => {
         const isSystemError = error?.status === 'FETCH_ERROR' || error?.status >= 500;
 
         if (isSystemError) {
-            throw transformToResponseError(error);
+            throw transformToErrorResponse(error);
         }
 
-        setHeaderTransitions(false);
-        return <Navigate to='/' replace  state={{ openAuthModal: true }} />
+        return (
+            <Navigate
+                to='/'
+                replace
+                state={{
+                    openAuthModal: true,
+                    disableHeaderTransitions: true
+                }}
+            />
+        )
     }
 
     if (!me) {
-        setHeaderTransitions(false);
-        return <Navigate to='/' replace  state={{ openAuthModal: true }} />
+        return (
+            <Navigate
+                to='/'
+                replace
+                state={{
+                    openAuthModal: true,
+                    disableHeaderTransitions: true
+                }}
+            />
+        )
     }
 
     return <Outlet />

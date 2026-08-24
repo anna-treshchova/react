@@ -7,7 +7,7 @@ import styles from './HotelDetailsSkeleton.module.scss';
 
 export const HotelDetailsSkeleton = ({ isMobile }) => {
     return (
-        <div className={styles.hotel}>
+        <div className={styles.hotelSkeleton}>
             {isMobile ? (
                     <>
                         <ActionsSkeleton />
@@ -15,7 +15,7 @@ export const HotelDetailsSkeleton = ({ isMobile }) => {
                     </>
                 ) : (
                     <Container narrow>
-                        <div className={styles.name}/>
+                        <div className={styles.name} />
                         <DesktopGallerySkeleton />
                     </Container>
                 )

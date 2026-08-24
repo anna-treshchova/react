@@ -4,12 +4,7 @@ import { useNavigate } from 'react-router';
 import { ConfigProvider, Dropdown } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
-import {
-    useLayoutStore,
-    selectLayoutActions,
-    selectIsMobile,
-    selectIsHub
-} from '@/shared/model';
+import { useUIStore, selectIsMobile, selectUIActions } from '@/shared/model/uiStore';
 import BurgerIcon from '@/shared/assets/icons/burger.svg?react';
 
 import { useLogoutMutation } from '../../model';
@@ -20,9 +15,8 @@ export const UserMenu = ({ me }) => {
     const [logout] = useLogoutMutation();
     const [visible, setVisible] = useState(false);
 
-    const isMobile = useLayoutStore(selectIsMobile);
-    const isHub = useLayoutStore(selectIsHub);
-    const { openAuthModal } = useLayoutStore(selectLayoutActions);
+    const isMobile = useUIStore(selectIsMobile);
+    const { openAuthModal } = useUIStore(selectUIActions);
 
     const closeMenu = () => setVisible(false);
 
@@ -61,12 +55,7 @@ export const UserMenu = ({ me }) => {
         }
         if (key === 'logout') {
             logout()
-
-            if (isHub) {
-                window.scrollTo(0, 0)
-            } else {
-                navigate('/', { replace: true });
-            }
+            navigate('/', { replace: true });
         }
         if (key === 'wishlist') {
             navigate('/wishlist');

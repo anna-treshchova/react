@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ERROR_CODES } from '@/shared/constants/errorCodes.js';
+import { ERROR_CODES } from '@/shared/constants/error-codes';
 
 const {
     VITE_BASE_URL: BASE_URL,

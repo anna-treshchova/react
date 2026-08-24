@@ -1,0 +1,44 @@
+@use '@/shared/styles/mixins' as *;
+
+.logoWrapper {
+  display: none;
+
+  @media(min-width: 768px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 24px;
+
+    transform: translateY(26px);
+    z-index: 5;
+    cursor: pointer;
+    transition: transform 0.3s ease-out;
+
+    .letter { display: block; }
+    .full { display: none; }
+
+    @include layout($is-header-collapsed: true) {
+      transform: translateY(22px);
+    }
+  }
+
+  @media(min-width: 992px) {
+    transform: translateY(18px);
+
+    .letter { display: none; }
+    .full { display: block; }
+
+    @include layout($is-header-collapsed: true) {
+      transform: translateY(22px);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    left: 40px;
+  }
+
+  @include layout($page-type: 'details') {
+    position: absolute;
+  }
+}
+

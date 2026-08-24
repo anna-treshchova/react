@@ -2,31 +2,44 @@
 @use 'sass:list';
 
 @mixin layout(
-  $is-header-collapsed:      null,
-  $has-header-overlay:       null,
+  $is-header-collapsed:  null,
+  $is-content-lifted:    null,
+  $has-header-overlay:   null,
 
-  $is-hub:                   null,
-  $page-type:                null,
-  $is-form-disabled:         null,
+  $page-type:            null,
+  $is-hub:               null,
+  $is-wip:               null,
 
-  $screen:                   null,
-  $is-nav-hidden:            null,
-  $are-nav-icons-hidden:     null,
+  $is-nav-hidden:        null,
+  $are-nav-icons-hidden: null,
 
-  $are-transitions-disabled: null,
+  $intro-status:         null,
+  $skip-intro:           null,
+  $is-scrolled:          null,
+  $no-transitions:       null,
 
-  $self:                     false,
+  $has-passed-threshold: null,
+
+  $self:                 false,
 ) {
 
   $selectors-map: (
-    "header-collapsed": $is-header-collapsed,
-    "header-overlay": $has-header-overlay,
-    "hub": $is-hub,
     "page-type": $page-type,
-    "form-disabled": $is-form-disabled,
+    "hub": $is-hub,
+
+    "header-collapsed": $is-header-collapsed,
+    "content-lifted": $is-content-lifted,
+    "header-overlay": $has-header-overlay,
+
+    "wip": $is-wip,
     "nav-hidden": $is-nav-hidden,
     "nav-icons-hidden": $are-nav-icons-hidden,
-    "transitions-disabled": $are-transitions-disabled,
+
+    "scrolled": $is-scrolled,
+    "skip-intro": $skip-intro,
+    "no-transitions": $no-transitions,
+
+    "passed-threshold": $has-passed-threshold,
   );
 
   $selectors-chain: "";
@@ -37,35 +50,36 @@
     }
   }
 
-  $screen-list: (null);
+  $intro-list: (null);
 
-  @if meta.type-of($screen) == "list" {
-    $screen-list: $screen;
-  } @else if $screen {
-    $screen-list: ($screen);
+  @if meta.type-of($intro-status) == "list" {
+    $intro-list: $intro-status;
+  }
+  @else if $intro-status {
+    $intro-list: ($intro-status);
   }
 
   $final-selector-list: ();
 
-  @each $s in $screen-list {
-    $screen-selector: "";
+  @each $s in $intro-list {
+    $intro-selector: "";
 
     @if($s) {
-      $screen-selector: "[data-screen='#{$s}']"
+      $intro-selector: "[data-intro-status='#{$s}']"
     }
 
     $full-path: "";
 
     @if $self {
-      $full-path: "&" + $screen-selector + $selectors-chain;
+      $full-path: "&#{$intro-selector}#{$selectors-chain}";
     } @else {
-      $full-path: ":global(#{$screen-selector}#{$selectors-chain}) &";
+      $full-path: ":global(#{$intro-selector}#{$selectors-chain}) &";
     }
 
     $final-selector-list: list.append($final-selector-list, $full-path, comma);
   }
 
-  $has-selectors: ($selectors-chain != "" or $screen != null);
+  $has-selectors: ($selectors-chain != "" or $intro-status != null);
 
   @if $has-selectors {
     #{$final-selector-list} {
@@ -74,10 +88,11 @@
   }
 }
 
-@mixin transitions-disabled {
-  &:global([data-transitions-disabled='true']) {
+@mixin no-transitions {
+  &[data-no-transitions='true'] {
     &, & * {
       transition: none !important;
+      animation: none !important;
     }
   }
 }

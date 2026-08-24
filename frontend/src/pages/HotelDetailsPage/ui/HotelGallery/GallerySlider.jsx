@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,12 +7,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { OptimizedImage } from '@/shared/ui/OptimizedImage';
+import { EMPTY_ARRAY } from '@/shared/constants/empty';
 
 import styles from './GallerySlider.module.scss';
 
-export const GallerySlider = ({ images = [] }) => {
+export const GallerySlider = forwardRef(({ images = EMPTY_ARRAY }, ref) => {
     return (
-        <div style={{position: 'relative'}}>
+        <div ref={ref} style={{position: 'relative'}}>
             <Swiper
                 className={styles.slider}
                 modules={[Pagination]}
@@ -28,6 +30,7 @@ export const GallerySlider = ({ images = [] }) => {
                                 src={src}
                                 variant={isFirst ? 'galleryMain' : 'gallerySecondary'}
                                 loading={isFirst ? 'eager' : 'lazy'}
+                                fetchPriority={isFirst ? 'high' : 'low'}
                             />
                         </SwiperSlide>
                     )
@@ -35,7 +38,7 @@ export const GallerySlider = ({ images = [] }) => {
             </Swiper>
         </div>
     )
-}
+});
 
 GallerySlider.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,

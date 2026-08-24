@@ -1,7 +1,8 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useMemo } from 'react';
+import { Row, Col } from 'antd';
 
+import { useColSpan } from '@/shared/hooks/useColSpan';
 import { Container } from '@/shared/ui/Container';
-import { transformToResponseError } from '@/shared/lib/router.js';
 
 import { HotelsList } from '@/entities/hotels';
 
@@ -16,9 +17,10 @@ export const WishlistPage = () => {
         refetchOnMountOrArgChange: true
     });
 
+    const { colSpan } = useColSpan('small');
+
     const wishlistItems = data?.wishlist;
     const isInitialLoading = isLoading && !wishlistItems;
-    const isEmpty = Array.isArray(wishlistItems) && wishlistItems.length === 0;
 
     const renderToggleWishlistButton = useCallback((hotel) => (
         <ToggleWishlistButton
@@ -28,16 +30,26 @@ export const WishlistPage = () => {
         />
     ), []);
 
+    const emptySlot = useMemo(() => (
+        <Row gutter={16}>
+            <Col span={colSpan}>
+                <EmptyWishlistCard />
+            </Col>
+        </Row>
+    ), [colSpan])
+
     return (
         <div className={styles.wishlistPage}>
             <Container narrow>
                 <h1>Wishlist</h1>
                 <HotelsList
                     hotels={wishlistItems}
-                    variant={isEmpty ? 'small' : 'large'}
-                    renderToggleWishlistButton={renderToggleWishlistButton}
-                    emptyStateCard={ isEmpty ? <EmptyWishlistCard /> : null }
+                    variant='large'
+
+                    emptySlot={emptySlot}
+
                     shouldShowSkeleton={isInitialLoading}
+                    renderToggleWishlistButton={renderToggleWishlistButton}
                 />
             </Container>
         </div>

@@ -1,0 +1,1 @@
+export { generateSearchId } from './generateSearchId';

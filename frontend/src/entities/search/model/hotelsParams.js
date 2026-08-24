@@ -54,4 +54,3 @@ export const useSearchFormParams = () => {
         return mapSearchParamsToFormState(searchParams);
     }, [searchParams]);
 }
-

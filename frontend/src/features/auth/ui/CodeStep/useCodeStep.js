@@ -15,7 +15,7 @@ import {
     selectAuthActions
 } from '../../model';
 
-import { useLayoutStore, selectLayoutActions } from '@/shared/model';
+import { useUIStore, selectUIActions } from '@/shared/model/uiStore';
 
 import { useSendCodeMutation } from '../../model';
 
@@ -42,7 +42,7 @@ export const useCodeStep = () => {
         reset
     } = useAuthStore(selectAuthActions);
 
-    const { closeAuthModal } = useLayoutStore(selectLayoutActions);
+    const { closeAuthModal } = useUIStore(selectUIActions);
 
     const [isThrottled, setIsThrottled] = useState(false);
     const [isExpired, setIsExpired] = useState(false);

@@ -2,26 +2,25 @@
 @use '@/shared/styles/mixins' as *;
 
 .form {
-    @include layout($screen: 'mob', $is-header-collapsed: false) {
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        opacity: 1;
-        overflow: visible;
-        pointer-events: auto;
-
-    }
-
-    @include layout($screen: 'mob', $is-header-collapsed: true) {
+    @media (max-width: 767px) {
         display: none;
+
+        @include layout($is-header-collapsed: false) {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            opacity: 1;
+            overflow: visible;
+            pointer-events: auto;
+        }
     }
 
-    @include layout($screen: (desk, tab)) {
+    @media (min-width: 768px) {
         --form-scale-x: calc(var(--summary-width) / var(--form-width));
         --form-scale-y: calc(var(--summary-height) / var(--form-height));
 
@@ -43,21 +42,21 @@
 
         transition: opacity $anim-slow,
         transform $anim-slow;
+
+        @include layout($is-header-collapsed: false) {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        @include layout($is-header-collapsed: true) {
+            opacity: 0;
+            transform: scale(var(--form-scale-x), var(--form-scale-y));
+            pointer-events: none;
+        }
     }
 
-    @include layout($screen: (desk, tab), $is-header-collapsed: false) {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-    }
-
-    @include layout($screen: (desk, tab), $is-header-collapsed: true) {
-        opacity: 0;
-        transform: scale(var(--form-scale-x), var(--form-scale-y));
-        pointer-events: none;
-    }
-
-    @include layout($is-form-disabled: true) {
+    @include layout($is-wip: true) {
         position: relative;
         box-shadow: none;
         border: 1px solid #dedede;

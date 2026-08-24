@@ -1,0 +1,22 @@
+.guestsPicker {
+    width: 180px;
+
+    @media (min-width: 480px) { width: 240px }
+    @media (min-width: 576px) { width: 300px }
+    @media (min-width: 768px) { width: 100% }
+}
+
+.popoverContent {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    padding: 0;
+    row-gap: 12px;
+
+    @media (min-width: 400px) {
+        width: 280px;
+        padding: 12px;
+        row-gap: 16px;
+    }
+}
+

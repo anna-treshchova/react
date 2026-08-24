@@ -15,7 +15,51 @@
   opacity: 0;
   pointer-events: none;
 
-  @include layout($screen: (desk, tab)) {
+  @media (max-width: 767px) {
+    @include layout($is-header-collapsed: true) {
+      height: 58px;
+      width: 100%;
+      transition: border-color .2s ease-out;
+      pointer-events: auto;
+
+      &:hover { border-color: #000000; }
+      &:active { border-color: #000000; }
+    }
+
+    @include layout($is-hub: true) {
+      box-shadow: 0 2px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    @include layout($is-header-collapsed: false) {
+      display: none;
+    }
+
+    @include layout($is-header-collapsed: true, $is-wip: true) {
+      position: relative;
+      z-index: 0;
+      box-shadow: none;
+      border: 1px solid #dedede;
+      background-color: #ffffff;
+      pointer-events: none;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        z-index: 5;
+        cursor: not-allowed;
+      }
+
+      & * {
+        color: #d7d7d5;
+        stroke: #d7d7d5;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
     --summary-scale-x: calc(var(--form-width) / var(--summary-width));
     --summary-scale-y: calc(var(--form-height) / var(--summary-height));
 
@@ -24,30 +68,23 @@
     opacity: 0;
     pointer-events: none;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08),
-                0 4px 12px rgba(0, 0, 0, 0.05);
+    0 4px 12px rgba(0, 0, 0, 0.05);
 
-    transition: box-shadow 0.175s cubic-bezier(0.2, 0, 0, 1);
-
-    &:hover {
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02),
-                  0 8px 24px 0 rgba(0, 0, 0, 0.10);
-    }
-  }
-
-  @include layout($screen: (desk, tab)) {
     will-change: transform, opacity;
-
     transition: box-shadow 0.175s cubic-bezier(0.2, 0, 0, 1),
                 opacity $anim-slow,
                 transform $anim-slow;
-  }
+    &:hover {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02),
+      0 8px 24px 0 rgba(0, 0, 0, 0.10);
+    }
 
-  @include layout($screen: (desk, tab), $is-header-collapsed: false) {
-    opacity: 0;
-    transform: scale(var(--summary-scale-x), var(--summary-scale-y));
-    pointer-events: none;
+    @include layout($is-header-collapsed: false) {
+      opacity: 0;
+      transform: scale(var(--summary-scale-x), var(--summary-scale-y));
+      pointer-events: none;
+    }
   }
-
 
   @include layout($is-header-collapsed: true) {
     opacity: 1;
@@ -55,25 +92,4 @@
     pointer-events: auto;
   }
 
-  @include layout($screen: 'mob', $is-header-collapsed: true) {
-    height: 58px;
-    width: 100%;
-    transition: border-color .2s ease-out;
-    pointer-events: auto;
-
-    &:hover { border-color: #000000; }
-    &:active { border-color: #000000; }
-  }
-
-  @include layout($screen: 'mob', $is-hub: true) {
-    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.15);
-  }
-
-  @include layout($screen: 'mob', $is-header-collapsed: false) {
-    display: none;
-  }
-
-  @include layout($is-form-disabled: true) {
-    display: none;
-  }
 }

@@ -1,14 +1,14 @@
 import { forwardRef } from 'react';
 
-import { useLayoutStore, selectIsHub } from '@/shared/model';
-import { calcTotalGuests} from '@/shared/lib/guests';
+import { usePageContext } from '@/shared/hooks/usePageContext';
+import { calcGuests} from '@/entities/search';
 import { pluralize } from '@/shared/lib/text';
 import { EMPTY_ARRAY } from '@/shared/constants/empty';
 
 import { useGetDestinationsQuery } from '@/entities/destinations';
-import { useSearchFormParams } from '@/entities/search';
+import { useSearchFormParams, formatDates } from '@/entities/search';
 
-import { formatDates, getDestLabel } from '../../lib';
+import { getDestLabel } from '../../lib';
 import { SummaryPlaceholder } from './Placeholder';
 import { SummaryContent }from './Content';
 
@@ -21,11 +21,11 @@ export const SearchSummary = forwardRef(({ onClick }, ref) => {
     const { data } = useGetDestinationsQuery();
     const destinations = data ?? EMPTY_ARRAY;
 
-    const isHub = useLayoutStore(selectIsHub);
+    const { isHub } = usePageContext();
 
     const destLabel = getDestLabel(destinations, destination.id);
     const formattedDates = formatDates(checkin, checkout);
-    const guests = calcTotalGuests(guestCategories);
+    const guests = calcGuests(guestCategories);
 
     const destText = destLabel
         ? `Homes in ${destLabel}`

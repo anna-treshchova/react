@@ -5,7 +5,7 @@ import styles from './SearchPanelSkeleton.module.scss';
 
 export const SearchPanelSkeleton = () => {
     return (
-        <div className={styles.panel}>
+        <div className={styles.panelSkeleton}>
             <SearchFormSkeleton formFieldsConfig={formFieldsConfig} />
             <SearchSummarySkeleton formFieldsConfig={formFieldsConfig} />
         </div>

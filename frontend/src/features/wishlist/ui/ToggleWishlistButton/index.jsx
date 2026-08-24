@@ -1,22 +1,18 @@
 import { useToggleWishlistItemMutation } from '../../model/wishlistApi.js';
 
-import {
-    useLayoutStore,
-    selectPageType,
-    selectIsMobile,
-} from '@/shared/model';
-
 import { CircleButton } from '@/shared/ui/CircleButton';
 import { Button } from '@/shared/ui/Button';
 import { HeartIcon } from '@/shared/ui/HeartIcon';
 
-export const ToggleWishlistButton = ({ itemId, itemName, isFavorite, canToggle }) => {
+export const ToggleWishlistButton = ({
+    itemId,
+    itemName,
+    isFavorite,
+    canToggle,
+    isMobile,
+    isDetailsPage = false,
+}) => {
     const [toggleWishlistItem] = useToggleWishlistItemMutation();
-
-    const pageType = useLayoutStore(selectPageType);
-    const isMobile = useLayoutStore(selectIsMobile);
-
-    const isDetails = pageType === 'details';
 
     const handleClick = (e) => {
         e.stopPropagation();
@@ -29,7 +25,7 @@ export const ToggleWishlistButton = ({ itemId, itemName, isFavorite, canToggle }
     }
 
     const getIconVariant = () => {
-        if (isDetails) {
+        if (isDetailsPage) {
             return isFavorite ? 'filled' : 'outline'
         }
         return isFavorite ? 'filled-overlay' : 'outline-overlay'
@@ -37,11 +33,11 @@ export const ToggleWishlistButton = ({ itemId, itemName, isFavorite, canToggle }
 
     const iconProps = {
         variant: getIconVariant(),
-        size: isDetails ? 'xs' : 'sm',
-        weight: isDetails && isMobile ? 'medium' : 'regular',
+        size: isDetailsPage ? 'xs' : 'sm',
+        weight: isDetailsPage && isMobile ? 'medium' : 'regular',
     }
 
-    if (isDetails && !isMobile) {
+    if (isDetailsPage && !isMobile) {
         return (
             <Button size='xs' onClick={handleClick}>
                 <HeartIcon {...iconProps} />
@@ -52,7 +48,7 @@ export const ToggleWishlistButton = ({ itemId, itemName, isFavorite, canToggle }
         )
     }
 
-    if (isDetails && isMobile) {
+    if (isDetailsPage && isMobile) {
         return (
             <CircleButton
                 variant='glass'

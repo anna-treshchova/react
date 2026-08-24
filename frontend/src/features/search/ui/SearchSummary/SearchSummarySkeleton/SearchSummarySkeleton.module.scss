@@ -11,21 +11,26 @@
   background-color: #ffffff;
   border-radius: 30px;
   border: 1px solid #dedede;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.15);
 
-  @include layout($screen: (desk, tab), $is-hub: false) {
-    width: auto;
-    height: 46px;
-    margin-top: 2px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08),
-                0 4px 12px rgba(0, 0, 0, 0.05);
-
-    .fields {
-      display: flex;
-    }
+  @include layout($is-hub: false) {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06);
   }
-  @include layout($screen: (desk, tab), $is-hub: true) {
+
+  @media (min-width: 768px) {
     display: none;
+
+    @include layout($is-header-collapsed: true) {
+      display: flex;
+      width: auto;
+      height: 46px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(0, 0, 0, 0.05);
+
+      .fields {
+        display: flex;
+      }
+    }
   }
 }
 
@@ -35,7 +40,6 @@
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
-
 }
 
 .field {
@@ -52,7 +56,7 @@
     color: transparent;
   }
 
-  @include layout($screen: 'mob') {
+  @media (max-width: 767px) {
     padding-inline: 8px;
 
     &:first-child {
@@ -78,14 +82,12 @@
     }
   }
 
-  @include layout($screen: (desk, tab)) {
+  @media (min-width: 768px) {
     padding-inline: 16px;
     padding-block: 4px;
     white-space: nowrap;
     overflow: hidden;
     margin-top: 2px;
-
-
 
     &::after {
       content: '';
@@ -118,7 +120,11 @@
     display: none;
   }
 
-  @include layout($screen: (desk, tab)) {
+  @include layout($is-hub: true) {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
     padding-block: 2px;
     padding-inline: 8px 6px;
 
@@ -148,41 +154,43 @@
         will-change: transform;
       }
     }
-  }
 
-  @include layout($is-hub: true) {
-    display: none;
+    @include layout($is-hub: true, $is-header-collapsed: true) {
+      display: flex;
+    }
   }
 }
 
 .placeholder {
   display: none;
 
-  @include layout($screen: 'mob', $is-hub: true) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding-top: 2px;
-  }
+  @media (max-width: 767px) {
+    @include layout($is-hub: true) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding-top: 2px;
+    }
 
-  svg {
-    display: block;
-    height: 12px;
-    width: 12px;
-    stroke: #222222;
-    stroke-width: 4px;
-    overflow: visible;
-    margin-right: 8px;
-  }
+    svg {
+      display: block;
+      height: 12px;
+      width: 12px;
+      stroke: #222222;
+      stroke-width: 4px;
+      overflow: visible;
+      margin-right: 8px;
+    }
 
-  span {
-    font-size: 14px;
-    font-weight: 500;
-    color: #ebebeb;
-    background-color: #ebebeb;
-    border-radius: 4px;
+    span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ebebeb;
+      background-color: #ebebeb;
+      border-radius: 4px;
+    }
   }
 }
 

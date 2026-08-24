@@ -1,0 +1,105 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.navItem {
+  display: flex;
+  align-items: flex-end;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding-bottom: 4px;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  transition: color 0.2s;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  &:hover { color: #222222; }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: transparent;
+    transition: background 0.2s ease-in-out;
+  }
+
+  @include layout($intro-status: 'ready') {
+    &::after {
+      transition: background 0.2s ease-in-out .4s;
+    }
+
+    &.active::after {
+      background: #222222;
+    }
+  }
+
+  @include layout($intro-status: 'done') {
+    &.active::after {
+      background: #222222;
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+
+    &:hover {
+      color: #222222;
+      & > div { transform: scale(1.07); }
+    }
+
+    &::after { width: calc(95%); }
+
+    @include layout($intro-status: 'ready') {
+      &::after {
+        transition: background 0.2s ease-in-out .4s;
+      }
+
+      &.active::after {
+        background: #222222;
+      }
+    }
+
+    @include layout($intro-status: 'done') {
+      &.active {
+        color: #222222;
+        font-weight: 600;
+        &::after { background: #222222; }
+      }
+    }
+  }
+}
+
+.navLabel {
+  color: #6a6a6a;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  padding-bottom: 2px;
+  transform: translateY(0);
+  transition:
+          color 0.2s cubic-bezier(0.35, 0, 0.25, 1),
+          transform 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+
+  @include layout($are-nav-icons-hidden: true) {
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 768px) {
+    padding-bottom: 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

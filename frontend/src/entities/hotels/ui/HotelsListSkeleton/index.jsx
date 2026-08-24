@@ -1,21 +1,28 @@
 import { Row, Col } from 'antd';
-import { colLayoutConfig } from '../../model/layout.config.js';
+
+import { useColSpan } from '@/shared/hooks/useColSpan';
+import { getScrollRestorationMeta } from '@/shared/lib/scroll';
+
 import { HotelCardSkeleton } from '../HotelCardSkeleton';
 
 export const HotelsListSkeleton = ({ variant = 'medium' }) => {
-    const length = variant === 'large' ? 2 : 18;
+    const { colSpan, aboveTheFoldCount } = useColSpan(variant);
+    const { count, top } = getScrollRestorationMeta() || {};
 
-    const skeletons = Array.from({ length }, (_, i) => ({ id: `skeleton-${i}` }))
+    if (count === 0) return null;
 
-    const colProps = colLayoutConfig[variant] || colLayoutConfig.medium;
+    const skeletonsCount = count ?? aboveTheFoldCount;
+    const skeletons = Array.from({ length: skeletonsCount });
 
     return (
-        <Row gutter={16}>
-            {skeletons.map(s => (
-                <Col key={s.id} {...colProps}>
-                    <HotelCardSkeleton />
-                </Col>
-            ))}
-        </Row>
+        <div style={top ? { marginTop: `${top}px` } : {}}>
+            <Row gutter={16}>
+                {skeletons.map((_, index) => (
+                    <Col key={index} span={colSpan}>
+                        <HotelCardSkeleton />
+                    </Col>
+                ))}
+            </Row>
+        </div>
     )
 }

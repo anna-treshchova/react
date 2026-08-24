@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { PictureOutlined } from '@ant-design/icons';
-import { getUnsplashUrl, createSrcSet } from './utils.js';
-import { imageSizesConfig } from './config.js'
+
+import { getUnsplashUrl, createSrcSet } from '../../lib/images';
+import { imageSizesConfig } from '../../config/images';
+
 import styles from './OptimizedImage.module.scss';
 
 export const OptimizedImage = ({
@@ -8,8 +11,11 @@ export const OptimizedImage = ({
     variant,
     alt = 'Hotel image',
     loading = 'eager',
-    decoding = 'async'
+    fetchPriority = 'auto',
+    onReady
 }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     if (!src) return (
         <div className={styles.imagePlaceholder}>
             <PictureOutlined />
@@ -18,17 +24,26 @@ export const OptimizedImage = ({
 
     const sizes = imageSizesConfig[variant] || imageSizesConfig.card;
     const srcSet = createSrcSet(src)
-    const defaultSrc = getUnsplashUrl(src, 600);
+    const defaultSrc = getUnsplashUrl(src, 640);
+
+    const handleLoad = () => {
+        setIsLoaded(true);
+        if (onReady) onReady();
+    }
 
     return (
-        <img
-            className={styles.image}
-            src={defaultSrc}
-            srcSet={srcSet}
-            sizes={sizes}
-            alt={alt}
-            loading={loading}
-            decoding={decoding}
-        />
+        <div className={styles.imageWrapper}>
+            <img
+                className={`${styles.image} ${isLoaded ? styles.visible : ''}`}
+                src={defaultSrc}
+                srcSet={srcSet}
+                sizes={sizes}
+                alt={alt}
+                loading={loading}
+                fetchpriority={fetchPriority}
+                onLoad={handleLoad}
+            />
+            <div className={`${styles.imageSkeleton} ${isLoaded ? styles.hidden : ''}`} />
+        </div>
     );
 };

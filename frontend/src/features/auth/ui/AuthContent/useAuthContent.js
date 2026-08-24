@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { useDelayedValue } from '@/shared/hooks/useDelayExit';
-import { selectIsMobile, useLayoutStore } from '@/shared/model';
+import { useDelayedExit } from '@/shared/hooks/useDelayedExit';
+import { useUIStore, selectIsMobile } from '@/shared/model/uiStore';
 
 import {
     setError,
@@ -69,7 +69,8 @@ export const useAuthContent = () => {
 
     useAuthEffects();
 
-    const isMobile = useLayoutStore(selectIsMobile);
+    const isMobile = useUIStore(selectIsMobile);
+
     const step = useAuthStore(selectAuthStep);
     const codeValue = useAuthStore(selectCodeValue);
     const isErrorAlertVisible = useAuthStore(selectIsErrorAlertVisible);
@@ -77,9 +78,9 @@ export const useAuthContent = () => {
 
     const errorMessage = useSelector(state => selectErrorMessageByStep(state, step));
 
-    const uiErrorMessage = useDelayedValue(errorMessage, 500);
-    const uiErrorAlertVisible = useDelayedValue(isErrorAlertVisible, 500);
-    const uiSuccessAlertVisible = useDelayedValue(isSuccessAlertVisible, 500);
+    const uiErrorMessage = useDelayedExit(errorMessage, 500);
+    const uiErrorAlertVisible = useDelayedExit(isErrorAlertVisible, 500);
+    const uiSuccessAlertVisible = useDelayedExit(isSuccessAlertVisible, 500);
 
     const clearError = () => {
         dispatch(setError(null));

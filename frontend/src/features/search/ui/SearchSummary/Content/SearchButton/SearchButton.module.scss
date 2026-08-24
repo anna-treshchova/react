@@ -2,46 +2,46 @@
 @use '@/shared/styles/mixins' as *;
 
 .button {
-  --btn-ratio: calc(50 / 32);
-  --inv-summary-scale-x: calc(1 / var(--summary-scale-x));
-  --inv-summary-scale-y: calc(1 / var(--summary-scale-y));
+  display: none;
 
-  --btn-scale-x: calc(var(--btn-ratio) * var(--inv-summary-scale-x));
-  --btn-scale-y: calc(var(--btn-ratio) * var(--inv-summary-scale-y));
+  @media (min-width: 768px) {
+    --btn-ratio: calc(50 / 32);
+    --inv-summary-scale-x: calc(1 / var(--summary-scale-x));
+    --inv-summary-scale-y: calc(1 / var(--summary-scale-y));
 
-  --icon-ratio: calc(16 / 12);
-  --icon-scale-x: calc(var(--icon-ratio) / var(--btn-ratio));
-  --icon-scale-y: calc(var(--icon-ratio) / var(--btn-ratio));
+    --btn-scale-x: calc(var(--btn-ratio) * var(--inv-summary-scale-x));
+    --btn-scale-y: calc(var(--btn-ratio) * var(--inv-summary-scale-y));
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  background-color: $color-btn;
-  border-radius: 50%;
-  transition: transform $anim-slow;
+    --icon-ratio: calc(16 / 12);
+    --icon-scale-x: calc(var(--icon-ratio) / var(--btn-ratio));
+    --icon-scale-y: calc(var(--icon-ratio) / var(--btn-ratio));
 
-  .icon {
-    display: block;
-    height: 12px;
-    width: 12px;
-    stroke: #ffffff;
-    stroke-width: 5px;
-    overflow: visible;
-    will-change: transform;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    background-color: $color-btn;
+    border-radius: 50%;
+    transition: transform $anim-slow;
 
-  @include layout($screen: (desk, tab), $is-header-collapsed: false) {
-    transform: scale(var(--btn-scale-x), var(--btn-scale-y))
-               translateX(3px);
     .icon {
-      transform: scale(var(--icon-scale-x), var(--icon-scale-y));
+      display: block;
+      height: 12px;
+      width: 12px;
+      stroke: #ffffff;
+      stroke-width: 5px;
+      overflow: visible;
+      will-change: transform;
+    }
+
+    @include layout($is-header-collapsed: false) {
+      transform: scale(var(--btn-scale-x), var(--btn-scale-y))
+      translateX(3px);
+
+      .icon {
+        transform: scale(var(--icon-scale-x), var(--icon-scale-y));
+      }
     }
   }
-
-  @include layout($screen: 'mob') {
-    display: none;
-  }
 }
-

@@ -3,16 +3,20 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setError } from './authSlice';
 import { useAuthStore } from './useAuthStore';
+
+import {
+    selectHasToken,
+    selectVerificationEmail,
+    selectAuthError
+} from './authSlice.selectors';
+
 import {
     selectAuthStep,
     selectEmailValue,
     selectCodeValue,
-    selectVerificationEmail,
     selectIsSuccessAlertVisible,
-    selectAuthError,
     selectAuthActions,
-    selectHasToken
-} from './authSelectors';
+} from './authStore.selectors';
 
 import { STEPS, ERROR_CODES } from '../constants';
 
@@ -27,6 +31,7 @@ export const useAuthEffects = () => {
     const emailValue = useAuthStore(selectEmailValue);
     const codeValue = useAuthStore(selectCodeValue);
     const isSuccessAlertVisible = useAuthStore(selectIsSuccessAlertVisible);
+
     const {
         setErrorAlertVisible,
         setSuccessAlertVisible,
@@ -106,7 +111,4 @@ export const useAuthEffects = () => {
             return () => clearTimeout(timer)
         }
     }, [isSuccessAlertVisible, setSuccessAlertVisible]);
-
-
 }
-

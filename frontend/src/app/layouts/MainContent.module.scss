@@ -1,13 +1,17 @@
 @use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
 
 .main {
   transform: translate3d(0, 0, 0);
   contain: layout style paint;
-
   will-change: transform;
-  transition: transform $anim-slow;
 
-  &[data-lifted='true'][data-hub='true'] {
+  @include layout($skip-intro: false, $self: true) {
+    transition: transform $anim-slow;
+  }
+  @include layout($is-hub: true, $is-content-lifted: true, $self: true) {
     transform: translateY(-100px);
   }
+
+  @include no-transitions;
 }

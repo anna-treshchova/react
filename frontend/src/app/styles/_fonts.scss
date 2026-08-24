@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter-Fallback';
+  src: local('Arial');
+  size-adjust: 107.06%;
+  ascent-override: 90.49%;
+  descent-override: 20.56%;
+  line-gap-override: 0%;
+}

@@ -1,0 +1,1 @@
+export { userApi, useFetchMeQuery, type User } from './model/userApi';

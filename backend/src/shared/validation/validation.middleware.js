@@ -3,11 +3,10 @@ export const validateRequest = (validateFn, source = 'body') => {
       try{
          const validatedData = validateFn(req[source]);
 
-         for (const key in req[source]) {
-            delete req[source][key];
+         if (!req.validated) {
+            req.validated = {};
          }
-
-         Object.assign(req[source], validatedData);
+         req.validated[source] = validatedData;
 
          next();
       } catch (err) {

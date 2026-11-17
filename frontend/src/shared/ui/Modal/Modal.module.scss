@@ -7,7 +7,7 @@
   z-index: 1000;
 
   &[data-animation='entering'] {
-    animation: fadeIn .2s ease-out forwards;
+    animation: fadeIn .1s ease-out forwards;
   }
 
   &[data-animation='exiting'] {
@@ -22,7 +22,7 @@
   border-radius: 32px 32px 0 0;
 
   .overlay[data-animation='entering'] & {
-    animation: slideUp .5s cubic-bezier(0.25, 1, 0.3, 1) forwards;
+    animation: slideUp 0.6s cubic-bezier(0.28, 0.68, 0.36, 1) forwards;
   }
 }
 
@@ -70,6 +70,6 @@
 }
 
 @keyframes slideUp {
-  from { transform: translateY(30px); }
+  from { transform: translateY(70px); }
   to { transform: translateY(0); }
 }

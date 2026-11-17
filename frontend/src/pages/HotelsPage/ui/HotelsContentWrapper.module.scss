@@ -8,11 +8,16 @@
   will-change: transform;
   height: 100%;
 
+
   @media(min-width: 768px) {
     padding-bottom: 80px;
 
     @include layout($is-hub: true) {
       padding-bottom: 0;
+    }
+
+    @include layout($is-hub: false) {
+      padding-top: 60px;
     }
 
     @include layout($is-hub: true, $intro-status: (pending, ready), $skip-intro: false) {
@@ -32,8 +37,10 @@
   @media(min-width: 992px) {
     padding-top: 60px;
 
-    &.hasRecentSearch {
-      padding-top: 40px;
+    @include layout($is-hub: true) {
+      &.hasRecentSearch {
+        padding-top: 40px;
+      }
     }
 
     @include layout($is-hub: true, $intro-status: (pending, ready), $skip-intro: false) {

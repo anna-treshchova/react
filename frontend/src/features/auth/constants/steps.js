@@ -1,1 +1,0 @@
-export const STEPS = { EMAIL: 'EMAIL', CODE: 'CODE' }

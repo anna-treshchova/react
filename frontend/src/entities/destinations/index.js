@@ -1,1 +1,0 @@
-export { destinationsApi, useGetDestinationsQuery } from './destinationsApi';

@@ -21,14 +21,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
-    "react-router": "^7.9.1",
+    "react-router": "^7.18.5",
     "swiper": "^12.0.2",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@typescript-eslint/utils": "^8.61.0",
     "@vitejs/plugin-react": "^5.0.2",
     "eslint": "^9.35.0",
@@ -37,7 +38,8 @@
     "globals": "^16.4.0",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass": "^1.93.2",
-    "vite": "^7.1.6",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.8",
     "vite-plugin-svgr": "^4.5.0"
   }
 }

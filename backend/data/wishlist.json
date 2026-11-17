@@ -138,5 +138,25 @@
     "userId": "user_1fd64f49-8f60-452e-abc3-bf95d6119dbc",
     "itemId": "hotel_5018133",
     "createdAt": "2026-07-25T03:45:28.662Z"
+  },
+  {
+    "userId": "user_1fd64f49-8f60-452e-abc3-bf95d6119dbc",
+    "itemId": "hotel_5018145",
+    "createdAt": "2026-07-29T06:28:36.912Z"
+  },
+  {
+    "userId": "user_1fd64f49-8f60-452e-abc3-bf95d6119dbc",
+    "itemId": "hotel_5018144",
+    "createdAt": "2026-07-31T06:23:03.252Z"
+  },
+  {
+    "userId": "user_1fd64f49-8f60-452e-abc3-bf95d6119dbc",
+    "itemId": "hotel_5018105",
+    "createdAt": "2026-08-08T14:21:16.864Z"
+  },
+  {
+    "userId": "user_1fd64f49-8f60-452e-abc3-bf95d6119dbc",
+    "itemId": "hotel_5018107",
+    "createdAt": "2026-11-17T09:05:58.041Z"
   }
 ]

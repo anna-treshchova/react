@@ -2,7 +2,7 @@ import { AUTH_CONFIG } from '#config/auth.js';
 import * as service from './auth.service.js';
 
 export const sendCode = async (req, res, next) => {
-    const { email, timezone, is12Hour } = req.body;
+    const { email, timezone, is12Hour } = req.validated?.body || {};
 
     try {
         const verification = await service.sendVerificationCode(email, timezone, is12Hour);
@@ -21,7 +21,7 @@ export const sendCode = async (req, res, next) => {
 }
 
 export const verifyCode = async (req, res, next) => {
-    const { email, code } = req.body;
+    const { email, code } = req.validated.body;
 
     try {
         await service.validateCode(email, code);

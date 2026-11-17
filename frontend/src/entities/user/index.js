@@ -1,1 +1,0 @@
-export { useFetchMeQuery, useLazyFetchMeQuery } from './model/userApi.js'

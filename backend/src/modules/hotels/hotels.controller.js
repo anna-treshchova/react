@@ -1,8 +1,9 @@
 import * as service from './hotels.service.js';
 
 export const getHotels = async (req, res, next) => {
-    const filters = req.query;
+    const filters = req.validated?.query || {};
     const userId = req.user?.id
+
     try {
         const { hotels, total } = await service.getHotels(filters, userId);
         res.json({ hotels, total });
@@ -18,7 +19,7 @@ export const getHotels = async (req, res, next) => {
 }
 
 export const getHotelDetails = async (req, res, next) => {
-    const hotelId = req.params.id;
+    const { id: hotelId } = req.validated?.params || {};
     const userId = req.user?.id;
 
     try {

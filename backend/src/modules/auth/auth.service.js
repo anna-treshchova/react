@@ -38,7 +38,7 @@ export const checkThrottle = async (email) => {
         const retryAfterMs = AUTH_CONFIG.otp.resendThrottleMs - timePassed;
 
         throw new AppError(
-            REQUEST_ERRORS.CODE_RESEND_DELAY,
+            REQUEST_ERRORS.CODE_RESEND_DELAY, // 1️⃣
             {
                 verification: {
                     email,

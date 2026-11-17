@@ -22,7 +22,18 @@
   :global(.ant-picker-panel-container) {
     border-radius: 14px !important;
   }
+
+  &:global(.ant-slide-up-enter),
+  &:global(.ant-slide-up-appear) {
+    animation: rangePopupEnter 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+  }
+
+  &:global(.ant-slide-up-leave),
+  &:global(.ant-slide-up-leave-active) {
+    animation: rangePopupLeave 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s forwards !important;
+  }
 }
+
 
 @media (max-width: 767px) {
   .customDatePopup {
@@ -48,7 +59,7 @@
       }
     }
 
-    animation-duration: .5s !important;
+    animation-duration: .1s !important;
 
     &:global(.ant-slide-up-leave-active) {
       animation-duration: .1s !important;
@@ -92,5 +103,27 @@
       height: 28px !important;
       line-height: 28px !important;
     }
+  }
+}
+
+@keyframes rangePopupEnter {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes rangePopupLeave {
+  from {
+    opacity: 1;
+    translate: 0 0;
+  }
+  to {
+    opacity: 0;
+    translate: 0 -10px;
   }
 }

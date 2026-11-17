@@ -673,7 +673,7 @@
   },
   {
     "id": "hotel_5018125",
-    "name": "Woogo Central Park - Tempo Apartments",
+    "name": "Central Cozy Apartment 20 Min bus to Times Square NYC.",
     "address": "240 West 73rd Street",
     "city": "New York",
     "state": "NY",
@@ -701,7 +701,7 @@
   },
   {
     "id": "hotel_5018126",
-    "name": "Times Square Inn",
+    "name": "New Cozy Private Apartment, Close to MetLife!",
     "address": "12 Times Square",
     "city": "New York",
     "state": "NY",
@@ -729,7 +729,7 @@
   },
   {
     "id": "hotel_5018127",
-    "name": "The Bowery Hotel",
+    "name": "Hotel Boutique at Grand Central",
     "address": "335 Bowery",
     "city": "New York",
     "state": "NY",
@@ -757,7 +757,7 @@
   },
   {
     "id": "hotel_5018128",
-    "name": "AC Hotel by Marriott",
+    "name": "The Sun Gate",
     "address": "260 West 40th Street",
     "city": "New York",
     "state": "NY",
@@ -785,7 +785,7 @@
   },
   {
     "id": "hotel_5018129",
-    "name": "The Ridge Hotel Vegas",
+    "name": "Jgstay - Times Square",
     "address": "151 East Houston Street",
     "city": "New York",
     "state": "NY",
@@ -1333,6 +1333,146 @@
     ],
     "details": {
       "max_guests": 2,
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1
+    },
+    "amenities": [
+      "Self check-in",
+      "Free cancellation up to two weeks",
+      "Fast wifi"
+    ]
+  },
+  {
+    "id": "hotel_5018149",
+    "name": "Jgstay - Times Square",
+    "address": "151 East Houston Street",
+    "city": "New York",
+    "state": "NY",
+    "country_code": "US",
+    "rating": 4.81,
+    "price_per_night": 35,
+    "images": [
+      "https://images.unsplash.com/photo-1723810390559-9c0428158941?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723810388971-f8cd6474597f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723810392515-be75a9d89eb7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723810387673-fcf3e92ee293?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723810388244-4eed4c31a823?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0"
+    ],
+    "details": {
+      "max_guests": 3,
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1
+    },
+    "amenities": [
+      "Great location",
+      "Fast wifi",
+      "Free cancellation up to two weeks"
+    ]
+  },
+  {
+    "id": "hotel_5018150",
+    "name": "SoHo 54 Hotel Vegas",
+    "address": "54 Watts St",
+    "city": "New York",
+    "state": "NY",
+    "country_code": "US",
+    "rating": 4.99,
+    "price_per_night": 60,
+    "images": [
+      "https://images.unsplash.com/photo-1723639905478-cb28cdb60aa2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723639904856-8f11e7a62967?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723639906393-21b1c747c6ad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723639906488-1761847f6474?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0",
+      "https://images.unsplash.com/photo-1723639904881-d7213fc8a526?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0"
+    ],
+    "details": {
+      "max_guests": 2,
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1
+    },
+    "amenities": [
+      "Pets allowed",
+      "Self check-in",
+      "City view"
+    ]
+  },
+  {
+    "id": "hotel_5018151",
+    "name": "Amolite Hotel",
+    "address": "Avenida Curitiba, 811",
+    "city": "New York",
+    "state": "NY",
+    "country_code": "US",
+    "rating": 4.88,
+    "price_per_night": 40,
+    "images": [
+      "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1568495248360-ba651fef64a9?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1568495248360-ba651fef64a9?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ],
+    "details": {
+      "max_guests": 3,
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1
+    },
+    "amenities": [
+      "Self check-in",
+      "City view",
+      "Fast wifi"
+    ]
+  },
+  {
+    "id": "hotel_5018152",
+    "name": "Redford Hotel",
+    "address": "136 Ludlow Street",
+    "city": "New York",
+    "state": "NY",
+    "country_code": "US",
+    "rating": 4.88,
+    "price_per_night": 40,
+    "images": [
+      "https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1560449752-b5d5c1c89cee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1560185127-9828d9c26238?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1560185127-bdf08e449371?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ],
+    "details": {
+      "max_guests": 2,
+      "bedrooms": 1,
+      "beds": 1,
+      "baths": 1
+    },
+    "amenities": [
+      "Pets allowed",
+      "Great location",
+      "Self check-in"
+    ]
+  },
+  {
+    "id": "hotel_5018153",
+    "name": "Broadway Plaza Hotel",
+    "address": "450 Broadway St",
+    "city": "New York",
+    "state": "NY",
+    "country_code": "US",
+    "rating": 4.95,
+    "price_per_night": 50,
+    "images": [
+      "https://images.unsplash.com/photo-1631049307379-e96858bda538?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1631049035634-c04c637651b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1631048730593-ca60afc95eb7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1631049421570-dafb48ce5e1b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1631049307567-d20d6d97f64a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ],
+    "details": {
+      "max_guests": 3,
       "bedrooms": 1,
       "beds": 1,
       "baths": 1

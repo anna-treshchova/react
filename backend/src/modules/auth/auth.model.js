@@ -58,6 +58,3 @@ export const createBlacklistedToken = async (token, expiresAtMs) => {
 
     await writeJSON(PATHS.data.blacklistedTokens, blacklistedTokensCache);
 }
-
-
-

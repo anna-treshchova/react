@@ -140,4 +140,3 @@ export const blacklistToken = async (token, user) => {
     const expiresAtMs = user.exp * 1000;
     await model.createBlacklistedToken(token, expiresAtMs);
 }
-

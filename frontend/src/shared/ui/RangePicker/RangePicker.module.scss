@@ -71,10 +71,10 @@
 
 @media (max-width: 400px) {
   .customDatePopup {
-    max-width: 290px;
+    max-width: 260px;
 
     :global(.ant-picker-panels) {
-      padding: 16px !important;
+      padding: 0 !important;
     }
 
     :global(.ant-picker-header) {

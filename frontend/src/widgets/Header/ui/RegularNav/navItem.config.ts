@@ -16,13 +16,11 @@ export type NavItemConfig = {
 
 export const navItemConfig = {
     homes: {
-        speed: 4,
+        speed: 3.5,
         lottieMargins: {
-            mobile: { mb: 2 },
-            desktop: { mb: 4, mr: -4 }
+            desktop: { mb: 2, mr: -4 }
         },
         skeletonMargins: {
-            mobile: { ml: 2 },
             desktop: { ml: 3, mb: 2 }
         }
     },

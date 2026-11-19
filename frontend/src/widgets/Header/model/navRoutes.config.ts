@@ -4,7 +4,7 @@ export const navRoutesConfig = [
         label: 'Homes',
         path: '/',
         animationPath: '/animations/house-flip.lottie',
-        iconSize: 42,
+        iconSize: 46,
         width: { mob: 45, desk: 90 }
     },
     {
